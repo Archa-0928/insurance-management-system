@@ -1,0 +1,174 @@
+{% extends 'user/userhome.html' %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Insurance Companies</h2>
+
+{#    <!-- Custom Search -->#}
+{#    <div class="row mb-3">#}
+{#        <div class="col-md-6">#}
+{#            <input type="text"#}
+{#                   id="insuranceSearch"#}
+{#                   class="form-control"#}
+{#                   placeholder="Search by company name, place, phone or email...">#}
+{#        </div>#}
+{#    </div>#}
+
+    <!-- DataTable -->
+    <div class="table-responsive">
+
+        <table id="insuranceTable"
+               class="table table-bordered table-striped">
+
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Place</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for i in data %}
+
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+
+                    <!-- Company Name -->
+                    <td>{{ i.companyname }}</td>
+
+                    <!-- Email -->
+                    <td>{{ i.email }}</td>
+
+                    <!-- Phone -->
+                    <td>{{ i.phone }}</td>
+
+                    <!-- Address -->
+                    <td>{{ i.address }}</td>
+
+                    <!-- Place -->
+                    <td>{{ i.place }}</td>
+
+                    <td colspan="2">
+                        <a href="/user_upload_damage/{{ i.id }}/#a"
+                           class="btn btn-primary btn-sm">
+                            Upload Damage
+                        </a>
+
+                        <a href="/user_view_damage/{{ i.id }}/#a"
+                           class="btn btn-primary btn-sm">
+                            View  Damage
+                        </a>
+                    </td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="7" class="text-center">
+                        No insurance companies available.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- DataTables CSS -->
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+
+
+<script>
+
+$(document).ready(function () {
+
+    // Initialize DataTable
+    var table = $('#insuranceTable').DataTable({
+
+        pageLength: 5,
+
+        lengthMenu: [
+            [5, 10, 25, 50, -1],
+            [5, 10, 25, 50, "All"]
+        ],
+
+        ordering: true,
+
+        paging: true,
+
+        info: true,
+
+        // Disable default DataTables search box
+        searching: true,
+
+        layout: {
+            topStart: 'pageLength',
+            topEnd: null,
+            bottomStart: 'info',
+            bottomEnd: 'paging'
+        }
+
+    });
+
+
+    // Custom Search
+    $('#insuranceSearch').on('keyup', function () {
+
+        var searchValue = $(this).val().toLowerCase().trim();
+
+        table.rows().every(function () {
+
+            var row = this.node();
+
+            // Get required columns
+            var companyName = $(row).find('td:eq(1)').text().toLowerCase();
+            var email       = $(row).find('td:eq(2)').text().toLowerCase();
+            var phone       = $(row).find('td:eq(3)').text().toLowerCase();
+            var place       = $(row).find('td:eq(5)').text().toLowerCase();
+
+            // Check Company Name OR Email OR Phone OR Place
+            if (
+                companyName.includes(searchValue) ||
+                email.includes(searchValue) ||
+                phone.includes(searchValue) ||
+                place.includes(searchValue)
+            ) {
+
+                $(row).show();
+
+            } else {
+
+                $(row).hide();
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

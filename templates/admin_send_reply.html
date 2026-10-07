@@ -1,0 +1,58 @@
+{% extends 'admin_sidebar.html' %}
+
+
+{% block body %}
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Top Bar -->
+
+        <!-- Reply Form Section -->
+        <div class="container mt-5 px-4" style="max-width: 700px;">
+            <h4 class="mb-4" style="color: var(--primary-color);">
+                <i class="fas fa-reply me-2"></i>Reply to Complaint
+            </h4>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Complaint from:
+                        {% if complaint.SENDER.first_name or complaint.SENDER.last_name %}
+                            {{ complaint.SENDER.first_name }} {{ complaint.SENDER.last_name }}
+                        {% else %}
+                            {{ complaint.SENDER.username }}
+                        {% endif %}
+                    </h5>
+                    <p>
+                        <strong>Title:</strong> {{ complaint.title|default:"No Title" }}
+                    </p>
+                    <p>
+                        <strong>Description:</strong>
+                        <br>
+                        {{ complaint.description|linebreaksbr }}
+                    </p>
+                    <p>
+                        <strong>Submitted on:</strong>
+                        {{ complaint.date|date:"d M Y" }}
+                    </p>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="reply" class="form-label">Your Reply</label>
+                            <textarea class="form-control" id="reply" name="reply" rows="5" required>{{ complaint.reply }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-1"></i>Send Reply
+                        </button>
+                        <a href="{% url 'admin_view_complaint' %}" class="btn btn-secondary ms-2">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+{% endblock %}

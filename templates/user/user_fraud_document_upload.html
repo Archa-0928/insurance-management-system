@@ -1,0 +1,444 @@
+{% extends 'user/userhome.html' %}
+
+{% block body %}
+
+<div style="padding:30px 15px; background:#f5f7fb; min-height:calc(100vh - 80px);">
+
+    <div style="max-width:1000px; margin:0 auto; background:#fff; border-radius:20px; box-shadow:0 10px 35px rgba(0,0,0,.08); overflow:hidden;">
+
+        <!-- HEADER -->
+        <div style="background:linear-gradient(135deg,#0d6efd,#084298); color:#fff; padding:30px;">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+
+                <div>
+
+                    <h2 style="margin:0; font-weight:700; font-size:28px;">
+                        <i class="bi bi-file-earmark-medical"></i>
+                        Insurance Claim Verification
+                    </h2>
+
+                    <p style="margin:8px 0 0; opacity:.9; font-size:15px;">
+                        Upload your insurance document for AI-powered
+                        fraud analysis and company verification.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <a href="{% url 'user_fraud_document_history' %}"
+                       style="display:inline-block; padding:10px 18px; background:#fff; color:#0d6efd; text-decoration:none; border-radius:10px; font-weight:600;">
+
+                        <i class="bi bi-clock-history"></i>
+                        My Claims
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BODY -->
+        <div style="padding:35px;">
+
+
+            <!-- SUCCESS MESSAGE -->
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div style="background:#d1e7dd; color:#0f5132; border:1px solid #badbcc; border-radius:10px; padding:14px 18px; margin-bottom:20px;">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            <!-- ERROR -->
+            {% if error %}
+
+                <div style="background:#f8d7da; color:#842029; border:1px solid #f5c2c7; border-radius:10px; padding:14px 18px; margin-bottom:20px;">
+
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    <strong>Error:</strong>
+
+                    {{ error }}
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- FORM -->
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+
+                <!-- INSURANCE COMPANY -->
+                <div style="margin-bottom:25px;">
+
+                    <label style="display:block; font-weight:600; color:#343a40; margin-bottom:8px;">
+
+                        Insurance Company
+
+                        <span style="color:#dc3545;">*</span>
+
+                    </label>
+
+                    <select name="insurance"
+                            required
+                            style="width:100%; height:48px; padding:8px 14px; border:1px solid #dce1e7; border-radius:10px; background:#fff; font-size:15px;">
+
+                        <option value="">
+                            Select Insurance Company
+                        </option>
+
+                        {% for company in insurance_companies %}
+
+                            <option value="{{ company.id }}">
+
+                                {{ company.companyname }}---
+                                {{ company.place }}
+
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                    <small style="display:block; margin-top:6px; color:#6c757d;">
+
+                        Select the insurance company associated with your claim.
+
+                    </small>
+
+                </div>
+
+
+                <!-- DOCUMENT -->
+                <div style="margin-bottom:25px;">
+
+                    <label style="display:block; font-weight:600; color:#343a40; margin-bottom:8px;">
+
+                        Insurance Document
+
+                        <span style="color:#dc3545;">*</span>
+
+                    </label>
+
+
+                    <div style="border:2px dashed #c9d5e5; border-radius:15px; padding:35px 25px; text-align:center; background:#f8fbff;">
+
+                        <div style="font-size:48px; margin-bottom:10px;">
+                            📄
+                        </div>
+
+                        <div style="font-size:18px; font-weight:600; color:#212529;">
+
+                            Upload your insurance document
+
+                        </div>
+
+                        <div style="color:#6c757d; font-size:14px; margin:8px 0 20px;">
+
+                            Supported formats:
+                            PDF, DOCX, JPG, JPEG, PNG
+
+                            <br>
+
+                            The document will be analyzed using OCR and AI.
+
+                        </div>
+
+
+                        <input type="file"
+                               name="document"
+                               id="document"
+                               accept=".pdf,.docx,.jpg,.jpeg,.png"
+                               required
+                               style="width:100%; padding:10px; border:1px solid #dce1e7; border-radius:10px; background:#fff;">
+
+                        <div id="fileName"
+                             style="margin-top:12px; color:#0d6efd; font-weight:600;">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit"
+                        style="width:100%; height:50px; border:0; border-radius:10px; background:#0d6efd; color:#fff; font-size:16px; font-weight:600; cursor:pointer;">
+
+                    <i class="bi bi-cloud-upload"></i>
+
+                    Upload & Analyze Document
+
+                </button>
+
+            </form>
+
+
+{#            <!-- AI RESULT -->#}
+{#            {% if result %}#}
+{##}
+{#                {% if result.prediction_value == 1 %}#}
+{##}
+{#                    <div style="margin-top:30px; padding:25px; border-radius:15px; background:#fff0f0; border:1px solid #f2b8b8;">#}
+{##}
+{#                        <div style="display:flex; align-items:center; gap:15px;">#}
+{##}
+{#                            <div style="font-size:40px;">#}
+{#                                ⚠️#}
+{#                            </div>#}
+{##}
+{#                            <div>#}
+{##}
+{#                                <div style="font-size:20px; font-weight:700; color:#dc3545;">#}
+{##}
+{#                                    Fraud Detected#}
+{##}
+{#                                </div>#}
+{##}
+{#                                <div style="color:#6c757d; margin-top:4px;">#}
+{##}
+{#                                    The AI model has identified this claim#}
+{#                                    as potentially fraudulent.#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                        <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">#}
+{##}
+{##}
+{#                        <div style="display:flex; gap:30px; flex-wrap:wrap;">#}
+{##}
+{#                            <div style="flex:1; min-width:200px;">#}
+{##}
+{#                                <strong>AI Prediction</strong>#}
+{##}
+{#                                <div style="font-size:24px; font-weight:700; color:#dc3545; margin-top:5px;">#}
+{##}
+{#                                    {{ result.prediction }}#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{##}
+{#                            <div style="flex:1; min-width:200px;">#}
+{##}
+{#                                <strong>Probability</strong>#}
+{##}
+{#                                <div style="font-size:24px; font-weight:700; color:#dc3545; margin-top:5px;">#}
+{##}
+{#                                    {% if result.probability %}#}
+{#                                        {{ result.probability }}%#}
+{#                                    {% else %}#}
+{#                                        N/A#}
+{#                                    {% endif %}#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{#                {% else %}#}
+{##}
+{#                    <div style="margin-top:30px; padding:25px; border-radius:15px; background:#eaf8f0; border:1px solid #b8e5c8;">#}
+{##}
+{#                        <div style="display:flex; align-items:center; gap:15px;">#}
+{##}
+{#                            <div style="font-size:40px;">#}
+{#                                ✅#}
+{#                            </div>#}
+{##}
+{#                            <div>#}
+{##}
+{#                                <div style="font-size:20px; font-weight:700; color:#198754;">#}
+{##}
+{#                                    No Fraud Detected#}
+{##}
+{#                                </div>#}
+{##}
+{#                                <div style="color:#6c757d; margin-top:4px;">#}
+{##}
+{#                                    The AI model did not identify this claim#}
+{#                                    as fraudulent.#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                        <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">#}
+{##}
+{##}
+{#                        <div style="display:flex; gap:30px; flex-wrap:wrap;">#}
+{##}
+{#                            <div style="flex:1; min-width:200px;">#}
+{##}
+{#                                <strong>AI Prediction</strong>#}
+{##}
+{#                                <div style="font-size:24px; font-weight:700; color:#198754; margin-top:5px;">#}
+{##}
+{#                                    {{ result.prediction }}#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{##}
+{#                            <div style="flex:1; min-width:200px;">#}
+{##}
+{#                                <strong>Probability</strong>#}
+{##}
+{#                                <div style="font-size:24px; font-weight:700; color:#198754; margin-top:5px;">#}
+{##}
+{#                                    {% if result.probability %}#}
+{#                                        {{ result.probability }}%#}
+{#                                    {% else %}#}
+{#                                        N/A#}
+{#                                    {% endif %}#}
+{##}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{#                {% endif %}#}
+{##}
+{#            {% endif %}#}
+{##}
+{##}
+{#            <!-- EXTRACTED DATA -->#}
+{#            {% if extracted_data %}#}
+{##}
+{#                <div style="margin-top:30px; border:1px solid #e4e8ed; border-radius:15px; overflow:hidden;">#}
+{##}
+{#                    <div style="background:#f8f9fa; padding:18px 22px; font-weight:700; font-size:18px;">#}
+{##}
+{#                        <i class="bi bi-database"></i>#}
+{##}
+{#                        Extracted Claim Information#}
+{##}
+{#                    </div>#}
+{##}
+{##}
+{#                    <div style="padding:20px;">#}
+{##}
+{#                        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:0;">#}
+{##}
+{#                            {% for key, value in extracted_data.items %}#}
+{##}
+{#                                <div style="padding:13px 15px; border-bottom:1px solid #edf0f3;">#}
+{##}
+{#                                    <div style="font-weight:600; color:#495057; margin-bottom:4px;">#}
+{##}
+{#                                        {{ key|title }}#}
+{##}
+{#                                    </div>#}
+{##}
+{#                                    <div style="color:#6c757d; word-break:break-word;">#}
+{##}
+{#                                        {% if value %}#}
+{#                                            {{ value }}#}
+{#                                        {% else %}#}
+{#                                            -#}
+{#                                        {% endif %}#}
+{##}
+{#                                    </div>#}
+{##}
+{#                                </div>#}
+{##}
+{#                            {% endfor %}#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endif %}#}
+{##}
+{##}
+{#            <!-- OCR TEXT -->#}
+{#            {% if ocr_text %}#}
+{##}
+{#                <div style="margin-top:30px; border-radius:15px; border:1px solid #e4e8ed; overflow:hidden;">#}
+{##}
+{#                    <div style="background:#f8f9fa; padding:18px 22px; font-weight:700;">#}
+{##}
+{#                        <i class="bi bi-file-text"></i>#}
+{##}
+{#                        OCR Extracted Text#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <div style="padding:20px; background:#fff; max-height:400px; overflow-y:auto;">#}
+{##}
+{#                        <pre style="margin:0; white-space:pre-wrap; word-wrap:break-word; font-size:13px; color:#495057; font-family:Consolas,monospace;">{{ ocr_text }}</pre>#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#            {% endif %}#}
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document.getElementById('document').addEventListener('change', function () {
+
+    const fileName = document.getElementById('fileName');
+
+    if (this.files.length > 0) {
+
+        fileName.innerHTML =
+            '<i class="bi bi-file-earmark-check"></i> ' +
+            this.files[0].name;
+
+    } else {
+
+        fileName.innerHTML = '';
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

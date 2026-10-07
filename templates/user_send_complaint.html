@@ -1,0 +1,520 @@
+{##}
+{#{% extends 'user/userhome.html' %}#}
+{#{% block body %}#}
+{##}
+{#    <section id="hero" class="hero section" data-messages="{% if messages %}true{% else %}false{% endif %}">#}
+{#        <div class="floating-icons">#}
+{#            <i class="bi bi-chat-square-text floating-icon"></i>#}
+{#            <i class="bi bi-exclamation-circle floating-icon"></i>#}
+{#            <i class="bi bi-file-text floating-icon"></i>#}
+{#            <i class="bi bi-envelope floating-icon"></i>#}
+{#            <i class="bi bi-person-lines-fill floating-icon"></i>#}
+{#        </div>#}
+{#        <div class="container">#}
+{#            <div class="section-title" data-aos="fade-up">#}
+{#                <h2>Send a Complaint</h2>#}
+{#            </div>#}
+{#            <div class="row justify-content-center gy-4">#}
+{#                <div class="col-lg-10 col-md-11 col-sm-12">#}
+{#                    <!-- Complaint Form -->#}
+{#                    <div class="card-box mb-4" data-aos="fade-up" data-aos-delay="100">#}
+{#                        <h3><i class="fas fa-comment-dots me-2"></i>Submit Your Complaint</h3>#}
+{#                        <form method="POST" action="">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="mb-3">#}
+{#                                <label for="title" class="form-label" style="color: #fff;">Complaint Title</label>#}
+{#                                <input type="text" class="form-control" id="title" name="title"#}
+{#                                       placeholder="Enter a short title for your complaint" required>#}
+{#                            </div>#}
+{#                            <div class="mb-3">#}
+{#                                <label for="complaint" class="form-label" style="color: #fff;">Your Complaint</label>#}
+{#                                <textarea id="complaint" name="complaint" rows="4" class="form-control"#}
+{#                                          placeholder="Write your complaint here..." required></textarea>#}
+{#                            </div>#}
+{#                            <button type="submit" class="btn btn-submit">#}
+{#                                <i class="fas fa-paper-plane me-1"></i> Submit#}
+{#                            </button>#}
+{#                        </form>#}
+{#                    </div>#}
+{##}
+{#                    <!-- Past Complaints -->#}
+{#                    <div class="mt-5" data-aos="fade-up" data-aos-delay="200">#}
+{#                        <h3 class="section-title" style="color: #F4C430;">Your Complaints</h3>#}
+{#                        {% for complaint in complaints %}#}
+{#                            <div class="complaint-card" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">#}
+{#                                <h5>{{ complaint.title|default:"No Title" }}</h5>#}
+{#                                <p><strong>Description:</strong> {{ complaint.description }}</p>#}
+{#                                <p><strong>Date:</strong> {{ complaint.date }}</p>#}
+{#                                <p><strong>Reply:</strong> {{ complaint.reply|default:"No reply yet" }}</p>#}
+{#                                <p>#}
+{#                                    <strong>Status:</strong>#}
+{#                                    <span class="badge {% if complaint.reply %}badge-resolved{% else %}badge-pending{% endif %}">#}
+{#                                        {% if complaint.reply %}Resolved{% else %}Pending{% endif %}#}
+{#                                    </span>#}
+{#                                </p>#}
+{#                            </div>#}
+{#                        {% empty %}#}
+{#                            <div class="no-complaints" data-aos="fade-up">#}
+{#                                No complaints submitted yet.#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{##}
+{#    <!-- Modal for Messages -->#}
+{#    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">#}
+{#        <div class="modal-dialog modal-dialog-centered">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h5 class="modal-title" id="messageModalLabel">Notification</h5>#}
+{#                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    {% for message in messages %}#}
+{#                        <div class="alert alert-{{ message.tags }} mb-0" role="alert">#}
+{#                            {{ message }}#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#                <div class="modal-footer">#}
+{#                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <!-- Bootstrap Bundle JS and AOS -->#}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>#}
+{#    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>#}
+{#    <script>#}
+{#        document.addEventListener('DOMContentLoaded', function () {#}
+{#            // Initialize AOS#}
+{#            if (typeof AOS !== 'undefined') {#}
+{#                AOS.init({#}
+{#                    duration: 800,#}
+{#                    easing: 'ease-in-out',#}
+{#                    once: true#}
+{#                });#}
+{#            } else {#}
+{#                console.warn('AOS library not loaded.');#}
+{#            }#}
+{##}
+{#            // Parallax Effect#}
+{#            window.addEventListener('scroll', function () {#}
+{#                const section = document.querySelector('.hero');#}
+{#                const scrollPosition = window.scrollY;#}
+{#                section.style.backgroundPositionY = `${scrollPosition * 0.2}px`;#}
+{#            });#}
+{##}
+{#            // Show modal if messages are present#}
+{#            const heroSection = document.querySelector('.hero');#}
+{#            const hasMessages = heroSection.getAttribute('data-messages') === 'true';#}
+{#            if (hasMessages) {#}
+{#                const messageModal = new bootstrap.Modal(document.getElementById('messageModal'), {#}
+{#                    keyboard: true#}
+{#                });#}
+{#                messageModal.show();#}
+{#            }#}
+{#        });#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+
+
+{% extends 'user/userhome.html' %}
+{% block body %}
+
+<style>
+    .hero {
+        background-color: #FFFFFF;
+        padding: 60px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .floating-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .floating-icon {
+        color: #F5E27A;
+        opacity: 0.35;
+        position: absolute;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-title h2 {
+        color: #1A1A1A;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin: 0;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 70px;
+        height: 4px;
+        background-color: #F2D93B;
+        margin: 12px auto 0;
+        border-radius: 2px;
+    }
+
+    /* Form Card */
+    .card-box {
+        background-color: #FFFFFF;
+        border: 1px solid #EDE7C9;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .card-box h3 {
+        color: #1A1A1A;
+        font-weight: 700;
+        border-left: 4px solid #F2D93B;
+        padding-left: 12px;
+        margin-bottom: 24px;
+        font-size: 1.3rem;
+    }
+
+    .card-box .form-label {
+        color: #1A1A1A !important;
+        font-weight: 500;
+    }
+
+    .card-box .form-control {
+        border: 1px solid #E5DFAF;
+        border-radius: 8px;
+        background-color: #FFFDF3;
+        color: #1A1A1A;
+        padding: 10px 14px;
+    }
+
+    .card-box .form-control:focus {
+        border-color: #F2D93B;
+        box-shadow: 0 0 0 0.2rem rgba(242, 217, 59, 0.25);
+        background-color: #FFFDF3;
+    }
+
+    .btn-submit {
+        background-color: #F2D93B;
+        border: none;
+        color: #1A1A1A;
+        font-weight: 600;
+        border-radius: 24px;
+        padding: 10px 30px;
+        transition: all 0.25s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #e6c82e;
+        color: #1A1A1A;
+        transform: translateY(-2px);
+    }
+
+    /* Past Complaints Title */
+    .complaints-title {
+        color: #1A1A1A;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .complaints-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #F2D93B;
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+    /* Complaint Cards */
+    .complaint-card {
+        background-color: #FFFFFF;
+        border: 1px solid #EDE7C9;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 22px 26px;
+        margin-bottom: 18px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .complaint-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        border-color: #F2D93B;
+    }
+
+    .complaint-card h5 {
+        color: #1A1A1A;
+        font-weight: 700;
+        margin-bottom: 12px;
+        border-left: 4px solid #F2D93B;
+        padding-left: 12px;
+    }
+
+    .complaint-card p {
+        color: #333333;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+    }
+
+    .complaint-card p strong {
+        color: #1A1A1A;
+        font-weight: 600;
+    }
+
+    .badge {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .badge-pending {
+        background-color: #FFF9DB;
+        color: #8A7A00;
+        border: 1px solid #F5E9A8;
+    }
+
+    .badge-resolved {
+        background-color: #E8F5E9;
+        color: #2E7D32;
+        border: 1px solid #A5D6A7;
+    }
+
+    .no-complaints {
+        text-align: center;
+        background-color: #FFFDF3;
+        border: 1px dashed #E5DFAF;
+        border-radius: 16px;
+        padding: 40px 20px;
+        color: #666666;
+        font-size: 1.1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Modal styling */
+    .modal {
+        z-index: 1060 !important;
+    }
+
+    .modal-backdrop {
+        z-index: 1055 !important;
+    }
+
+    .modal-content {
+        border: 1px solid #EDE7C9;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+
+    .modal-header {
+        background-color: #FFFDF3;
+        border-bottom: 1px solid #EDE7C9;
+    }
+
+    .modal-title {
+        color: #1A1A1A;
+        font-weight: 700;
+    }
+
+    .modal-body {
+        background-color: #FFFFFF;
+    }
+
+    .modal-footer {
+        background-color: #FFFDF3;
+        border-top: 1px solid #EDE7C9;
+    }
+
+    .btn-close-modal {
+        background-color: #1A1A1A;
+        color: #F2D93B !important;
+        border: none;
+        border-radius: 24px;
+        padding: 8px 24px;
+        font-weight: 600;
+    }
+
+    .btn-close-modal:hover {
+        background-color: #333;
+        color: #F2D93B !important;
+    }
+</style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<section id="hero" class="hero section" data-messages="{% if messages %}true{% else %}false{% endif %}">
+    <div class="floating-icons">
+        <i class="bi bi-chat-square-text floating-icon" style="font-size: 34px; top: 12%; left: 8%;"></i>
+        <i class="bi bi-exclamation-circle floating-icon" style="font-size: 30px; top: 25%; right: 10%;"></i>
+        <i class="bi bi-file-text floating-icon" style="font-size: 32px; bottom: 22%; left: 12%;"></i>
+        <i class="bi bi-envelope floating-icon" style="font-size: 28px; bottom: 15%; right: 15%;"></i>
+        <i class="bi bi-person-lines-fill floating-icon" style="font-size: 30px; top: 50%; left: 4%;"></i>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 1;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Send a Complaint</h2>
+        </div>
+
+        <div class="row justify-content-center gy-4">
+            <div class="col-lg-10 col-md-11 col-sm-12">
+
+                <!-- Complaint Form -->
+                <div class="card-box mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="bi bi-chat-dots me-2"></i>Submit Your Complaint</h3>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Complaint Title</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                   placeholder="Enter a short title for your complaint" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="complaint" class="form-label">Your Complaint</label>
+                            <textarea id="complaint" name="complaint" rows="4" class="form-control"
+                                      placeholder="Write your complaint here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">
+                            <i class="bi bi-send me-1"></i> Submit
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Past Complaints -->
+                <div class="mt-5" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="complaints-title">Your Complaints</h3>
+
+                    {% for complaint in complaints %}
+                        <div class="complaint-card" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">
+                            <h5>{{ complaint.title|default:"No Title" }}</h5>
+                            <p><strong>Description:</strong> {{ complaint.description }}</p>
+                            <p><strong>Date:</strong> {{ complaint.date }}</p>
+                            <p><strong>Reply:</strong> {{ complaint.reply|default:"No reply yet" }}</p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="badge {% if complaint.reply %}badge-resolved{% else %}badge-pending{% endif %}">
+                                    {% if complaint.reply %}Resolved{% else %}Pending{% endif %}
+                                </span>
+                            </p>
+                        </div>
+                    {% empty %}
+                        <div class="no-complaints" data-aos="fade-up">
+                            No complaints submitted yet.
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Messages -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Notification</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} mb-0" role="alert"
+                         style="background-color: #FFF9DB; border: 1px solid #F5E9A8; color: #333333; border-radius: 10px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-close-modal" id="closeMessageModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize AOS
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        }
+
+        // Soft parallax
+        window.addEventListener('scroll', function () {
+            const section = document.querySelector('.hero');
+            if (section) {
+                section.style.backgroundPositionY = `${window.scrollY * 0.2}px`;
+            }
+        });
+
+        // ===== Message Modal (with reliable close) =====
+        const messageModalEl = document.getElementById('messageModal');
+        const hasMessages = document.querySelector('.hero')?.getAttribute('data-messages') === 'true';
+
+        if (hasMessages && messageModalEl) {
+            const messageModal = new bootstrap.Modal(messageModalEl, {
+                keyboard: true,
+                backdrop: true
+            });
+
+            // Show the modal
+            messageModal.show();
+
+            // Close button in footer
+            const closeBtn = document.getElementById('closeMessageModal');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    messageModal.hide();
+                });
+            }
+
+            // X button in header
+            const xBtn = messageModalEl.querySelector('.btn-close');
+            if (xBtn) {
+                xBtn.addEventListener('click', function () {
+                    messageModal.hide();
+                });
+            }
+        }
+    });
+</script>
+
+{% endblock %}

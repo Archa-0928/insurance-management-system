@@ -1,0 +1,77 @@
+{% extends 'admin_sidebar.html' %}
+
+
+{% block body %}
+
+
+
+        <!-- Table Section -->
+        <div class="table-card mt-4 px-4">
+            <h4 class="mb-3 section-title">
+                <i class="fas fa-users me-2"></i>Registered Users
+            </h4>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover align-middle custom-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>ID Proof</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in users %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ u.USER.first_name }} {{ u.USER.last_name }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.phone }}</td>
+                            <td>{{ u.address }}</td>
+                            <td>
+                                {% if u.id_proof %}
+                                    <a href="{{ u.id_proof.url }}" target="_blank" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye"></i> View
+                                    </a>
+                                {% else %}
+                                    <span class="text-muted">No file</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if u.USER.is_active %}
+                                    <span class="badge bg-success">Approved</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if not u.USER.is_active %}
+                                    <a href="{% url 'admin_approve_user' u.USER.id %}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-check"></i> Approve
+                                    </a>
+                                    <a href="{% url 'admin_reject_user' u.USER.id %}" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i> Reject
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'admin_reject_user' u.USER.id %}" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i> Reject
+                                    </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">No users found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+{% endblock %}

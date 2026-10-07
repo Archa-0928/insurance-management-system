@@ -1,0 +1,424 @@
+{% extends 'company/companyhome.html' %}
+
+{% block body %}
+
+<div class="container-fluid py-4" style="background:#f5f7fb; min-height:100vh;">
+
+    <!-- Back Button -->
+    <div class="mb-3">
+        <a href="{% url 'insurance_view_damage' %}"
+           class="btn btn-light shadow-sm"
+           style="border-radius:10px; font-weight:600;">
+            ← Back to Damage Requests
+        </a>
+    </div>
+
+
+    <!-- Page Header -->
+    <div class="card border-0 shadow-sm mb-4"
+         style="border-radius:18px; overflow:hidden; background:linear-gradient(135deg,#0d6efd,#084298);">
+
+        <div class="card-body p-4 text-white">
+
+            <h2 class="fw-bold mb-2">
+                Vehicle Damage Details
+            </h2>
+
+            <p class="mb-0" style="opacity:.9;">
+                Review customer information, vehicle images and damage analysis.
+            </p>
+
+        </div>
+    </div>
+
+
+    <!-- Customer Information -->
+    <div class="card border-0 shadow-sm mb-4"
+         style="border-radius:16px;">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-4">
+                👤 Customer Information
+            </h4>
+
+            <div class="row g-3">
+
+                <!-- Name -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            CUSTOMER NAME
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ damage.USER.USER.first_name }}
+                            {{ damage.USER.USER.last_name }}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Email -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            EMAIL
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ damage.USER.email }}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Phone -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            PHONE
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ damage.USER.phone }}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Address -->
+                <div class="col-lg-6 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            ADDRESS
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ damage.USER.address }}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Damage Request Information -->
+    <div class="card border-0 shadow-sm mb-4"
+         style="border-radius:16px;">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-4">
+                📋 Damage Request Information
+            </h4>
+
+            <div class="row g-3">
+
+                <!-- Insurance Company -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            INSURANCE COMPANY
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ insurance.companyname }}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Date -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            SUBMITTED DATE
+                        </small>
+
+                        <div class="mt-1 fw-semibold">
+                            {{ damage.date|date:"d M Y, h:i A" }}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Status -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="p-3"
+                         style="background:#f8f9fa; border-radius:12px;">
+
+                        <small class="text-muted fw-bold">
+                            STATUS
+                        </small>
+
+                        <div class="mt-2">
+
+                            <span class="badge rounded-pill px-3 py-2"
+                                  style="background:#fff3cd; color:#856404; font-size:13px;">
+                                {{ damage.status }}
+                            </span>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Vehicle Images -->
+    <div class="card border-0 shadow-sm mb-4"
+         style="border-radius:16px;">
+
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h4 class="fw-bold mb-0">
+                    🚗 Vehicle Images
+                </h4>
+
+                <span class="badge bg-primary rounded-pill px-3 py-2">
+                    6 Images
+                </span>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- Front -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.frontimage.url }}"
+                             alt="Front Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                🚘 Front View
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Back -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.backimage.url }}"
+                             alt="Back Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                🔙 Back View
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Left -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.leftside.url }}"
+                             alt="Left Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                ◀️ Left Side
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Right -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.rightsideimage.url }}"
+                             alt="Right Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                ▶️ Right Side
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Top -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.topimage.url }}"
+                             alt="Top Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                🔝 Top View
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Bottom -->
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card border-0 shadow-sm h-100"
+                         style="border-radius:14px; overflow:hidden;">
+
+                        <img src="{{ damage.bottumimage.url }}"
+                             alt="Bottom Vehicle Image"
+                             class="img-fluid w-100"
+                             style="height:240px; object-fit:cover;">
+
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-0">
+                                🔽 Bottom View
+                            </h6>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- AI Damage Analysis -->
+    <div class="card border-0 shadow-sm mb-4"
+         style="border-radius:16px;">
+
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h4 class="fw-bold mb-0">
+                    🤖 AI Damage Analysis
+                </h4>
+
+                {% if damage.image_overall_damage_description %}
+                    <span class="badge bg-success rounded-pill px-3 py-2">
+                        Analysis Completed
+                    </span>
+                {% else %}
+                    <span class="badge bg-warning text-dark rounded-pill px-3 py-2">
+                        Pending
+                    </span>
+                {% endif %}
+
+            </div>
+
+
+            {% if damage.image_overall_damage_description %}
+
+                <!-- Analysis Result -->
+                <div class="p-4"
+                     style="background:#f0fdf4; border-left:5px solid #198754; border-radius:12px;">
+
+                    <h6 class="fw-bold text-success mb-3">
+                        Damage Analysis Result
+                    </h6>
+
+                    <p class="mb-0"
+                       style="line-height:1.8; color:#374151;">
+
+                        {{ damage.image_overall_damage_description|linebreaks }}
+
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <!-- Pending Analysis -->
+                <div class="p-4 mb-4"
+                     style="background:#fff8e1; border-left:5px solid #ffc107; border-radius:12px;">
+
+                    <h6 class="fw-bold mb-2">
+                        Analysis Pending
+                    </h6>
+
+                    <p class="mb-0 text-muted">
+                        The six vehicle images have been submitted.
+                        Click the button below to analyze the images and
+                        generate an overall vehicle damage description.
+                    </p>
+
+                </div>
+
+
+                <!-- Analyze Button -->
+                <div>
+
+                   <form method="POST" action="{% url 'analyze_damage' damage.id %}">
+    {% csrf_token %}
+
+    <button type="submit" class="btn btn-primary">
+        🤖 Analyze Damage
+    </button>
+</form>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

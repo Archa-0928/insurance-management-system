@@ -1,0 +1,300 @@
+
+
+
+
+
+{% extends 'user/userhome.html' %}
+{% block body %}
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    /* Hide all steps by default – only the active one is shown */
+    .form-step {
+        display: none;
+    }
+    .form-step.active {
+        display: block;
+    }
+
+    /* Smooth progress bar */
+    .progress-line-fill {
+        transition: width 0.35s ease;
+    }
+
+    /* Optional: subtle hover on progress circles */
+    .progress-step {
+        transition: all 0.25s ease;
+        cursor: default;
+    }
+</style>
+
+{% if messages %}
+<div class="container mt-2" style="margin-top: 20px;">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+             role="alert"
+             style="background-color: #FFF9DB; border: 1px solid #F5E9A8; color: #333333; border-radius: 10px; padding: 14px 18px;">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="filter: none;"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<section class="claim-section" style="background-color: #FFFFFF; padding: 60px 0; position: relative; overflow: hidden;">
+    <div class="floating-icons" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;">
+        <i class="bi bi-file-text floating-icon" style="color: #F5E27A; opacity: 0.35; font-size: 34px; position: absolute; top: 12%; left: 8%;"></i>
+        <i class="bi bi-shield-check floating-icon" style="color: #F5E27A; opacity: 0.35; font-size: 30px; position: absolute; top: 25%; right: 10%;"></i>
+        <i class="bi bi-person-lines-fill floating-icon" style="color: #F5E27A; opacity: 0.35; font-size: 32px; position: absolute; bottom: 20%; left: 12%;"></i>
+        <i class="bi bi-car-front floating-icon" style="color: #F5E27A; opacity: 0.35; font-size: 28px; position: absolute; bottom: 15%; right: 15%;"></i>
+        <i class="bi bi-bank floating-icon" style="color: #F5E27A; opacity: 0.35; font-size: 30px; position: absolute; top: 50%; left: 4%;"></i>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 1;">
+        <div class="section-title" data-aos="fade-up" style="text-align: center; margin-bottom: 35px;">
+            <h2 style="color: #1A1A1A; font-weight: 700; letter-spacing: 0.5px; margin: 0;">Submit Insurance Claim</h2>
+            <div style="width: 70px; height: 4px; background-color: #F2D93B; margin: 12px auto 0; border-radius: 2px;"></div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-container" data-aos="fade-up" data-aos-delay="100"
+             style="position: relative; display: flex; justify-content: space-between; max-width: 650px; margin: 0 auto 45px;">
+            <div class="progress-line" style="position: absolute; top: 50%; left: 0; right: 0; height: 4px; background-color: #EDE7C9; transform: translateY(-50%); z-index: 0;"></div>
+            <div class="progress-line-fill" id="progressLine" style="position: absolute; top: 50%; left: 0; height: 4px; background-color: #F2D93B; transform: translateY(-50%); z-index: 1; width: 0%;"></div>
+            <div class="progress-step active" data-step="1" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #F2D93B; color: #1A1A1A; font-weight: 700; border: 2px solid #F2D93B;">1</div>
+            <div class="progress-step" data-step="2" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #FFFFFF; color: #999999; font-weight: 700; border: 2px solid #EDE7C9;">2</div>
+            <div class="progress-step" data-step="3" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #FFFFFF; color: #999999; font-weight: 700; border: 2px solid #EDE7C9;">3</div>
+            <div class="progress-step" data-step="4" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #FFFFFF; color: #999999; font-weight: 700; border: 2px solid #EDE7C9;">4</div>
+            <div class="progress-step" data-step="5" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #FFFFFF; color: #999999; font-weight: 700; border: 2px solid #EDE7C9;">5</div>
+            <div class="progress-step" data-step="6" style="position: relative; z-index: 2; width: 34px; height: 34px; line-height: 34px; text-align: center; border-radius: 50%; background-color: #FFFFFF; color: #999999; font-weight: 700; border: 2px solid #EDE7C9;">6</div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-11 col-sm-12">
+                <form method="post"  action="/user_submit_claim_post/"
+      enctype="multipart/form-data"
+                      style="background-color: #FFFFFF; border: 1px solid #EDE7C9; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 30px;">
+                    {% csrf_token %}
+
+                    <!-- STEP 1: Personal Info -->
+                    <div class="form-step active" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Personal Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-12"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Insurance Company</label>
+                                <select name="insurance" class="form-control">
+                                    <option>----SELECT-----</option>
+                                    {% for i in data %}
+                                    <option value="{{ i.id }}">{{ i.companyname }}---{{ i.phone }}--{{ i.place }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                </div>
+                                <div class="col-md-6"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Full Name</label><input type="text" name="full_name" class="form-control" placeholder="Enter full name" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Date of Birth</label><input type="date" name="date_of_birth" class="form-control" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Gender</label><input type="text" name="gender" class="form-control" placeholder="Enter gender" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Nationality</label><input type="text" name="nationality" class="form-control" placeholder="Enter nationality" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">PAN Number</label><input type="text" name="pan_number" class="form-control" placeholder="Enter PAN number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Marital Status</label><input type="text" name="marital_status" class="form-control" placeholder="Enter marital status" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-8"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Address</label><input type="text" name="address" class="form-control" placeholder="Enter address" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Phone Number</label><input type="text" name="phone_number" class="form-control" placeholder="Enter phone number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Email Address</label><input type="email" name="email_address" class="form-control" placeholder="Enter email" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons text-end" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-primary next-step" style="background-color: #F2D93B; border: none; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Bank Details -->
+                    <div class="form-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Bank Details</h5>
+                            <div class="row g-3">
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Account Number</label><input type="text" name="account_number" class="form-control" placeholder="Enter account number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Branch Name</label><input type="text" name="branch_name" class="form-control" placeholder="Enter branch name" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">IFSC Code</label><input type="text" name="ifsc_code" class="form-control" placeholder="Enter IFSC code" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons d-flex justify-content-between" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-secondary prev-step" style="background-color: #FFFFFF; border: 1px solid #1A1A1A; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Previous</button>
+                            <button type="button" class="btn btn-primary next-step" style="background-color: #F2D93B; border: none; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Policy Info -->
+                    <div class="form-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Policy Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Months as Customer</label><input type="number" name="months_as_customer" class="form-control" placeholder="Enter months" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Age</label><input type="number" name="age" class="form-control" placeholder="Enter age" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Policy Number</label><input type="text" name="policy_number" class="form-control" placeholder="Enter policy number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Bind Date</label><input type="date" name="policy_bind_date" class="form-control" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Policy State</label><input type="text" name="policy_state" class="form-control" placeholder="Enter state" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Policy CSL</label><input type="text" name="policy_csl" class="form-control" placeholder="Enter CSL" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Policy Deductable</label><input type="number" name="policy_deductable" class="form-control" placeholder="Enter deductable" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Annual Premium</label><input type="number" name="policy_annual_premium" class="form-control" placeholder="Enter premium" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Umbrella Limit</label><input type="number" name="umbrella_limit" class="form-control" placeholder="Enter limit" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Zip</label><input type="text" name="insured_zip" class="form-control" placeholder="Enter zip" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Sex</label><input type="text" name="insured_sex" class="form-control" placeholder="Enter sex" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Education Level</label><input type="text" name="insured_education_level" class="form-control" placeholder="Enter education" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Occupation</label><input type="text" name="insured_occupation" class="form-control" placeholder="Enter occupation" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Hobbies</label><input type="text" name="insured_hobbies" class="form-control" placeholder="Enter hobbies" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Relationship</label><input type="text" name="insured_relationship" class="form-control" placeholder="Enter relationship" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Capital Gains</label><input type="number" name="capital_gains" class="form-control" placeholder="Enter gains" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Capital Loss</label><input type="number" name="capital_loss" class="form-control" placeholder="Enter loss" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons d-flex justify-content-between" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-secondary prev-step" style="background-color: #FFFFFF; border: 1px solid #1A1A1A; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Previous</button>
+                            <button type="button" class="btn btn-primary next-step" style="background-color: #F2D93B; border: none; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Incident Info -->
+                    <div class="form-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Incident Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Incident Date</label><input type="date" name="incident_date" class="form-control" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Incident Type</label><input type="text" name="incident_type" class="form-control" placeholder="Enter type" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Collision Type</label><input type="text" name="collision_type" class="form-control" placeholder="Enter collision type" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Severity</label><input type="text" name="incident_severity" class="form-control" placeholder="Enter severity" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Authorities Contacted</label><input type="text" name="authorities_contacted" class="form-control" placeholder="Enter authorities" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Incident State</label><input type="text" name="incident_state" class="form-control" placeholder="Enter state" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Incident City</label><input type="text" name="incident_city" class="form-control" placeholder="Enter city" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-6"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Location</label><input type="text" name="incident_location" class="form-control" placeholder="Enter location" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Hour of Day</label><input type="number" name="incident_hour_of_the_day" class="form-control" placeholder="Enter hour" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Vehicles Involved</label><input type="number" name="number_of_vehicles_involved" class="form-control" placeholder="Enter number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Property Damage</label><input type="text" name="property_damage" class="form-control" placeholder="Enter damage" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Bodily Injuries</label><input type="number" name="bodily_injuries" class="form-control" placeholder="Enter number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Witnesses</label><input type="number" name="witnesses" class="form-control" placeholder="Enter number" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Police Report Available</label><input type="text" name="police_report_available" class="form-control" placeholder="Yes/No" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons d-flex justify-content-between" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-secondary prev-step" style="background-color: #FFFFFF; border: 1px solid #1A1A1A; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Previous</button>
+                            <button type="button" class="btn btn-primary next-step" style="background-color: #F2D93B; border: none; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: Claim Amount -->
+                    <div class="form-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Claim Amount</h5>
+                            <div class="row g-3">
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Total Claim</label><input type="number" name="total_claim_amount" class="form-control" placeholder="Enter amount" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Injury Claim</label><input type="number" name="injury_claim" class="form-control" placeholder="Enter amount" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Property Claim</label><input type="number" name="property_claim" class="form-control" placeholder="Enter amount" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-3"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Vehicle Claim</label><input type="number" name="vehicle_claim" class="form-control" placeholder="Enter amount" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons d-flex justify-content-between" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-secondary prev-step" style="background-color: #FFFFFF; border: 1px solid #1A1A1A; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Previous</button>
+                            <button type="button" class="btn btn-primary next-step" style="background-color: #F2D93B; border: none; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6: Vehicle Info + Submit -->
+                    <div class="form-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="form-section">
+                            <h5 style="color: #1A1A1A; font-weight: 700; border-left: 4px solid #F2D93B; padding-left: 12px; margin-bottom: 20px;">Vehicle Information</h5>
+                            <div class="row g-3">
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Make</label><input type="text" name="auto_make" class="form-control" placeholder="Enter make" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Model</label><input type="text" name="auto_model" class="form-control" placeholder="Enter model" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                                <div class="col-md-4"><label class="form-label" style="color: #1A1A1A; font-weight: 500;">Year</label><input type="text" name="auto_year" class="form-control" placeholder="Enter year" style="border: 1px solid #E5DFAF; border-radius: 8px; background-color: #FFFDF3; color: #1A1A1A;" ></div>
+                            </div>
+                        </div>
+                        <div class="step-buttons d-flex justify-content-between" style="margin-top: 25px;">
+                            <button type="button" class="btn btn-secondary prev-step" style="background-color: #FFFFFF; border: 1px solid #1A1A1A; color: #1A1A1A; font-weight: 600; border-radius: 24px; padding: 10px 30px;">Previous</button>
+                            <button type="submit" class="btn btn-success" style="background-color: #1A1A1A; border: none; color: #F2D93B; font-weight: 600; border-radius: 24px; padding: 10px 30px;"></button>
+                            <input type="submit" class="btn btn-success" style="background-color: #1A1A1A; border: none; color: #F2D93B; font-weight: 600; border-radius: 24px; padding: 10px 30px;" value="Submit Claim">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        }
+
+        // Parallax (optional)
+        window.addEventListener('scroll', function () {
+            const section = document.querySelector('.claim-section');
+            if (section) {
+                section.style.backgroundPositionY = `${window.scrollY * 0.2}px`;
+            }
+        });
+
+        // Multi-step form logic
+        const steps = document.querySelectorAll(".form-step");
+        const nextBtns = document.querySelectorAll(".next-step");
+        const prevBtns = document.querySelectorAll(".prev-step");
+        const progressSteps = document.querySelectorAll(".progress-step");
+        const progressLineFill = document.getElementById("progressLine");
+        let formStepIndex = 0;
+
+        function styleProgressStep(step, isActive) {
+            if (isActive) {
+                step.style.backgroundColor = "#F2D93B";
+                step.style.color = "#1A1A1A";
+                step.style.border = "2px solid #F2D93B";
+            } else {
+                step.style.backgroundColor = "#FFFFFF";
+                step.style.color = "#999999";
+                step.style.border = "2px solid #EDE7C9";
+            }
+        }
+
+        function updateProgress() {
+            progressSteps.forEach((step, index) => {
+                const isActive = index <= formStepIndex;
+                step.classList.toggle("active", isActive);
+                styleProgressStep(step, isActive);
+            });
+            const progressWidth = (formStepIndex / (progressSteps.length - 1)) * 100;
+            progressLineFill.style.width = `${progressWidth}%`;
+        }
+
+        nextBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (formStepIndex < steps.length - 1) {
+                    steps[formStepIndex].classList.remove("active");
+                    formStepIndex++;
+                    steps[formStepIndex].classList.add("active");
+                    updateProgress();
+                    // Optional: scroll to top of form
+                    document.querySelector('.claim-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (formStepIndex > 0) {
+                    steps[formStepIndex].classList.remove("active");
+                    formStepIndex--;
+                    steps[formStepIndex].classList.add("active");
+                    updateProgress();
+                    document.querySelector('.claim-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Initialize
+        updateProgress();
+    });
+</script>
+{% endblock %}

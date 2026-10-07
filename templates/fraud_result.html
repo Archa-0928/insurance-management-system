@@ -1,0 +1,10 @@
+<h2>Fraud Detection Result</h2>
+<p>Claim ID: {{ claim.id }}</p>
+<p>Prediction:
+    {% if prediction == 1 %}
+        🚨 Fraud Detected
+    {% else %}
+        ✅ No Fraud
+    {% endif %}
+</p>
+<a href="{% url 'claim_list' %}">Back to Claims</a>

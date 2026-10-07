@@ -1,0 +1,2431 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{##}
+{#<head>#}
+{#  <meta charset="utf-8">#}
+{#  <meta content="width=device-width, initial-scale=1.0" name="viewport">#}
+{#  <title>Index - SafeGuard Insurance</title>#}
+{#  <meta name="description" content="File, track, and settle your insurance claims seamlessly with SafeGuard Insurance.">#}
+{#  <meta name="keywords" content="insurance, claims, health insurance, vehicle insurance, property insurance">#}
+{##}
+{#  <!-- Favicons -->#}
+{#  <link href="/static/assets/img/favicon.png" rel="icon">#}
+{#  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">#}
+{##}
+{#  <!-- Fonts -->#}
+{#  <link href="https://fonts.googleapis.com" rel="preconnect">#}
+{#  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>#}
+{#  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">#}
+{##}
+{#  <!-- Vendor CSS Files -->#}
+{#  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">#}
+{#  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">#}
+{#  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">#}
+{#  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">#}
+{##}
+{#  <!-- Main CSS File -->#}
+{#  <link href="/static/assets/css/main.css" rel="stylesheet">#}
+{##}
+{#  <!-- Custom CSS for Enhanced Styling -->#}
+{#  <style>#}
+{#    /* General Reset and Smooth Scrolling */#}
+{#    html {#}
+{#      scroll-behavior: smooth;#}
+{#    }#}
+{##}
+{#    body {#}
+{#      font-family: 'Poppins', sans-serif;#}
+{#      background: linear-gradient(45deg, #E6F0FA, #F0F8FF);#}
+{#      overflow-x: hidden;#}
+{#    }#}
+{##}
+{#    /* Navbar Styling */#}
+{#    .header {#}
+{#      background: #003087;#}
+{#      transition: all 0.3s ease;#}
+{#      padding: 15px 0;#}
+{#    }#}
+{##}
+{#    .header.scrolled {#}
+{#      background: rgba(0, 48, 135, 0.95);#}
+{#      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);#}
+{#    }#}
+{##}
+{#    .header .logo h1 {#}
+{#      color: #fff;#}
+{#      font-weight: 700;#}
+{#      font-size: 28px;#}
+{#      transition: transform 0.3s ease, color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .header .logo h1:hover {#}
+{#      transform: scale(1.1);#}
+{#      color: #F4C430;#}
+{#    }#}
+{##}
+{#    .navmenu ul {#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#    }#}
+{##}
+{#    .navmenu ul li {#}
+{#      position: relative;#}
+{#      margin: 0 10px;#}
+{#    }#}
+{##}
+{#    .navmenu ul li a {#}
+{#      color: #fff;#}
+{#      font-weight: 500;#}
+{#      padding: 10px 15px;#}
+{#      transition: all 0.3s ease;#}
+{#      border-radius: 5px;#}
+{#    }#}
+{##}
+{#    .navmenu ul li a:hover,#}
+{#    .navmenu ul li a.active {#}
+{#      background: #00C4B4;#}
+{#      color: #003087;#}
+{#      transform: translateY(-2px);#}
+{#    }#}
+{##}
+{#    .navmenu .dropdown ul {#}
+{#      background: #fff;#}
+{#      border-radius: 8px;#}
+{#      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);#}
+{#      padding: 10px 0;#}
+{#      min-width: 150px;#}
+{#    }#}
+{##}
+{#    .navmenu .dropdown ul li a {#}
+{#      color: #003087;#}
+{#      padding: 8px 20px;#}
+{#    }#}
+{##}
+{#    .navmenu .dropdown ul li a:hover {#}
+{#      background: #00C4B4;#}
+{#      color: #fff;#}
+{#    }#}
+{##}
+{#    .btn-getstarted {#}
+{#      background: #00C4B4;#}
+{#      color: #fff;#}
+{#      font-weight: 600;#}
+{#      padding: 10px 25px;#}
+{#      border-radius: 25px;#}
+{#      transition: all 0.3s ease;#}
+{#    }#}
+{##}
+{#    .btn-getstarted:hover {#}
+{#      background: #009688;#}
+{#      transform: translateY(-3px);#}
+{#      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);#}
+{#    }#}
+{##}
+{#    .mobile-nav-toggle {#}
+{#      color: #fff;#}
+{#      font-size: 24px;#}
+{#      cursor: pointer;#}
+{#      transition: color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .mobile-nav-toggle:hover {#}
+{#      color: #F4C430;#}
+{#    }#}
+{##}
+{#    /* Hero Section */#}
+{#    .hero {#}
+{#      position: relative;#}
+{#      background: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;#}
+{#      height: 100vh;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      color: #fff;#}
+{#      overflow: hidden;#}
+{#    }#}
+{##}
+{#    .hero::before {#}
+{#      content: '';#}
+{#      position: absolute;#}
+{#      top: 0;#}
+{#      left: 0;#}
+{#      width: 100%;#}
+{#      height: 100%;#}
+{#      background: rgba(0, 0, 0, 0.6);#}
+{#      z-index: 1;#}
+{#    }#}
+{##}
+{#    .hero .container {#}
+{#      position: relative;#}
+{#      z-index: 2;#}
+{#      text-align: center;#}
+{#    }#}
+{##}
+{#    .hero h1 {#}
+{#      font-size: 3.5rem;#}
+{#      font-weight: 800;#}
+{#      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);#}
+{#      animation: fadeInUp 1s ease-out;#}
+{#      transition: transform 0.3s ease, color 0.3s ease;#}
+{#      cursor: pointer;#}
+{#    }#}
+{##}
+{#    .hero h1:hover {#}
+{#      transform: scale(1.05);#}
+{#      color: #00C4B4;#}
+{#    }#}
+{##}
+{#    .hero p {#}
+{#      font-size: 1.3rem;#}
+{#      margin: 25px auto;#}
+{#      max-width: 600px;#}
+{#      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);#}
+{#      transition: transform 0.3s ease, color 0.3s ease;#}
+{#      cursor: pointer;#}
+{#    }#}
+{##}
+{#    .hero p:hover {#}
+{#      transform: scale(1.03);#}
+{#      color: #00C4B4;#}
+{#    }#}
+{##}
+{#    .hero .btn-get-started {#}
+{#      background: #F4C430;#}
+{#      color: #003087;#}
+{#      padding: 14px 35px;#}
+{#      font-size: 1.2rem;#}
+{#      border-radius: 30px;#}
+{#      transition: all 0.3s ease;#}
+{#    }#}
+{##}
+{#    .hero .btn-get-started:hover {#}
+{#      background: #E0B000;#}
+{#      transform: translateY(-3px);#}
+{#    }#}
+{##}
+{#    /* Services Section */#}
+{#    .services .service-item {#}
+{#      background: #fff;#}
+{#      border-radius: 12px;#}
+{#      padding: 25px;#}
+{#      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);#}
+{#      transition: all 0.4s ease;#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#    }#}
+{##}
+{#    .services .service-item:hover {#}
+{#      transform: translateY(-10px);#}
+{#      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);#}
+{#      background: linear-gradient(135deg, #F5F7FA, #E0E7FF);#}
+{#    }#}
+{##}
+{#    .service-item .icon {#}
+{#      font-size: 3rem;#}
+{#      color: #00C4B4;#}
+{#      margin-bottom: 20px;#}
+{#      transition: transform 0.3s ease;#}
+{#    }#}
+{##}
+{#    .service-item:hover .icon {#}
+{#      transform: rotate(360deg);#}
+{#    }#}
+{##}
+{#    .service-item h4 a {#}
+{#      color: #003087;#}
+{#      font-weight: 700;#}
+{#      font-size: 1.5rem;#}
+{#      transition: color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .service-item h4 a:hover {#}
+{#      color: #00C4B4;#}
+{#    }#}
+{##}
+{#    /* Work Process Section */#}
+{#    .work-process .steps-item {#}
+{#      background: #fff;#}
+{#      border-radius: 12px;#}
+{#      overflow: hidden;#}
+{#      transition: transform 0.4s ease, box-shadow 0.4s ease;#}
+{#    }#}
+{##}
+{#    .work-process .steps-item:hover {#}
+{#      transform: translateY(-8px);#}
+{#      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);#}
+{#    }#}
+{##}
+{#    .steps-image img {#}
+{#      width: 100%;#}
+{#      height: auto;#}
+{#      transition: transform 0.5s ease;#}
+{#    }#}
+{##}
+{#    .steps-item:hover .steps-image img {#}
+{#      transform: scale(1.15);#}
+{#    }#}
+{##}
+{#    .steps-content h3 {#}
+{#      color: #003087;#}
+{#      font-weight: 700;#}
+{#      font-size: 1.6rem;#}
+{#    }#}
+{##}
+{#    .steps-features .feature-item {#}
+{#      transition: color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .steps-features .feature-item:hover {#}
+{#      color: #00C4B4;#}
+{#    }#}
+{##}
+{#    /* Portfolio Section */#}
+{#    .portfolio .portfolio-item {#}
+{#      position: relative;#}
+{#      overflow: hidden;#}
+{#      border-radius: 10px;#}
+{#      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);#}
+{#      transition: all 0.4s ease;#}
+{#    }#}
+{##}
+{#    .portfolio .portfolio-item:hover {#}
+{#      transform: translateY(-5px);#}
+{#      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);#}
+{#    }#}
+{##}
+{#    .portfolio .portfolio-info {#}
+{#      background: rgba(0, 48, 135, 0.7);#}
+{#      transition: all 0.3s ease;#}
+{#    }#}
+{##}
+{#    .portfolio .portfolio-item:hover .portfolio-info {#}
+{#      background: rgba(0, 196, 180, 0.8);#}
+{#    }#}
+{##}
+{#    .portfolio-filters li {#}
+{#      background: #fff;#}
+{#      padding: 8px 20px;#}
+{#      margin: 0 5px;#}
+{#      border-radius: 20px;#}
+{#      transition: all 0.3s ease;#}
+{#    }#}
+{##}
+{#    .portfolio-filters li:hover,#}
+{#    .portfolio-filters li.filter-active {#}
+{#      background: #00C4B4;#}
+{#      color: #fff;#}
+{#    }#}
+{##}
+{#    /* FAQ Section */#}
+{#    .faq-2 .faq-item {#}
+{#      background: #fff;#}
+{#      border-radius: 10px;#}
+{#      padding: 25px;#}
+{#      margin-bottom: 20px;#}
+{#      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);#}
+{#      transition: all 0.4s ease;#}
+{#    }#}
+{##}
+{#    .faq-2 .faq-item:hover {#}
+{#      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);#}
+{#      transform: translateY(-5px);#}
+{#    }#}
+{##}
+{#    .faq-item .faq-icon {#}
+{#      color: #00C4B4;#}
+{#      font-size: 1.8rem;#}
+{#      transition: transform 0.3s ease;#}
+{#    }#}
+{##}
+{#    .faq-item.faq-active .faq-icon {#}
+{#      transform: rotate(45deg);#}
+{#    }#}
+{##}
+{#    .faq-toggle {#}
+{#      color: #00C4B4;#}
+{#      transition: transform 0.3s ease;#}
+{#    }#}
+{##}
+{#    .faq-item.faq-active .faq-toggle {#}
+{#      transform: rotate(90deg);#}
+{#    }#}
+{##}
+{#    /* Recent Insurance Claims Section */#}
+{#    .recent-insurance-claims .post-item {#}
+{#      background: #fff;#}
+{#      border-radius: 10px;#}
+{#      overflow: hidden;#}
+{#      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);#}
+{#      transition: all 0.4s ease;#}
+{#    }#}
+{##}
+{#    .recent-insurance-claims .post-item:hover {#}
+{#      transform: translateY(-8px);#}
+{#      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);#}
+{#    }#}
+{##}
+{#    .post-img img {#}
+{#      transition: transform 0.5s ease;#}
+{#    }#}
+{##}
+{#    .post-item:hover .post-img img {#}
+{#      transform: scale(1.1);#}
+{#    }#}
+{##}
+{#    .post-content h3 {#}
+{#      font-size: 1.4rem;#}
+{#      font-weight: 600;#}
+{#      color: #003087;#}
+{#      transition: color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .post-content h3:hover {#}
+{#      color: #00C4B4;#}
+{#    }#}
+{##}
+{#    /* Footer */#}
+{#    .footer {#}
+{#      background: linear-gradient(90deg, #001F5F, #2A2E3A);#}
+{#      color: #fff;#}
+{#      padding: 60px 0 20px;#}
+{#      position: relative;#}
+{#    }#}
+{##}
+{#    .footer .sitename {#}
+{#      color: #F4C430;#}
+{#      font-size: 2rem;#}
+{#      font-weight: 700;#}
+{#      transition: color 0.3s ease;#}
+{#    }#}
+{##}
+{#    .footer .sitename:hover {#}
+{#      color: #E0B000;#}
+{#    }#}
+{##}
+{#    .footer-contact p {#}
+{#      font-size: 1.1rem;#}
+{#      margin-bottom: 10px;#}
+{#    }#}
+{##}
+{#    .footer-links h4 {#}
+{#      color: #F4C430;#}
+{#      font-size: 1.3rem;#}
+{#      margin-bottom: 20px;#}
+{#    }#}
+{##}
+{#    .footer-links ul li {#}
+{#      margin-bottom: 10px;#}
+{#    }#}
+{##}
+{#    .footer-links a {#}
+{#      color: #fff;#}
+{#      transition: color 0.3s ease, padding-left 0.3s ease;#}
+{#    }#}
+{##}
+{#    .footer-links a:hover {#}
+{#      color: #F4C430;#}
+{#      padding-left: 10px;#}
+{#    }#}
+{##}
+{#    .footer .social-links a {#}
+{#      background: #fff;#}
+{#      color: #003087;#}
+{#      border-radius: 50%;#}
+{#      width: 45px;#}
+{#      height: 45px;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      justify-content: center;#}
+{#      margin-right: 15px;#}
+{#      transition: all 0.3s ease;#}
+{#      font-size: 1.2rem;#}
+{#    }#}
+{##}
+{#    .footer .social-links a:hover {#}
+{#      background: #F4C430;#}
+{#      color: #003087;#}
+{#      transform: scale(1.2);#}
+{#    }#}
+{##}
+{#    .newsletter-form {#}
+{#      margin-top: 20px;#}
+{#    }#}
+{##}
+{#    .newsletter-form input[type="email"] {#}
+{#      padding: 10px;#}
+{#      border: none;#}
+{#      border-radius: 20px 0 0 20px;#}
+{#      width: 70%;#}
+{#      font-size: 1rem;#}
+{#    }#}
+{##}
+{#    .newsletter-form button {#}
+{#      padding: 10px 20px;#}
+{#      border: none;#}
+{#      background: #00C4B4;#}
+{#      color: #fff;#}
+{#      border-radius: 0 20px 20px 0;#}
+{#      transition: background 0.3s ease;#}
+{#    }#}
+{##}
+{#    .newsletter-form button:hover {#}
+{#      background: #009688;#}
+{#    }#}
+{##}
+{#    .copyright {#}
+{#      background: #001F5F;#}
+{#      padding: 20px 0;#}
+{#      font-size: 0.9rem;#}
+{#    }#}
+{##}
+{#    /* Animation Keyframes */#}
+{#    @keyframes fadeInUp {#}
+{#      from {#}
+{#        opacity: 0;#}
+{#        transform: translateY(30px);#}
+{#      }#}
+{#      to {#}
+{#        opacity: 1;#}
+{#        transform: translateY(0);#}
+{#      }#}
+{#    }#}
+{##}
+{#    @keyframes pulse {#}
+{#      0% { transform: scale(1); }#}
+{#      50% { transform: scale(1.05); }#}
+{#      100% { transform: scale(1); }#}
+{#    }#}
+{##}
+{#    .pulse {#}
+{#      animation: pulse 2s infinite;#}
+{#    }#}
+{#  </style>#}
+{#</head>#}
+{##}
+{#<body class="index-page">#}
+{##}
+{#  <header id="header" class="header d-flex align-items-center fixed-top">#}
+{#    <div class="container-fluid container-xl position-relative d-flex align-items-center">#}
+{#      <a href="index.html" class="logo d-flex align-items-center me-auto">#}
+{#        <h1 class="sitename">Insurance Claim</h1>#}
+{#      </a>#}
+{##}
+{#      <nav id="navmenu" class="navmenu">#}
+{#        <ul>#}
+{#          <li><a href="" class="active">Home</a></li>#}
+{#          <li><a href="#about">About</a></li>#}
+{#          <li><a href="#services">Services</a></li>#}
+{#          <li><a href="#portfolio">Portfolio</a></li>#}
+{#          <li><a href="/login/">Login</a></li>#}
+{#          <li class="dropdown"><a href="#"><span>Register</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>#}
+{#            <ul>#}
+{#              <li><a href="/company_register/">Insurance Company</a></li>#}
+{#              <li><a href="/user_register/">User</a></li>#}
+{#            </ul>#}
+{#          </li>#}
+{#        </ul>#}
+{#        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>#}
+{#      </nav>#}
+{##}
+{#      <a class="btn-getstarted pulse" href="/login/">Get Started</a>#}
+{#    </div>#}
+{#  </header>#}
+{##}
+{#  <main class="main">#}
+{##}
+{#    <!-- Hero Section -->#}
+{#    <section id="hero" class="hero section dark-background">#}
+{#      <div class="container">#}
+{#        <div class="row gy-4 justify-content-center">#}
+{#          <div class="col-lg-8 d-flex flex-column justify-content-center text-center" data-aos="zoom-out">#}
+{#            <h1 class="interactive-text">Your Claim, Our Priority: Quick, Easy & Hassle-Free</h1>#}
+{#            <p class="interactive-text">File, track, and settle your insurance claims seamlessly with our smart, customer-first platform designed to save you time and give you peace of mind.</p>#}
+{#            <div class="d-flex justify-content-center">#}
+{#              <a href="/login/" class="btn-get-started">Get Started Now</a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <script>#}
+{#        document.querySelectorAll('.interactive-text').forEach(element => {#}
+{#          element.addEventListener('click', () => {#}
+{#            window.location.href = '/login/';#}
+{#          });#}
+{#        });#}
+{#      </script>#}
+{#    </section><!-- /Hero Section -->#}
+{##}
+{#    <!-- Clients Section -->#}
+{#    <section id="clients" class="clients section light-background">#}
+{#      <div class="container" data-aos="zoom-in">#}
+{#        <div class="swiper init-swiper">#}
+{#          <script type="application/json" class="swiper-config">#}
+{#            {#}
+{#              "loop": true,#}
+{#              "speed": 600,#}
+{#              "autoplay": {#}
+{#                "delay": 5000#}
+{#              },#}
+{#              "slidesPerView": "auto",#}
+{#              "pagination": {#}
+{#                "el": ".swiper-pagination",#}
+{#                "type": "bullets",#}
+{#                "clickable": true#}
+{#              },#}
+{#              "breakpoints": {#}
+{#                "320": {#}
+{#                  "slidesPerView": 2,#}
+{#                  "spaceBetween": 40#}
+{#                },#}
+{#                "480": {#}
+{#                  "slidesPerView": 3,#}
+{#                  "spaceBetween": 60#}
+{#                },#}
+{#                "640": {#}
+{#                  "slidesPerView": 4,#}
+{#                  "spaceBetween": 80#}
+{#                },#}
+{#                "992": {#}
+{#                  "slidesPerView": 5,#}
+{#                  "spaceBetween": 120#}
+{#                },#}
+{#                "1200": {#}
+{#                  "slidesPerView": 6,#}
+{#                  "spaceBetween": 120#}
+{#                }#}
+{#              }#}
+{#            }#}
+{#          </script>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Clients Section -->#}
+{##}
+{#    <!-- About Section -->#}
+{#    <section id="about" class="about section">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>About Us</h2>#}
+{#      </div>#}
+{#      <div class="container">#}
+{#        <div class="row gy-4">#}
+{#          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">#}
+{#            <p>#}
+{#              At <strong>SafeGuard Insurance</strong>, we are committed to protecting what matters most to you: your health, your family, your property, and your business. With years of industry expertise, we provide tailor-made insurance plans that combine comprehensive coverage with exceptional customer service.#}
+{#            </p>#}
+{#            <ul>#}
+{#              <li><i class="bi bi-check2-circle"></i> <span>Comprehensive insurance solutions for health, life, vehicle, and property.</span></li>#}
+{#              <li><i class="bi bi-check2-circle"></i> <span>Quick and transparent claims settlement process.</span></li>#}
+{#              <li><i class="bi bi-check2-circle"></i> <span>24/7 customer support to guide you at every step.</span></li>#}
+{#            </ul>#}
+{#          </div>#}
+{#          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">#}
+{#            <p>#}
+{#              Our mission is to deliver complete peace of mind through reliable and affordable insurance coverage. We believe in building long-term relationships founded on trust, integrity, and a deep understanding of our customers’ needs. From selecting the right policy to processing claims swiftly, our team ensures you’re supported at every stage.#}
+{#            </p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /About Section -->#}
+{##}
+{#    <!-- Why Us Section -->#}
+{#    <section id="why-us" class="section why-us light-background" data-builder="section">#}
+{#      <div class="container-fluid">#}
+{#        <div class="row gy-4">#}
+{#          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">#}
+{#            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">#}
+{#              <h3>#}
+{#                <span>Protecting what matters most </span>#}
+{#                <strong>with trusted insurance solutions</strong>#}
+{#              </h3>#}
+{#              <p>#}
+{#                From safeguarding your family’s future to protecting your home, vehicle, and business, we provide comprehensive insurance plans designed to give you peace of mind. Our dedicated team ensures quick claims, transparent policies, and support every step of the way.#}
+{#              </p>#}
+{#            </div>#}
+{#            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">#}
+{#              <div class="faq-item faq-active">#}
+{#                <h3><span>01</span> What is the process to file an insurance claim?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>#}
+{#                    To file a claim, notify us as soon as possible, complete the claim form, submit required documents like your policy and proof of loss, and our team will guide you through the settlement process promptly.#}
+{#                  </p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item">#}
+{#                <h3><span>02</span> How do I check the status of my insurance claim?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>#}
+{#                    You can check your claim status anytime by logging into your account dashboard or contacting our support team for live updates on your claim processing.#}
+{#                  </p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item">#}
+{#                <h3><span>03</span> What types of insurance policies do you offer?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>#}
+{#                    We offer a range of insurance options including health, life, vehicle, home, and business insurance, each designed to provide reliable protection tailored to your needs.#}
+{#                  </p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-lg-5 order-1 order-lg-2 why-us-img">#}
+{#            <img src="https://sharedalliance.com/wp-content/uploads/2019/08/insurance-07.png" class="img-fluid" alt="Why Choose Our Insurance" data-aos="zoom-in" data-aos-delay="100">#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Why Us Section -->#}
+{##}
+{#    <!-- Services Section -->#}
+{#    <section id="services" class="services section light-background">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>Our Insurance Services</h2>#}
+{#        <p>Comprehensive coverage options designed to protect your health, life, property, and vehicles — with reliable support every step of the way.</p>#}
+{#      </div>#}
+{#      <div class="container">#}
+{#        <div class="row gy-4">#}
+{#          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">#}
+{#            <div class="service-item position-relative">#}
+{#              <div class="icon"><i class="bi bi-heart-pulse icon"></i></div>#}
+{#              <h4><a href="#" class="stretched-link">Health Insurance</a></h4>#}
+{#              <p>Customizable health plans that cover medical expenses, hospitalization, and wellness care for you and your family.</p>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">#}
+{#            <div class="service-item position-relative">#}
+{#              <div class="icon"><i class="bi bi-car-front icon"></i></div>#}
+{#              <h4><a href="#" class="stretched-link">Vehicle Insurance</a></h4>#}
+{#              <p>Comprehensive coverage for cars, bikes, and commercial vehicles including accident, theft, and third-party liability protection.</p>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">#}
+{#            <div class="service-item position-relative">#}
+{#              <div class="icon"><i class="bi bi-house-door icon"></i></div>#}
+{#              <h4><a href="#" class="stretched-link">Property Insurance</a></h4>#}
+{#              <p>Safeguard your home or business premises against fire, natural disasters, theft, and other unforeseen damages.</p>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">#}
+{#            <div class="service-item position-relative">#}
+{#              <div class="icon"><i class="bi bi-headset icon"></i></div>#}
+{#              <h4><a href="#" class="stretched-link">24/7 Claims Support</a></h4>#}
+{#              <p>Round-the-clock assistance for filing and tracking claims to provide you with quick resolutions and peace of mind.</p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Services Section -->#}
+{##}
+{#    <!-- Work Process Section -->#}
+{#    <section id="work-process" class="work-process section">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>Our Work Process</h2>#}
+{#        <p>Efficient, transparent, and customer-centric claim management from start to finish</p>#}
+{#      </div>#}
+{#      <div class="container" data-aos="fade-up" data-aos-delay="100">#}
+{#        <div class="row gy-5">#}
+{#          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">#}
+{#            <div class="steps-item">#}
+{#              <div class="steps-image">#}
+{#                <img src="/static/assets/img/steps/steps-1.webp" alt="Step 1 - Claim Submission" class="img-fluid" loading="lazy">#}
+{#              </div>#}
+{#              <div class="steps-content">#}
+{#                <div class="steps-number">01</div>#}
+{#                <h3>Claim Submission</h3>#}
+{#                <p>Submit your insurance claim easily using our online portal with detailed information and supporting documents.</p>#}
+{#                <div class="steps-features">#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Secure online form</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Upload supporting files</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Immediate confirmation</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">#}
+{#            <div class="steps-item">#}
+{#              <div class="steps-image">#}
+{#                <img src="/static/assets/img/steps/steps-2.webp" alt="Step 2 - Claim Review" class="img-fluid" loading="lazy">#}
+{#              </div>#}
+{#              <div class="steps-content">#}
+{#                <div class="steps-number">02</div>#}
+{#                <h3>Claim Review & Fraud Detection</h3>#}
+{#                <p>Our AI-powered system analyzes each claim for accuracy and potential fraud to ensure fair processing.</p>#}
+{#                <div class="steps-features">#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Automated data extraction</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Advanced fraud detection</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Expert claims adjuster oversight</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">#}
+{#            <div class="steps-item">#}
+{#              <div class="steps-image">#}
+{#                <img src="/static/assets/img/steps/steps-3.webp" alt="Step 3 - Settlement & Support" class="img-fluid" loading="lazy">#}
+{#              </div>#}
+{#              <div class="steps-content">#}
+{#                <div class="steps-number">03</div>#}
+{#                <h3>Settlement & Customer Support</h3>#}
+{#                <p>Receive timely claim settlements with continuous support from our dedicated customer care team.</p>#}
+{#                <div class="steps-features">#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Fast claim approval</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>Transparent communication</span>#}
+{#                  </div>#}
+{#                  <div class="feature-item">#}
+{#                    <i class="bi bi-check-circle"></i>#}
+{#                    <span>24/7 customer assistance</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Work Process Section -->#}
+{##}
+{#    <!-- Call To Action Section -->#}
+{#    <section id="call-to-action" class="call-to-action section dark-background">#}
+{#      <img src="/static/assets/img/bg/bg-8.webp" alt="Insurance Protection Background">#}
+{#      <div class="container">#}
+{#        <div class="row" data-aos="zoom-in" data-aos-delay="100">#}
+{#          <div class="col-xl-9 text-center text-xl-start">#}
+{#            <h3>Secure Your Future Today</h3>#}
+{#            <p>#}
+{#              Protect your health, home, vehicle, and business with our reliable insurance plans.#}
+{#              Get peace of mind knowing that our expert team and 24/7 claims support are always here when you need us most.#}
+{#            </p>#}
+{#          </div>#}
+{#          <div class="col-xl-3 cta-btn-container text-center">#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Call To Action Section -->#}
+{##}
+{#    <!-- Portfolio Section -->#}
+{#    <section id="portfolio" class="portfolio section">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>Portfolio</h2>#}
+{#        <p>Discover our innovative insurance products and client success stories.</p>#}
+{#      </div>#}
+{#      <div class="container">#}
+{#        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">#}
+{#          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">#}
+{#            <li data-filter="*" class="filter-active">All</li>#}
+{#            <li data-filter=".filter-app">Apps</li>#}
+{#            <li data-filter=".filter-product">Insurance Plans</li>#}
+{#            <li data-filter=".filter-branding">Platforms</li>#}
+{#          </ul>#}
+{#          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">#}
+{#              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7iUsEGI0wCr7TmORjS5PnqRdb4iHGn6skAg&s" class="img-fluid" alt="Health Insurance Plan">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Health Insurance Plan</h4>#}
+{#                <p>Comprehensive medical coverage tailored to you</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">#}
+{#              <img src="https://www.author-it.com/wp-content/uploads/2022/11/Compliance.jpg" class="img-fluid" alt="Mobile Policy Management App">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Mobile Policy Management</h4>#}
+{#                <p>Manage policies and payments on the go</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">#}
+{#              <img src="https://quickinsure.s3.ap-south-1.amazonaws.com/uploads/static_page/6db1a311-71ca-4cd7-b1f6-9af1485e9e07/IMPORTANCE-AND-BENEFITS-OF-COMPREHENSIVE-CAR-INSURANCE.png" class="img-fluid" alt="Vehicle Insurance Plan">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Vehicle Insurance Plan</h4>#}
+{#                <p>Protect your car with customizable plans</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">#}
+{#              <img src="https://cdn.prod.website-files.com/5e8bd2ab8e48e69429cb4fd8/6219beebc30aff1630d9f8f4_helpdesk-software.png" class="img-fluid" alt="Customer Support Platform">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Customer Support Platform</h4>#}
+{#                <p>24/7 assistance to all policyholders</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">#}
+{#              <img src="https://static.vecteezy.com/system/resources/previews/001/879/565/non_2x/verify-for-safety-protection-and-security-quality-guarantees-survey-to-submit-claims-on-insurance-simple-tick-symbol-illustration-for-landing-page-web-banner-mobile-apps-flyer-poster-ui-free-vector.jpg" class="img-fluid" alt="Claim Tracking App">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Claim Tracking App</h4>#}
+{#                <p>Real-time notifications and status updates</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">#}
+{#              <img src="https://www.hdfcergo.com/images/default-source/home-insurance/add-ons-to-customise-your-home-insurance-policy.jpg" class="img-fluid" alt="Home Insurance Plan">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Home Insurance Plan</h4>#}
+{#                <p>Protect your property and valuables</p>#}
+{#              </div>#}
+{#            </div>#}
+{#            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">#}
+{#              <img src="https://www.adacta-fintech.com/sites/5d0d52acc2d2417243927528/content_entry5d1c560dc2d24172acf89adb/5e1ed418c2d24131e1c6781d/files/digital-insurance-agenda-community-adinsure-insurance-platform.jpg?1675245604" class="img-fluid" alt="Digital Insurance Solutions">#}
+{#              <div class="portfolio-info">#}
+{#                <h4>Digital Insurance Solutions</h4>#}
+{#                <p>Innovative platforms for modern insurance services</p>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}
+{##}
+{#    <!-- Faq 2 Section -->#}
+{#    <section id="faq-2" class="faq-2 section light-background">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>Frequently Asked Questions About Insurance</h2>#}
+{#        <p>Explore common questions about our insurance plans, coverage options, and claims process. We’re here to provide clear answers to help you make informed decisions about your insurance needs.</p>#}
+{#      </div>#}
+{#      <div class="container">#}
+{#        <div class="row justify-content-center">#}
+{#          <div class="col-lg-10">#}
+{#            <div class="faq-container">#}
+{#              <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">#}
+{#                <i class="faq-icon bi bi-question-circle"></i>#}
+{#                <h3>What types of insurance coverage do you offer?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>We provide a wide range of insurance products, including auto, home, health, and life insurance. Each plan is tailored to meet your specific needs, offering comprehensive protection for you and your assets.</p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">#}
+{#                <i class="faq-icon bi bi-question-circle"></i>#}
+{#                <h3>How do I file an insurance claim?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>Filing a claim is simple. Log in to your account on our website or app, submit the required details about the incident, and upload any supporting documents. Our team will review your claim and guide you through the process promptly.</p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">#}
+{#                <i class="faq-icon bi bi-question-circle"></i>#}
+{#                <h3>Can I customize my insurance plan?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>Yes, our plans are flexible. You can choose coverage options, deductibles, and add-ons that suit your needs. Contact our support team or use our online tool to build a plan that works for you.</p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item" data-aos="fade-up" data-aos-delay="500">#}
+{#                <i class="faq-icon bi bi-question-circle"></i>#}
+{#                <h3>What factors affect my insurance premium?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>Your premium is determined by factors such as your coverage type, risk profile, location, and claims history. We strive to offer competitive rates while ensuring comprehensive protection.</p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#              <div class="faq-item" data-aos="fade-up" data-aos-delay="600">#}
+{#                <i class="faq-icon bi bi-question-circle"></i>#}
+{#                <h3>How can I save on my insurance policy?</h3>#}
+{#                <div class="faq-content">#}
+{#                  <p>You can save by bundling multiple policies, maintaining a good claims record, or opting for higher deductibles. We also offer discounts for safe driving, home security systems, and annual payments.</p>#}
+{#                </div>#}
+{#                <i class="faq-toggle bi bi-chevron-right"></i>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Faq 2 Section -->#}
+{##}
+{#    <!-- Recent Insurance Claims Section -->#}
+{#    <section id="recent-insurance-claims" class="recent-insurance-claims section light-background">#}
+{#      <div class="container section-title" data-aos="fade-up">#}
+{#        <h2>Recent Insurance Claim Tips</h2>#}
+{#        <p>Stay informed with our latest insights on navigating the insurance claims process effectively.</p>#}
+{#      </div>#}
+{#      <div class="container">#}
+{#        <div class="row gy-5">#}
+{#          <div class="col-xl-4 col-md-6">#}
+{#            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">#}
+{#              <div class="post-img position-relative overflow-hidden">#}
+{#                <a href="https://www.gettyimages.com/photos/insurance-claim" target="_blank">#}
+{#                  <img src="https://quickinsure.s3.ap-south-1.amazonaws.com/uploads/static_page/3fe24e7e-a16c-4460-bd5e-861eb106a3b2/How%20To%20File%20Hdfc%20Ergo%20Motor%20Insurance%20Claim.png" class="img-fluid" alt="Auto insurance claim">#}
+{#                </a>#}
+{#                <span class="post-date">January 15</span>#}
+{#              </div>#}
+{#              <div class="post-content d-flex flex-column">#}
+{#                <h3 class="post-title">How to File an Auto Insurance Claim After an Accident</h3>#}
+{#                <div class="meta d-flex align-items-center">#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-person"></i> <span class="ps-2">Emma Stone</span>#}
+{#                  </div>#}
+{#                  <span class="px-3 text-black-50">/</span>#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-folder2"></i> <span class="ps-2">Auto Insurance</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <hr>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-xl-4 col-md-6">#}
+{#            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">#}
+{#              <div class="post-img position-relative overflow-hidden">#}
+{#                <a href="https://www.shutterstock.com/search/insurance-claims" target="_blank">#}
+{#                  <img src="https://t3.ftcdn.net/jpg/13/57/69/20/360_F_1357692014_C6QFkCddCafA5A5QMEKqr7uo3Semp3ae.jpg" class="img-fluid" alt="Home insurance claim">#}
+{#                </a>#}
+{#                <span class="post-date">August 22</span>#}
+{#              </div>#}
+{#              <div class="post-content d-flex flex-column">#}
+{#                <h3 class="post-title">Steps to File a Home Insurance Claim for Storm Damage</h3>#}
+{#                <div class="meta d-flex align-items-center">#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-person"></i> <span class="ps-2">James Carter</span>#}
+{#                  </div>#}
+{#                  <span class="px-3 text-black-50">/</span>#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-folder2"></i> <span class="ps-2">Home Insurance</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <hr>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">#}
+{#            <div class="post-item position-relative h-100">#}
+{#              <div class="post-img position-relative overflow-hidden">#}
+{#                <a href="https://www.istockphoto.com/photos/insurance-claims" target="_blank">#}
+{#                  <img src="https://i.fbcd.co/products/resized/resized-750-500/2110-m04-i033-n022-mainpreview-bac93f70e40602dff5f2e85446cfa75dc35d4bde95488e136d62869416dee8f4.jpg" class="img-fluid" alt="Health insurance claim">#}
+{#                </a>#}
+{#                <span class="post-date">October 10</span>#}
+{#              </div>#}
+{#              <div class="post-content d-flex flex-column">#}
+{#                <h3 class="post-title">Understanding Your Health Insurance Claim Process</h3>#}
+{#                <div class="meta d-flex align-items-center">#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-person"></i> <span class="ps-2">Sarah Miller</span>#}
+{#                  </div>#}
+{#                  <span class="px-3 text-black-50">/</span>#}
+{#                  <div class="d-flex align-items-center">#}
+{#                    <i class="bi bi-folder2"></i> <span class="ps-2">Health Insurance</span>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <hr>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section><!-- /Recent Insurance Claims Section -->#}
+{##}
+{#  </main>#}
+{##}
+{#  <footer id="footer" class="footer">#}
+{#    <div class="container footer-top">#}
+{#      <div class="row gy-4">#}
+{#        <div class="col-lg-4 col-md-6 footer-about">#}
+{#          <a href="index.html" class="d-flex align-items-center">#}
+{#            <span class="sitename">Insurance Claim</span>#}
+{#          </a>#}
+{#          <div class="footer-contact pt-3">#}
+{#            <p>123 Protection Lane</p>#}
+{#            <p>New York, NY 535022</p>#}
+{#            <p class="mt-3"><strong>Phone:</strong> <span>+1 800 555 1234</span></p>#}
+{#            <p><strong>Email:</strong> <span>support@insurance.com</span></p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="col-lg-2 col-md-3 footer-links">#}
+{#          <h4>Useful Links</h4>#}
+{#          <ul>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#services">Services</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#        <div class="col-lg-2 col-md-3 footer-links">#}
+{#          <h4>Our Services</h4>#}
+{#          <ul>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#">Health Insurance</a></li>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#">Vehicle Insurance</a></li>#}
+{#            <li><i class="bi bi-chevron-right"></i> <a href="#">Property Insurance</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#        <div class="col-lg-4 col-md-12">#}
+{#          <h4>Follow Us</h4>#}
+{#          <p>Stay connected for the latest updates and insurance tips.</p>#}
+{#          <div class="social-links d-flex">#}
+{#            <a href="https://twitter.com"><i class="bi bi-twitter-x"></i></a>#}
+{#            <a href="https://facebook.com"><i class="bi bi-facebook"></i></a>#}
+{#            <a href="https://instagram.com"><i class="bi bi-instagram"></i></a>#}
+{#            <a href="https://linkedin.com"><i class="bi bi-linkedin"></i></a>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#    <div class="container copyright text-center mt-4">#}
+{#      <p>© <span>Copyright</span> <strong class="px-1 sitename">Insurance Claim</strong> <span>All Rights Reserved</span></p>#}
+{#    </div>#}
+{#  </footer>#}
+{##}
+{#  <!-- Scroll Top -->#}
+{#  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>#}
+{##}
+{#  <!-- Preloader -->#}
+{#  <div id="preloader"></div>#}
+{##}
+{#  <!-- Vendor JS Files -->#}
+{#  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>#}
+{#  <script src="/static/assets/vendor/php-email-form/validate.js"></script>#}
+{#  <script src="/static/assets/vendor/aos/aos.js"></script>#}
+{#  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>#}
+{#  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>#}
+{#  <script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>#}
+{#  <script src="/static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>#}
+{#  <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>#}
+{##}
+{#  <!-- Main JS File -->#}
+{#  <script src="/static/assets/js/main.js"></script>#}
+{##}
+{#  <!-- Custom JS for Navbar Scroll Effect and Newsletter -->#}
+{#  <script>#}
+{#    window.addEventListener('scroll', function() {#}
+{#      const header = document.querySelector('.header');#}
+{#      if (window.scrollY > 50) {#}
+{#        header.classList.add('scrolled');#}
+{#      } else {#}
+{#        header.classList.remove('scrolled');#}
+{#      }#}
+{#    });#}
+{##}
+{#    // Newsletter form submission (placeholder for client-side validation)#}
+{#    document.querySelector('.newsletter-form form')?.addEventListener('submit', function(e) {#}
+{#      e.preventDefault();#}
+{#      const email = this.querySelector('input[type="email"]').value;#}
+{#      if (email) {#}
+{#        alert('Thank you for subscribing to SafeGuard Insurance!');#}
+{#        this.reset();#}
+{#      } else {#}
+{#        alert('Please enter a valid email address.');#}
+{#      }#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{##}
+{#</html>#}
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - SafeGuard Insurance</title>
+  <meta name="description" content="File, track, and settle your insurance claims seamlessly with SafeGuard Insurance.">
+  <meta name="keywords" content="insurance, claims, health insurance, vehicle insurance, property insurance">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts (original, left untouched) -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- New typefaces for this redesign (added, nothing above changed) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/static/assets/css/main.css" rel="stylesheet">
+
+  <!-- Redesign: Ledger & Seal system -->
+  <style>
+    :root {
+      --ink: #0B1F3A;          /* Ink Navy — primary text & dark surfaces */
+      --ink-soft: #33415A;
+      --paper: #ECEEE6;        /* Ledger paper — page background */
+      --paper-light: #F8F8F4;
+      --seal-green: #1F6F4F;   /* Verified-stamp green */
+      --seal-green-dark: #15503A;
+      --brass: #B8912F;        /* Brass / seal-foil accent */
+      --stamp-red: #A63A2E;    /* Rubber-stamp red — used sparingly */
+      --line: rgba(11, 31, 58, 0.16);
+      --line-soft: rgba(11, 31, 58, 0.08);
+      --white: #ffffff;
+      --font-display: 'Fraunces', 'Jost', serif;
+      --font-body: 'Inter', 'Open Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; }
+
+    ::selection { background: var(--seal-green); color: var(--white); }
+
+    .container, .container-fluid { max-width: 1240px; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--seal-green-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+      background: var(--paper-light);
+      border-bottom: 1px solid var(--line);
+      transition: all 0.3s ease;
+      padding: 14px 0;
+    }
+
+    .header.scrolled {
+      background: rgba(248, 248, 244, 0.94);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 0 var(--line);
+    }
+
+    .header .logo h1 {
+      font-family: var(--font-display);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+      margin: 0;
+      transition: color 0.25s ease;
+    }
+
+    .header .logo h1::after {
+      content: '\00b0';
+      color: var(--seal-green);
+    }
+
+    .header .logo:hover h1 { color: var(--seal-green-dark); }
+
+    .navmenu ul { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+
+    .navmenu ul li { position: relative; margin: 0 4px; }
+
+    .navmenu ul li a {
+      color: var(--ink-soft);
+      font-weight: 500;
+      font-size: 0.94rem;
+      padding: 9px 14px;
+      border-radius: 3px;
+      transition: all 0.25s ease;
+    }
+
+    .navmenu ul li a:hover,
+    .navmenu ul li a.active {
+      color: var(--seal-green-dark);
+      background: rgba(31, 111, 79, 0.08);
+    }
+
+    .navmenu .dropdown ul {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 10px 24px rgba(11, 31, 58, 0.12);
+      padding: 8px 0;
+      min-width: 190px;
+    }
+
+    .navmenu .dropdown ul li a {
+      color: var(--ink);
+      padding: 9px 20px;
+      border-radius: 0;
+      font-size: 0.9rem;
+    }
+
+    .navmenu .dropdown ul li a:hover {
+      background: var(--paper);
+      color: var(--seal-green-dark);
+    }
+
+    .btn-getstarted {
+      background: var(--ink);
+      color: var(--paper-light);
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      border-radius: 3px;
+      border: 1px solid var(--ink);
+      transition: all 0.25s ease;
+    }
+
+    .btn-getstarted:hover {
+      background: var(--seal-green-dark);
+      border-color: var(--seal-green-dark);
+      color: var(--white);
+    }
+
+    .mobile-nav-toggle { color: var(--ink); font-size: 24px; cursor: pointer; }
+
+    /* ---------- Hero: the case file ---------- */
+    .hero {
+      position: relative;
+      background:
+        repeating-linear-gradient(var(--paper) 0px, var(--paper) 37px, var(--line-soft) 38px),
+        var(--paper);
+      padding: 168px 0 100px;
+      overflow: hidden;
+      color: var(--ink);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 64px; bottom: 0;
+      width: 1px;
+      background: rgba(166, 58, 46, 0.18);
+    }
+
+    .hero .row { align-items: center; }
+
+    .hero .eyebrow { color: var(--seal-green-dark); }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 22px;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .hero h1:hover { color: var(--seal-green-dark); }
+
+    .hero p {
+      font-size: 1.12rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 480px;
+      margin: 0 0 32px;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .hero p:hover { color: var(--ink); }
+
+    .hero .btn-get-started {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--seal-green);
+      color: var(--white);
+      padding: 15px 30px;
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      transition: all 0.25s ease;
+    }
+
+    .hero .btn-get-started:hover {
+      background: var(--seal-green-dark);
+      transform: translateX(2px);
+    }
+
+    /* Signature element: the case-file card + wax seal stamp */
+    .case-file {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 24px 60px rgba(11, 31, 58, 0.14);
+      padding: 30px 30px 26px;
+      max-width: 420px;
+      margin-left: auto;
+      transform: rotate(-1.2deg);
+    }
+
+    .case-file::before {
+      content: '';
+      position: absolute;
+      top: -10px; left: 24px;
+      width: 64px; height: 20px;
+      background: var(--brass);
+      opacity: 0.85;
+      clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+    }
+
+    .case-file .cf-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--ink-soft);
+      border-bottom: 1px dashed var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .case-file h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .case-file .cf-sub { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 20px; }
+
+    .case-file .cf-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 10px;
+      font-size: 0.82rem;
+      margin-bottom: 22px;
+    }
+
+    .case-file .cf-meta dt { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brass); margin-bottom: 2px; }
+    .case-file .cf-meta dd { margin: 0; font-weight: 600; }
+
+    .seal {
+      position: absolute;
+      right: -18px;
+      bottom: -18px;
+      width: 108px;
+      height: 108px;
+      transform: rotate(-9deg);
+      filter: drop-shadow(0 6px 10px rgba(31, 111, 79, 0.3));
+    }
+
+    /* ---------- Clients ---------- */
+    .clients.section {
+      background: var(--paper-light);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 26px 0;
+    }
+
+    /* ---------- Section shell ---------- */
+    section.section { padding: 90px 0; }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title p { color: var(--ink-soft); font-size: 1.03rem; max-width: 620px; }
+
+    .light-background { background: var(--paper-light); }
+
+    /* ---------- About ---------- */
+    #about .content p { font-size: 1.02rem; line-height: 1.7; color: var(--ink-soft); }
+    #about .content strong { color: var(--ink); }
+
+    #about ul { list-style: none; padding: 0; margin-top: 20px; }
+    #about ul li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px 0;
+      border-top: 1px solid var(--line-soft);
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+    }
+    #about ul li:last-child { border-bottom: 1px solid var(--line-soft); }
+    #about ul li i { color: var(--seal-green); font-size: 1.1rem; margin-top: 2px; }
+
+    /* ---------- Why us / FAQ (case notes) ---------- */
+    .why-us { background: var(--ink); color: var(--paper-light); }
+
+    .why-us .eyebrow { color: var(--brass); }
+    .why-us .eyebrow::before { background: var(--brass); }
+
+    .why-us h3 { font-family: var(--font-display); font-weight: 600; font-size: 2.1rem; line-height: 1.2; margin-bottom: 18px; }
+    .why-us h3 span { color: rgba(248,248,244,0.6); font-size: 0.6em; display: block; margin-bottom: 6px; font-family: var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; }
+    .why-us p { color: rgba(248,248,244,0.72); line-height: 1.7; }
+
+    .why-us-img img {
+      border-radius: 8px;
+      border: 1px solid rgba(248,248,244,0.15);
+    }
+
+    .why-us .faq-item {
+      border-top: 1px solid rgba(248,248,244,0.15);
+      padding: 20px 0;
+      cursor: pointer;
+    }
+    .why-us .faq-item:last-child { border-bottom: 1px solid rgba(248,248,244,0.15); }
+
+    .why-us .faq-item h3 {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 500;
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      margin: 0;
+      color: var(--paper-light);
+    }
+    .why-us .faq-item h3 span { color: var(--brass); font-size: 0.9rem; margin: 0; display: inline; text-transform: none; }
+
+    .why-us .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .why-us .faq-item.faq-active .faq-content { max-height: 220px; }
+    .why-us .faq-content p { padding-top: 12px; margin: 0; font-size: 0.92rem; }
+
+    .why-us .faq-toggle { float: right; color: var(--brass); transition: transform 0.3s ease; }
+    .why-us .faq-item.faq-active .faq-toggle { transform: rotate(90deg); }
+
+    /* ---------- Services (stamped cards) ---------- */
+    .services .service-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 32px 26px;
+      height: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .services .service-item:hover {
+      border-color: var(--seal-green);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(11, 31, 58, 0.1);
+    }
+
+    .service-item .icon {
+      font-size: 1.9rem;
+      color: var(--seal-green);
+      margin-bottom: 18px;
+      width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .service-item:hover .icon { background: var(--seal-green); color: var(--white); border-color: var(--seal-green); }
+
+    .service-item h4 a {
+      font-family: var(--font-display);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 1.24rem;
+    }
+
+    .service-item h4 a:hover { color: var(--seal-green-dark); }
+    .service-item p { color: var(--ink-soft); font-size: 0.94rem; line-height: 1.6; margin-top: 8px; }
+
+    /* ---------- Work process (case timeline — real sequence) ---------- */
+    .work-process .steps-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .work-process .steps-item:hover { box-shadow: 0 16px 32px rgba(11,31,58,0.1); transform: translateY(-4px); }
+
+    .steps-image { position: relative; }
+    .steps-image img { width: 100%; height: 190px; object-fit: cover; display: block; filter: grayscale(0.5) sepia(0.15) saturate(1.1); }
+
+    .steps-content { padding: 26px 26px 28px; }
+
+    .steps-number {
+      font-family: var(--font-mono);
+      color: var(--brass);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .steps-number::before { content: 'FILE '; }
+
+    .steps-content h3 { font-family: var(--font-display); color: var(--ink); font-weight: 600; font-size: 1.36rem; margin-bottom: 10px; }
+    .steps-content > p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px; }
+
+    .steps-features { border-top: 1px dashed var(--line); padding-top: 16px; }
+    .steps-features .feature-item { display: flex; align-items: center; gap: 9px; font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 8px; transition: color 0.25s ease; }
+    .steps-features .feature-item:hover { color: var(--seal-green-dark); }
+    .steps-features .feature-item i { color: var(--seal-green); }
+
+    /* ---------- CTA ---------- */
+    .call-to-action {
+      position: relative;
+      background: var(--ink);
+      color: var(--paper-light);
+      padding: 80px 0;
+      overflow: hidden;
+    }
+    .call-to-action img { display: none; }
+    .call-to-action::after {
+      content: '';
+      position: absolute;
+      right: -60px; top: 50%;
+      width: 320px; height: 320px;
+      transform: translateY(-50%) rotate(-8deg);
+      border: 3px double rgba(184, 145, 47, 0.35);
+      border-radius: 50%;
+    }
+    .call-to-action h3 { font-family: var(--font-display); font-size: 2.1rem; font-weight: 600; margin-bottom: 14px; }
+    .call-to-action p { color: rgba(248,248,244,0.75); font-size: 1.02rem; line-height: 1.65; max-width: 600px; }
+
+    /* ---------- Portfolio ---------- */
+    .portfolio-filters { list-style: none; display: flex; gap: 10px; padding: 0; margin-bottom: 34px; flex-wrap: wrap; }
+    .portfolio-filters li {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .portfolio-filters li:hover, .portfolio-filters li.filter-active { background: var(--ink); color: var(--paper-light); border-color: var(--ink); }
+
+    .portfolio-item { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--line); }
+    .portfolio-item img { width: 100%; height: 230px; object-fit: cover; display: block; filter: grayscale(0.35) contrast(1.02); transition: transform 0.5s ease; }
+    .portfolio-item:hover img { transform: scale(1.06); }
+
+    .portfolio-info {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(0deg, rgba(11,31,58,0.92), transparent);
+      color: var(--white);
+      padding: 20px 18px 16px;
+    }
+    .portfolio-info h4 { font-family: var(--font-display); font-size: 1.06rem; margin-bottom: 2px; }
+    .portfolio-info p { font-size: 0.82rem; color: rgba(248,248,244,0.78); margin: 0; }
+
+    /* ---------- FAQ 2 ---------- */
+    .faq-2 .faq-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: border-color 0.25s ease;
+    }
+    .faq-2 .faq-item:hover { border-color: var(--seal-green); }
+    .faq-2 .faq-item h3 { font-family: var(--font-body); font-weight: 600; font-size: 1.02rem; margin: 0; padding-left: 30px; position: relative; }
+    .faq-item .faq-icon { position: absolute; left: 0; top: 1px; color: var(--seal-green); font-size: 1.1rem; }
+    .faq-2 .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-left: 30px; }
+    .faq-2 .faq-item.faq-active .faq-content { max-height: 200px; }
+    .faq-2 .faq-content p { padding-top: 10px; margin: 0; color: var(--ink-soft); font-size: 0.94rem; line-height: 1.6; }
+    .faq-toggle { float: right; color: var(--ink-soft); transition: transform 0.3s ease; }
+    .faq-item.faq-active .faq-toggle { transform: rotate(90deg); color: var(--seal-green); }
+
+    /* ---------- Recent claims (field notes) ---------- */
+    .post-item { background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; height: 100%; transition: all 0.3s ease; }
+    .post-item:hover { box-shadow: 0 16px 32px rgba(11,31,58,0.1); transform: translateY(-4px); }
+    .post-img { position: relative; }
+    .post-img img { width: 100%; height: 190px; object-fit: cover; display: block; filter: grayscale(0.4); transition: transform 0.5s ease; }
+    .post-item:hover .post-img img { transform: scale(1.08); }
+    .post-date {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--ink); color: var(--paper-light);
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+      padding: 5px 11px; border-radius: 3px;
+    }
+    .post-content { padding: 22px 22px 18px; }
+    .post-title { font-family: var(--font-display); font-size: 1.14rem; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 14px; transition: color 0.25s ease; }
+    .post-title:hover { color: var(--seal-green-dark); }
+    .meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); }
+    .meta hr { display: none; }
+    .post-content hr { border-top: 1px dashed var(--line); margin-top: 16px; }
+
+    /* ---------- Footer ---------- */
+    .footer { background: var(--ink); color: rgba(248,248,244,0.82); padding: 64px 0 0; }
+    .footer .sitename { font-family: var(--font-display); color: var(--paper-light); font-size: 1.7rem; font-weight: 600; }
+    .footer .sitename::after { content: '\00b0'; color: var(--brass); }
+    .footer-contact p { font-size: 0.96rem; margin-bottom: 8px; color: rgba(248,248,244,0.7); }
+    .footer-links h4 { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--brass); font-size: 0.82rem; margin-bottom: 18px; }
+    .footer-links ul { list-style: none; padding: 0; }
+    .footer-links ul li { margin-bottom: 10px; }
+    .footer-links a { color: rgba(248,248,244,0.78); font-size: 0.94rem; transition: all 0.25s ease; }
+    .footer-links a i { color: var(--brass); margin-right: 6px; font-size: 0.7rem; }
+    .footer-links a:hover { color: var(--white); padding-left: 4px; }
+    .footer .social-links { display: flex; }
+    .footer .social-links a {
+      background: rgba(248,248,244,0.08);
+      border: 1px solid rgba(248,248,244,0.18);
+      color: var(--paper-light);
+      border-radius: 50%; width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      margin-right: 12px; font-size: 1.05rem; transition: all 0.25s ease;
+    }
+    .footer .social-links a:hover { background: var(--seal-green); border-color: var(--seal-green); }
+    .copyright { border-top: 1px solid rgba(248,248,244,0.12); padding: 22px 0; font-size: 0.84rem; text-align: center; margin-top: 50px; color: rgba(248,248,244,0.55); }
+    .copyright .sitename { font-family: var(--font-body); font-size: 0.84rem; color: rgba(248,248,244,0.75); }
+
+    /* ---------- Scroll top ---------- */
+    .scroll-top {
+      position: fixed; right: 24px; bottom: 24px; z-index: 99;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--ink); color: var(--paper-light);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .scroll-top.active { opacity: 1; visibility: visible; }
+    .scroll-top:hover { background: var(--seal-green-dark); }
+
+    @media (max-width: 991px) {
+      .navmenu { display: none; }
+      .hero { padding-top: 130px; }
+      .case-file { margin: 40px auto 0; transform: none; }
+      .hero::before { display: none; }
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">SafeGuard</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="/login/">Login</a></li>
+          <li class="dropdown"><a href="#"><span>Register</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="/company_register/">Insurance Company</a></li>
+              <li><a href="/user_register/">User</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="/login/">Get started</a>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up">
+            <span class="eyebrow">Claims, handled properly</span>
+            <h1 class="interactive-text">Every claim gets a case file. Every case file gets an answer.</h1>
+            <p class="interactive-text">File, track, and settle your insurance claims through a process that shows its work — clear steps, real timelines, and a person you can reach when it matters.</p>
+            <div class="d-flex">
+              <a href="/login/" class="btn-get-started">Open a case <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="case-file">
+              <div class="cf-row">
+                <span>CLAIM NO. SG-20841</span>
+                <span>OPENED 08 / 19</span>
+              </div>
+              <h3>Vehicle collision, minor</h3>
+              <p class="cf-sub">Downtown branch &middot; Adjuster: R. Alvarez</p>
+              <dl class="cf-meta">
+                <div>
+                  <dt>Status</dt>
+                  <dd>Approved</dd>
+                </div>
+                <div>
+                  <dt>Payout window</dt>
+                  <dd>3 business days</dd>
+                </div>
+                <div>
+                  <dt>Documents</dt>
+                  <dd>4 of 4 received</dd>
+                </div>
+                <div>
+                  <dt>Next step</dt>
+                  <dd>Funds disbursed</dd>
+                </div>
+              </dl>
+              <svg class="seal" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#1F6F4F" stroke-width="3"/>
+                <circle cx="60" cy="60" r="42" fill="none" stroke="#1F6F4F" stroke-width="1.5" stroke-dasharray="2 4"/>
+                <text x="60" y="56" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#1F6F4F" letter-spacing="1">APPROVED</text>
+                <text x="60" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="7" fill="#1F6F4F" letter-spacing="1">SAFEGUARD INS.</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.querySelectorAll('.interactive-text').forEach(element => {
+          element.addEventListener('click', () => {
+            window.location.href = '/login/';
+          });
+        });
+      </script>
+    </section><!-- /Hero Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section light-background">
+      <div class="container" data-aos="zoom-in">
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 5,
+                  "spaceBetween": 120
+                },
+                "1200": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+        </div>
+      </div>
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">About SafeGuard</span>
+        <h2>Coverage built like documentation, not a sales pitch</h2>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <p>
+              At <strong>SafeGuard Insurance</strong>, we protect what matters most to you — health, family, property, and business. Years of underwriting discipline go into plans that pair real coverage with a claims process you can actually follow, start to finish.
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-circle"></i> <span>Comprehensive plans across health, life, vehicle, and property.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>A claims process with visible status, not a black box.</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>24/7 support from people who can read your file.</span></li>
+            </ul>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <p>
+              Our mission is straightforward: reliable, fairly priced coverage and a process that respects your time. We build long-term relationships on trust and plain answers — from choosing the right policy to closing out a claim, our team stays on the file until it's resolved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="section why-us">
+      <div class="container-fluid">
+        <div class="row gy-4">
+          <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
+            <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
+              <span class="eyebrow">Case notes</span>
+              <h3>
+                <span>Protecting what matters most</span>
+                with a process that shows its work
+              </h3>
+              <p>
+                From your family's future to your home, vehicle, and business — we build plans designed for clarity, not confusion. Quick claims, transparent terms, and support at every step.
+              </p>
+            </div>
+            <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
+              <div class="faq-item faq-active">
+                <h3><span>01</span> What's the process to file a claim?</h3>
+                <div class="faq-content">
+                  <p>
+                    Notify us as soon as possible, complete the claim form, and submit your policy details and proof of loss. Our team guides you through settlement from there.
+                  </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item">
+                <h3><span>02</span> How do I check my claim's status?</h3>
+                <div class="faq-content">
+                  <p>
+                    Log into your account dashboard anytime, or contact support for a live read on where your claim stands.
+                  </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item">
+                <h3><span>03</span> What policies do you offer?</h3>
+                <div class="faq-content">
+                  <p>
+                    Health, life, vehicle, home, and business insurance — each built around the coverage that actual policyholders need.
+                  </p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 why-us-img">
+            <img src="https://sharedalliance.com/wp-content/uploads/2019/08/insurance-07.png" class="img-fluid" alt="Why Choose Our Insurance" data-aos="zoom-in" data-aos-delay="100">
+          </div>
+        </div>
+      </div>
+    </section><!-- /Why Us Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">Lines of coverage</span>
+        <h2>Our insurance services</h2>
+        <p>Coverage options built to protect your health, life, property, and vehicles — with support that stays on the file.</p>
+      </div>
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-heart-pulse icon"></i></div>
+              <h4><a href="#" class="stretched-link">Health Insurance</a></h4>
+              <p>Plans that cover medical expenses, hospitalization, and wellness care for you and your family.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-car-front icon"></i></div>
+              <h4><a href="#" class="stretched-link">Vehicle Insurance</a></h4>
+              <p>Coverage for cars, bikes, and commercial vehicles — accident, theft, and third-party liability.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-house-door icon"></i></div>
+              <h4><a href="#" class="stretched-link">Property Insurance</a></h4>
+              <p>Protection for your home or business against fire, natural disasters, theft, and damage.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <div class="icon"><i class="bi bi-headset icon"></i></div>
+              <h4><a href="#" class="stretched-link">24/7 Claims Support</a></h4>
+              <p>Round-the-clock help filing and tracking claims, with quick, visible resolutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Services Section -->
+
+    <!-- Work Process Section -->
+    <section id="work-process" class="work-process section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">How a claim moves</span>
+        <h2>Our work process</h2>
+        <p>Three stages, in order, from first report to funds in hand.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-5">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="steps-item">
+              <div class="steps-image">
+                <img src="/static/assets/img/steps/steps-1.webp" alt="Step 1 - Claim Submission" class="img-fluid" loading="lazy">
+              </div>
+              <div class="steps-content">
+                <div class="steps-number">01</div>
+                <h3>Claim Submission</h3>
+                <p>Submit your claim through our online portal with the details and documents we need.</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Secure online form</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Upload supporting files</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Immediate confirmation</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="steps-item">
+              <div class="steps-image">
+                <img src="/static/assets/img/steps/steps-2.webp" alt="Step 2 - Claim Review" class="img-fluid" loading="lazy">
+              </div>
+              <div class="steps-content">
+                <div class="steps-number">02</div>
+                <h3>Review &amp; Fraud Detection</h3>
+                <p>Our system checks each claim for accuracy and potential fraud so processing stays fair.</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Automated data extraction</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Advanced fraud detection</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Expert adjuster oversight</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="steps-item">
+              <div class="steps-image">
+                <img src="/static/assets/img/steps/steps-3.webp" alt="Step 3 - Settlement & Support" class="img-fluid" loading="lazy">
+              </div>
+              <div class="steps-content">
+                <div class="steps-number">03</div>
+                <h3>Settlement &amp; Support</h3>
+                <p>Receive timely settlements with continuous support from our customer care team.</p>
+                <div class="steps-features">
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Fast claim approval</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>Transparent communication</span>
+                  </div>
+                  <div class="feature-item">
+                    <i class="bi bi-check-circle"></i>
+                    <span>24/7 customer assistance</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Work Process Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+      <img src="/static/assets/img/bg/bg-8.webp" alt="Insurance Protection Background">
+      <div class="container">
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-9 text-center text-xl-start">
+            <h3>Secure your future today</h3>
+            <p>
+              Protect your health, home, vehicle, and business with plans built on real coverage.
+              Our expert team and 24/7 claims support are here whenever you need them.
+            </p>
+          </div>
+          <div class="col-xl-3 cta-btn-container text-center">
+          </div>
+        </div>
+      </div>
+    </section><!-- /Call To Action Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">The archive</span>
+        <h2>Portfolio</h2>
+        <p>A look at our insurance products, platforms, and client work.</p>
+      </div>
+      <div class="container">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">Apps</li>
+            <li data-filter=".filter-product">Insurance Plans</li>
+            <li data-filter=".filter-branding">Platforms</li>
+          </ul>
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7iUsEGI0wCr7TmORjS5PnqRdb4iHGn6skAg&s" class="img-fluid" alt="Health Insurance Plan">
+              <div class="portfolio-info">
+                <h4>Health Insurance Plan</h4>
+                <p>Comprehensive medical coverage tailored to you</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="https://www.author-it.com/wp-content/uploads/2022/11/Compliance.jpg" class="img-fluid" alt="Mobile Policy Management App">
+              <div class="portfolio-info">
+                <h4>Mobile Policy Management</h4>
+                <p>Manage policies and payments on the go</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="https://quickinsure.s3.ap-south-1.amazonaws.com/uploads/static_page/6db1a311-71ca-4cd7-b1f6-9af1485e9e07/IMPORTANCE-AND-BENEFITS-OF-COMPREHENSIVE-CAR-INSURANCE.png" class="img-fluid" alt="Vehicle Insurance Plan">
+              <div class="portfolio-info">
+                <h4>Vehicle Insurance Plan</h4>
+                <p>Protect your car with customizable plans</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="https://cdn.prod.website-files.com/5e8bd2ab8e48e69429cb4fd8/6219beebc30aff1630d9f8f4_helpdesk-software.png" class="img-fluid" alt="Customer Support Platform">
+              <div class="portfolio-info">
+                <h4>Customer Support Platform</h4>
+                <p>24/7 assistance to all policyholders</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <img src="https://static.vecteezy.com/system/resources/previews/001/879/565/non_2x/verify-for-safety-protection-and-security-quality-guarantees-survey-to-submit-claims-on-insurance-simple-tick-symbol-illustration-for-landing-page-web-banner-mobile-apps-flyer-poster-ui-free-vector.jpg" class="img-fluid" alt="Claim Tracking App">
+              <div class="portfolio-info">
+                <h4>Claim Tracking App</h4>
+                <p>Real-time notifications and status updates</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+              <img src="https://www.hdfcergo.com/images/default-source/home-insurance/add-ons-to-customise-your-home-insurance-policy.jpg" class="img-fluid" alt="Home Insurance Plan">
+              <div class="portfolio-info">
+                <h4>Home Insurance Plan</h4>
+                <p>Protect your property and valuables</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+              <img src="https://www.adacta-fintech.com/sites/5d0d52acc2d2417243927528/content_entry5d1c560dc2d24172acf89adb/5e1ed418c2d24131e1c6781d/files/digital-insurance-agenda-community-adinsure-insurance-platform.jpg?1675245604" class="img-fluid" alt="Digital Insurance Solutions">
+              <div class="portfolio-info">
+                <h4>Digital Insurance Solutions</h4>
+                <p>Innovative platforms for modern insurance services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faq 2 Section -->
+    <section id="faq-2" class="faq-2 section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">Common questions</span>
+        <h2>Frequently asked questions</h2>
+        <p>Plans, coverage, and the claims process — explained plainly, so you can decide with confidence.</p>
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="faq-container">
+              <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>What types of insurance coverage do you offer?</h3>
+                <div class="faq-content">
+                  <p>Auto, home, health, and life insurance — each tailored to meet your specific needs, offering comprehensive protection for you and your assets.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>How do I file an insurance claim?</h3>
+                <div class="faq-content">
+                  <p>Log in to your account, submit the details of the incident, and upload your supporting documents. Our team reviews and guides you through the process promptly.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>Can I customize my insurance plan?</h3>
+                <div class="faq-content">
+                  <p>Yes — choose coverage options, deductibles, and add-ons that suit you. Contact support or use our online tool to build a plan that works for you.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>What factors affect my insurance premium?</h3>
+                <div class="faq-content">
+                  <p>Coverage type, risk profile, location, and claims history. We work to keep rates competitive without cutting into your protection.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
+                <i class="faq-icon bi bi-question-circle"></i>
+                <h3>How can I save on my insurance policy?</h3>
+                <div class="faq-content">
+                  <p>Bundle multiple policies, keep a clean claims record, or opt for higher deductibles. We also discount for safe driving, home security, and annual payments.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Faq 2 Section -->
+
+    <!-- Recent Insurance Claims Section -->
+    <section id="recent-insurance-claims" class="recent-insurance-claims section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <span class="eyebrow">Field notes</span>
+        <h2>Recent insurance claim tips</h2>
+        <p>Practical notes on navigating the claims process from people who've filed one.</p>
+      </div>
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+              <div class="post-img position-relative overflow-hidden">
+                <a href="https://www.gettyimages.com/photos/insurance-claim" target="_blank">
+                  <img src="https://quickinsure.s3.ap-south-1.amazonaws.com/uploads/static_page/3fe24e7e-a16c-4460-bd5e-861eb106a3b2/How%20To%20File%20Hdfc%20Ergo%20Motor%20Insurance%20Claim.png" class="img-fluid" alt="Auto insurance claim">
+                </a>
+                <span class="post-date">January 15</span>
+              </div>
+              <div class="post-content d-flex flex-column">
+                <h3 class="post-title">How to File an Auto Insurance Claim After an Accident</h3>
+                <div class="meta d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person"></i> <span class="ps-2">Emma Stone</span>
+                  </div>
+                  <span class="px-3 text-black-50">/</span>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-folder2"></i> <span class="ps-2">Auto Insurance</span>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
+              <div class="post-img position-relative overflow-hidden">
+                <a href="https://www.shutterstock.com/search/insurance-claims" target="_blank">
+                  <img src="https://t3.ftcdn.net/jpg/13/57/69/20/360_F_1357692014_C6QFkCddCafA5A5QMEKqr7uo3Semp3ae.jpg" class="img-fluid" alt="Home insurance claim">
+                </a>
+                <span class="post-date">August 22</span>
+              </div>
+              <div class="post-content d-flex flex-column">
+                <h3 class="post-title">Steps to File a Home Insurance Claim for Storm Damage</h3>
+                <div class="meta d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person"></i> <span class="ps-2">James Carter</span>
+                  </div>
+                  <span class="px-3 text-black-50">/</span>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-folder2"></i> <span class="ps-2">Home Insurance</span>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="post-item position-relative h-100">
+              <div class="post-img position-relative overflow-hidden">
+                <a href="https://www.istockphoto.com/photos/insurance-claims" target="_blank">
+                  <img src="https://i.fbcd.co/products/resized/resized-750-500/2110-m04-i033-n022-mainpreview-bac93f70e40602dff5f2e85446cfa75dc35d4bde95488e136d62869416dee8f4.jpg" class="img-fluid" alt="Health insurance claim">
+                </a>
+                <span class="post-date">October 10</span>
+              </div>
+              <div class="post-content d-flex flex-column">
+                <h3 class="post-title">Understanding Your Health Insurance Claim Process</h3>
+                <div class="meta d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person"></i> <span class="ps-2">Sarah Miller</span>
+                  </div>
+                  <span class="px-3 text-black-50">/</span>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-folder2"></i> <span class="ps-2">Health Insurance</span>
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Recent Insurance Claims Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="d-flex align-items-center">
+            <span class="sitename">SafeGuard</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>123 Protection Lane</p>
+            <p>New York, NY 535022</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+1 800 555 1234</span></p>
+            <p><strong>Email:</strong> <span>support@insurance.com</span></p>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-right"></i>Home</a></li>
+            <li><a href="#about"><i class="bi bi-chevron-right"></i>About us</a></li>
+            <li><a href="#services"><i class="bi bi-chevron-right"></i>Services</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#"><i class="bi bi-chevron-right"></i>Health Insurance</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i>Vehicle Insurance</a></li>
+            <li><a href="#"><i class="bi bi-chevron-right"></i>Property Insurance</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <h4>Follow Us</h4>
+          <p>Stay connected for the latest updates and insurance tips.</p>
+          <div class="social-links d-flex">
+            <a href="https://twitter.com"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://facebook.com"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com"><i class="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright text-center">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">SafeGuard</strong> <span>All Rights Reserved</span></p>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/static/assets/vendor/aos/aos.js"></script>
+  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="/static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="/static/assets/js/main.js"></script>
+
+  <!-- Custom JS: header scroll, accordions, dropdown, scroll-top, filters -->
+  <script>
+    // Header scroll state
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+
+      const scrollTop = document.getElementById('scroll-top');
+      if (window.scrollY > 400) scrollTop.classList.add('active');
+      else scrollTop.classList.remove('active');
+    });
+
+    document.getElementById('scroll-top').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Accordions (why-us notes + faq-2)
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const heading = item.querySelector('h3');
+      if (!heading) return;
+      heading.addEventListener('click', () => {
+        const isOpen = item.classList.contains('faq-active');
+        item.closest('.faq-container')?.querySelectorAll('.faq-item').forEach(el => el.classList.remove('faq-active'));
+        if (!isOpen) item.classList.add('faq-active');
+      });
+    });
+
+    // Register dropdown (mobile-friendly toggle)
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        if (window.innerWidth <= 991) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('dropdown-active');
+        }
+      });
+    });
+
+    // Portfolio filters
+    document.querySelectorAll('.portfolio-filters li').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.portfolio-filters li').forEach(b => b.classList.remove('filter-active'));
+        this.classList.add('filter-active');
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.portfolio-item').forEach(card => {
+          card.style.display = (filter === '*' || card.classList.contains(filter.replace('.', ''))) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

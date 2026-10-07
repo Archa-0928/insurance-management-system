@@ -1,0 +1,1564 @@
+{##}
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>User Registration</title>#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">#}
+{#    <style>#}
+{#        /* Animated Gradient Background */#}
+{#        .hero.dark-background {#}
+{#            background: linear-gradient(135deg, #37517e 0%, #5a7ab5 50%, #00C4B4 100%);#}
+{#            min-height: 100vh;#}
+{#            display: flex;#}
+{#            align-items: center;#}
+{#            justify-content: center;#}
+{#            padding: 40px 15px;#}
+{#            animation: gradientShift 15s ease infinite;#}
+{#            background-size: 200% 200%;#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        @keyframes gradientShift {#}
+{#            0% { background-position: 0% 50%; }#}
+{#            50% { background-position: 100% 50%; }#}
+{#            100% { background-position: 0% 50%; }#}
+{#        }#}
+{##}
+{#        /* Floating Icons */#}
+{#        .floating-icons {#}
+{#            position: absolute;#}
+{#            width: 100%;#}
+{#            height: 100%;#}
+{#            overflow: hidden;#}
+{#            pointer-events: none;#}
+{#            top: 0;#}
+{#            left: 0;#}
+{#        }#}
+{##}
+{#        .floating-icon {#}
+{#            position: absolute;#}
+{#            opacity: 0.15;#}
+{#            color: #fff;#}
+{#            animation: float 8s ease-in-out infinite, rotate 12s linear infinite;#}
+{#        }#}
+{##}
+{#        .floating-icon:nth-child(1) { top: 10%; left: 10%; font-size: 60px; animation-delay: 0s; }#}
+{#        .floating-icon:nth-child(2) { top: 50%; right: 15%; font-size: 50px; animation-delay: 2s; }#}
+{#        .floating-icon:nth-child(3) { bottom: 20%; left: 20%; font-size: 45px; animation-delay: 4s; }#}
+{#        .floating-icon:nth-child(4) { top: 70%; right: 25%; font-size: 55px; animation-delay: 6s; }#}
+{#        .floating-icon:nth-child(5) { bottom: 10%; left: 30%; font-size: 50px; animation-delay: 1s; }#}
+{##}
+{#        @keyframes float {#}
+{#            0%, 100% { transform: translateY(0) scale(1); }#}
+{#            50% { transform: translateY(-25px) scale(1.1); }#}
+{#        }#}
+{##}
+{#        @keyframes rotate {#}
+{#            0% { transform: rotate(0deg); }#}
+{#            100% { transform: rotate(360deg); }#}
+{#        }#}
+{##}
+{#        /* Registration Card */#}
+{#        .registration-card {#}
+{#            background: rgba(255, 255, 255, 0.1);#}
+{#            backdrop-filter: blur(15px);#}
+{#            border: 1px solid rgba(255, 255, 255, 0.2);#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);#}
+{#            transition: transform 0.3s ease, box-shadow 0.3s ease;#}
+{#            max-width: 800px;#}
+{#            width: 100%;#}
+{#            margin: 0 auto;#}
+{#        }#}
+{##}
+{#        .registration-card:hover {#}
+{#            transform: translateY(-5px);#}
+{#            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);#}
+{#        }#}
+{##}
+{#        /* Card Header */#}
+{#        .card-header {#}
+{#            background: linear-gradient(45deg, #37517e, #00C4B4);#}
+{#            color: #fff;#}
+{#            padding: 20px;#}
+{#            text-align: center;#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        .card-header::before {#}
+{#            content: '';#}
+{#            position: absolute;#}
+{#            top: 0;#}
+{#            left: -100%;#}
+{#            width: 100%;#}
+{#            height: 100%;#}
+{#            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);#}
+{#            transition: left 0.5s;#}
+{#        }#}
+{##}
+{#        .card-header:hover::before {#}
+{#            left: 100%;#}
+{#        }#}
+{##}
+{#        .card-header h4 {#}
+{#            margin: 0;#}
+{#            font-size: 24px;#}
+{#            font-weight: 600;#}
+{#            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{##}
+{#        .card-header i {#}
+{#            font-size: 24px;#}
+{#            margin-bottom: 8px;#}
+{#            opacity: 0.9;#}
+{#        }#}
+{##}
+{#        /* Card Body */#}
+{#        .card-body {#}
+{#            padding: 30px 25px;#}
+{#        }#}
+{##}
+{#        /* Form Styling */#}
+{#        .form-group {#}
+{#            margin-bottom: 20px;#}
+{#            position: relative;#}
+{#        }#}
+{##}
+{#        .form-row {#}
+{#            display: flex;#}
+{#            gap: 10px;#}
+{#        }#}
+{##}
+{#        .form-row .form-group {#}
+{#            flex: 1;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{##}
+{#        .form-label {#}
+{#            position: absolute;#}
+{#            top: 10px;#}
+{#            left: 14px;#}
+{#            font-weight: 500;#}
+{#            color: #333;#}
+{#            font-size: 14px;#}
+{#            transition: all 0.3s ease;#}
+{#            pointer-events: none;#}
+{#            background: transparent;#}
+{#        }#}
+{##}
+{#        .form-control:focus + .form-label,#}
+{#        .form-control:not(:placeholder-shown) + .form-label,#}
+{#        textarea:focus + .form-label,#}
+{#        textarea:not(:placeholder-shown) + .form-label {#}
+{#            top: -8px;#}
+{#            left: 10px;#}
+{#            font-size: 10px;#}
+{#            color: #00C4B4;#}
+{#            background: rgba(255, 255, 255, 0.9);#}
+{#            padding: 0 4px;#}
+{#        }#}
+{##}
+{#        .form-control, textarea {#}
+{#            border: 2px solid rgba(255, 255, 255, 0.3);#}
+{#            border-radius: 10px;#}
+{#            padding: 10px 14px;#}
+{#            font-size: 14px;#}
+{#            background: rgba(255, 255, 255, 0.2);#}
+{#            color: #333;#}
+{#            transition: all 0.3s ease;#}
+{#        }#}
+{##}
+{#        .form-control:focus, textarea:focus {#}
+{#            border-color: #00C4B4;#}
+{#            box-shadow: 0 0 8px rgba(0, 196, 180, 0.5);#}
+{#            background: rgba(255, 255, 255, 0.3);#}
+{#            transform: translateY(-1px);#}
+{#        }#}
+{##}
+{#        .form-control.is-invalid, textarea.is-invalid {#}
+{#            border-color: #dc3545;#}
+{#            background: rgba(220, 53, 69, 0.1);#}
+{#        }#}
+{##}
+{#        .form-control.is-valid, textarea.is-valid {#}
+{#            border-color: #28a745;#}
+{#            background: rgba(40, 167, 69, 0.1);#}
+{#        }#}
+{##}
+{#        .invalid-feedback, .valid-feedback {#}
+{#            font-size: 10px;#}
+{#            margin-top: 4px;#}
+{#            display: none;#}
+{#        }#}
+{##}
+{#        .form-control.is-invalid ~ .invalid-feedback,#}
+{#        textarea.is-invalid ~ .invalid-feedback {#}
+{#            display: block;#}
+{#            color: #dc3545;#}
+{#        }#}
+{##}
+{#        .form-control.is-valid ~ .valid-feedback {#}
+{#            display: block;#}
+{#            color: #28a745;#}
+{#        }#}
+{##}
+{#        .input-group {#}
+{#            position: relative;#}
+{#        }#}
+{##}
+{#        .input-icon {#}
+{#            position: absolute;#}
+{#            right: 12px;#}
+{#            top: 50%;#}
+{#            transform: translateY(-50%);#}
+{#            color: #fff;#}
+{#            z-index: 3;#}
+{#            transition: color 0.3s ease;#}
+{#        }#}
+{##}
+{#        .input-icon:hover {#}
+{#            color: #00C4B4;#}
+{#        }#}
+{##}
+{#        /* Password Strength Indicator */#}
+{#        .password-strength {#}
+{#            height: 3px;#}
+{#            background: #e9ecef;#}
+{#            border-radius: 2px;#}
+{#            margin-top: 4px;#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        .password-strength div {#}
+{#            height: 100%;#}
+{#            transition: width 0.3s ease, background 0.3s ease;#}
+{#        }#}
+{##}
+{#        .password-strength.weak div { width: 33%; background: #dc3545; }#}
+{#        .password-strength.medium div { width: 66%; background: #ffc107; }#}
+{#        .password-strength.strong div { width: 100%; background: #28a745; }#}
+{##}
+{#        /* File Upload Styling */#}
+{#        .file-upload-wrapper {#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#            width: 100%;#}
+{#        }#}
+{##}
+{#        .file-upload-input {#}
+{#            position: absolute;#}
+{#            left: -9999px;#}
+{#        }#}
+{##}
+{#        .file-upload-label {#}
+{#            display: flex;#}
+{#            align-items: center;#}
+{#            justify-content: center;#}
+{#            padding: 10px 14px;#}
+{#            background: rgba(255, 255, 255, 0.2);#}
+{#            border: 2px dashed rgba(255, 255, 255, 0.3);#}
+{#            border-radius: 10px;#}
+{#            cursor: pointer;#}
+{#            transition: all 0.3s ease;#}
+{#            font-size: 14px;#}
+{#            color: #fff;#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .file-upload-label:hover, .file-upload-label.has-file {#}
+{#            border-color: #00C4B4;#}
+{#            background: rgba(0, 196, 180, 0.1);#}
+{#            color: #00C4B4;#}
+{#        }#}
+{##}
+{#        .file-upload-label.is-invalid {#}
+{#            border-color: #dc3545;#}
+{#            background: rgba(220, 53, 69, 0.1);#}
+{#            color: #dc3545;#}
+{#        }#}
+{##}
+{#        .file-upload-label.is-valid {#}
+{#            border-color: #28a745;#}
+{#            background: rgba(40, 167, 69, 0.1);#}
+{#            color: #28a745;#}
+{#        }#}
+{##}
+{#        /* Submit Button */#}
+{#        .btn-register {#}
+{#            background: linear-gradient(45deg, #37517e, #00C4B4);#}
+{#            border: none;#}
+{#            border-radius: 10px;#}
+{#            padding: 12px 18px;#}
+{#            font-size: 14px;#}
+{#            font-weight: 600;#}
+{#            text-transform: uppercase;#}
+{#            letter-spacing: 1px;#}
+{#            color: #fff;#}
+{#            transition: all 0.3s ease;#}
+{#            position: relative;#}
+{#            overflow: hidden;#}
+{#        }#}
+{##}
+{#        .btn-register::before {#}
+{#            content: '';#}
+{#            position: absolute;#}
+{#            top: 0;#}
+{#            left: -100%;#}
+{#            width: 100%;#}
+{#            height: 100%;#}
+{#            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);#}
+{#            transition: left 0.6s;#}
+{#        }#}
+{##}
+{#        .btn-register:hover::before {#}
+{#            left: 100%;#}
+{#        }#}
+{##}
+{#        .btn-register:hover {#}
+{#            transform: translateY(-2px);#}
+{#            box-shadow: 0 8px 20px rgba(0, 196, 180, 0.4);#}
+{#        }#}
+{##}
+{#        .btn-register:active {#}
+{#            transform: translateY(0);#}
+{#        }#}
+{##}
+{#        .btn-register.loading::after {#}
+{#            content: '';#}
+{#            display: inline-block;#}
+{#            width: 16px;#}
+{#            height: 16px;#}
+{#            border: 3px solid rgba(255, 255, 255, 0.5);#}
+{#            border-top-color: #fff;#}
+{#            border-radius: 50%;#}
+{#            animation: spin 1s linear infinite;#}
+{#            margin-left: 8px;#}
+{#            vertical-align: middle;#}
+{#        }#}
+{##}
+{#        @keyframes spin {#}
+{#            to { transform: rotate(360deg); }#}
+{#        }#}
+{##}
+{#        /* Card Footer */#}
+{#        .card-footer {#}
+{#            background: transparent;#}
+{#            border-top: none;#}
+{#            padding: 15px;#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .login-link {#}
+{#            color: #00C4B4;#}
+{#            text-decoration: none;#}
+{#            font-weight: 600;#}
+{#            position: relative;#}
+{#            transition: color 0.3s ease;#}
+{#        }#}
+{##}
+{#        .login-link::after {#}
+{#            content: '';#}
+{#            position: absolute;#}
+{#            width: 0;#}
+{#            height: 2px;#}
+{#            bottom: -2px;#}
+{#            left: 0;#}
+{#            background-color: #00C4B4;#}
+{#            transition: width 0.3s ease;#}
+{#        }#}
+{##}
+{#        .login-link:hover::after {#}
+{#            width: 100%;#}
+{#        }#}
+{##}
+{#        .login-link:hover {#}
+{#            color: #009688;#}
+{#        }#}
+{##}
+{#        /* Progress Steps */#}
+{#        .progress-steps {#}
+{#            display: flex;#}
+{#            justify-content: space-between;#}
+{#            margin-bottom: 20px;#}
+{#            padding: 0 15px;#}
+{#        }#}
+{##}
+{#        .step {#}
+{#            flex: 1;#}
+{#            text-align: center;#}
+{#            position: relative;#}
+{#            transition: all 0.3s ease;#}
+{#        }#}
+{##}
+{#        .step::before {#}
+{#            content: '';#}
+{#            position: absolute;#}
+{#            top: 12px;#}
+{#            left: 50%;#}
+{#            right: -50%;#}
+{#            height: 2px;#}
+{#            background: rgba(255, 255, 255, 0.3);#}
+{#            z-index: 1;#}
+{#        }#}
+{##}
+{#        .step:last-child::before {#}
+{#            display: none;#}
+{#        }#}
+{##}
+{#        .step-icon {#}
+{#            width: 24px;#}
+{#            height: 24px;#}
+{#            border-radius: 50%;#}
+{#            background: rgba(255, 255, 255, 0.2);#}
+{#            display: inline-flex;#}
+{#            align-items: center;#}
+{#            justify-content: center;#}
+{#            position: relative;#}
+{#            z-index: 2;#}
+{#            color: #fff;#}
+{#            font-size: 10px;#}
+{#            transition: all 0.3s ease;#}
+{#        }#}
+{##}
+{#        .step.active .step-icon {#}
+{#            background: #00C4B4;#}
+{#            transform: scale(1.2);#}
+{#        }#}
+{##}
+{#        .step-label {#}
+{#            font-size: 10px;#}
+{#            margin-top: 6px;#}
+{#            color: #fff;#}
+{#            opacity: 0.7;#}
+{#        }#}
+{##}
+{#        .step.active .step-label {#}
+{#            color: #F4C430;#}
+{#            font-weight: 600;#}
+{#            opacity: 1;#}
+{#        }#}
+{##}
+{#        /* Shake Animation */#}
+{#        .shake {#}
+{#            animation: shake 0.5s ease-in-out;#}
+{#        }#}
+{##}
+{#        @keyframes shake {#}
+{#            0%, 100% { transform: translateX(0); }#}
+{#            25% { transform: translateX(-5px); }#}
+{#            75% { transform: translateX(5px); }#}
+{#        }#}
+{##}
+{#        /* Responsive Design */#}
+{#        @media (max-width: 768px) {#}
+{#            .form-row {#}
+{#                flex-direction: column;#}
+{#                gap: 0;#}
+{#            }#}
+{##}
+{#            .hero.dark-background {#}
+{#                padding: 20px 10px;#}
+{#            }#}
+{##}
+{#            .card-body {#}
+{#                padding: 20px 15px;#}
+{#            }#}
+{##}
+{#            .card-header h4 {#}
+{#                font-size: 20px;#}
+{#            }#}
+{##}
+{#            .progress-steps {#}
+{#                padding: 0 8px;#}
+{#            }#}
+{##}
+{#            .step-label {#}
+{#                font-size: 8px;#}
+{#            }#}
+{##}
+{#            .floating-icon {#}
+{#                font-size: 35px !important;#}
+{#            }#}
+{##}
+{#            .registration-card {#}
+{#                max-width: 100%;#}
+{#            }#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#{% include 'login_header.html' %}#}
+{##}
+{#{% if messages %}#}
+{#<div class="container mt-2">#}
+{#    {% for message in messages %}#}
+{#        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">#}
+{#            {{ message }}#}
+{#            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+{#{% endif %}#}
+{##}
+{#<section id="hero" class="hero section dark-background">#}
+{#    <div class="floating-icons">#}
+{#        <i class="fas fa-user-plus floating-icon" style="font-size: 60px;"></i>#}
+{#        <i class="fas fa-shield-alt floating-icon" style="font-size: 50px;"></i>#}
+{#        <i class="fas fa-user-circle floating-icon" style="font-size: 45px;"></i>#}
+{#        <i class="fas fa-id-card floating-icon" style="font-size: 55px;"></i>#}
+{#        <i class="fas fa-key floating-icon" style="font-size: 50px;"></i>#}
+{#    </div>#}
+{##}
+{#    <div class="container">#}
+{#        <div class="row justify-content-center">#}
+{#            <div class="col-lg-10 col-md-11 col-sm-12">#}
+{#                <div class="card registration-card">#}
+{#                    <div class="card-header">#}
+{#                        <i class="fas fa-user-plus"></i>#}
+{#                        <h4>User Registration</h4>#}
+{#                        <small style="opacity: 0.9; color: #fff;">Create your account to get started</small>#}
+{#                    </div>#}
+{#                    <div class="card-body">#}
+{#                        <div class="progress-steps">#}
+{#                            <div class="step active">#}
+{#                                <div class="step-icon"><i class="fas fa-user"></i></div>#}
+{#                                <div class="step-label">Account Info</div>#}
+{#                            </div>#}
+{#                            <div class="step active">#}
+{#                                <div class="step-icon"><i class="fas fa-info-circle"></i></div>#}
+{#                                <div class="step-label">Personal Details</div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <form method="post" enctype="multipart/form-data" id="" novalidate action="{% url 'user_register' %}">#}
+{#                            {% csrf_token %}#}
+{##}
+{#                            <!-- User Account Information -->#}
+{#                            <div class="form-row">#}
+{#                                <div class="form-group">#}
+{#                                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder=" " required>#}
+{#                                    <label for="full_name" class="form-label"><i class="fas fa-user-tag me-2"></i>Full Name</label>#}
+{#                                    <div class="invalid-feedback">Full Name: 2-100 characters, alphabetic with spaces or hyphens.</div>#}
+{#                                    <div class="valid-feedback">Looks good!</div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <input type="text" class="form-control" id="username" name="username" placeholder=" " required>#}
+{#                                    <label for="username" class="form-label"><i class="fas fa-user me-2"></i>Username</label>#}
+{#                                    <div class="invalid-feedback">Username: 3-20 characters, alphanumeric with _ or -.</div>#}
+{#                                    <div class="valid-feedback">Looks good!</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <div class="form-row">#}
+{#                                <div class="form-group">#}
+{#                                    <input type="password" class="form-control" id="password" name="password" placeholder=" " required>#}
+{#                                    <label for="password" class="form-label"><i class="fas fa-lock me-2"></i>Password</label>#}
+{#                                    <i class="fas fa-eye-slash input-icon" id="togglePassword"></i>#}
+{#                                    <div class="invalid-feedback">Password: 8+ characters with uppercase, lowercase, number, special.</div>#}
+{#                                    <div class="valid-feedback">Strong password!</div>#}
+{#                                    <div class="password-strength"><div></div></div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <input type="email" class="form-control" id="email" name="email" placeholder=" " required>#}
+{#                                    <label for="email" class="form-label"><i class="fas fa-envelope me-2"></i>Email</label>#}
+{#                                    <div class="invalid-feedback">Enter a valid email address.</div>#}
+{#                                    <div class="valid-feedback">Looks good!</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- Personal Information -->#}
+{#                            <div class="form-row">#}
+{#                                <div class="form-group">#}
+{#                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder=" " required>#}
+{#                                    <label for="phone" class="form-label"><i class="fas fa-phone me-2"></i>Phone</label>#}
+{#                                    <div class="invalid-feedback">Phone: 10-15 digits, optional + country code.</div>#}
+{#                                    <div class="valid-feedback">Looks good!</div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <textarea class="form-control" id="address" name="address" rows="2" placeholder=" " required></textarea>#}
+{#                                    <label for="address" class="form-label"><i class="fas fa-map-marker-alt me-2"></i>Address</label>#}
+{#                                    <div class="invalid-feedback">Address: 10-200 characters.</div>#}
+{#                                    <div class="valid-feedback">Looks good!</div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                            <!-- ID Proof Upload -->#}
+{#                            <div class="form-group">#}
+{#                                <label for="id_proof" class="form-label"><i class="fas fa-file-upload me-2"></i>ID Proof Document</label>#}
+{#                                <div class="file-upload-wrapper">#}
+{#                                    <input type="file" class="file-upload-input" id="id_proof" name="id_proof" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>#}
+{#                                    <label for="id_proof" class="file-upload-label" id="fileLabel">#}
+{#                                        <i class="fas fa-cloud-upload-alt me-2"></i>#}
+{#                                        <span>Choose ID document (PDF, JPG, PNG, DOC, DOCX)</span>#}
+{#                                    </label>#}
+{#                                    <div class="invalid-feedback">File must be PDF, JPG, PNG, DOC, or DOCX, <5MB.</div>#}
+{#                                    <div class="valid-feedback">File uploaded!</div>#}
+{#                                </div>#}
+{#                                <small class="text-muted">Upload your government-issued ID document</small>#}
+{#                            </div>#}
+{##}
+{#                            <button type="submit" class="btn btn-register w-100">#}
+{#                                <i class="fas fa-user-plus me-2"></i>Create Account#}
+{#                            </button>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                    <div class="card-footer">#}
+{#                        <small class="text-muted">#}
+{#                            Already have an account?#}
+{#                            <a href="{% url 'login' %}" class="login-link"><i class="fas fa-sign-in-alt me-1"></i>Login here</a>#}
+{#                        </small>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</section>#}
+{##}
+{#{% include 'public_footer.html' %}#}
+{##}
+{#<script>#}
+{#    // Validation Functions#}
+{#    const validateFullName = (value) => /^[a-zA-Z\s-]{2,100}$/.test(value) ? '' : 'Full Name: 2-100 characters, alphabetic with spaces or hyphens.';#}
+{#    const validateUsername = (value) => /^[a-zA-Z0-9_-]{3,20}$/.test(value) ? '' : 'Username: 3-20 characters, alphanumeric with _ or -.';#}
+{#    const validatePassword = (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value) ? '' : 'Password: 8+ characters with uppercase, lowercase, number, special.';#}
+{#    const getPasswordStrength = (value) => {#}
+{#        if (value.length === 0) return '';#}
+{#        if (value.length < 8) return 'weak';#}
+{#        const hasUpper = /[A-Z]/.test(value);#}
+{#        const hasLower = /[a-z]/.test(value);#}
+{#        const hasNumber = /\d/.test(value);#}
+{#        const hasSpecial = /[@$!%*?&]/.test(value);#}
+{#        const strength = (hasUpper + hasLower + hasNumber + hasSpecial);#}
+{#        return strength <= 2 ? 'weak' : strength === 3 ? 'medium' : 'strong';#}
+{#    };#}
+{#    const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Enter a valid email address.';#}
+{#    const validatePhone = (value) => /^\+?\d{10,15}$/.test(value) ? '' : 'Phone: 10-15 digits, optional + country code.';#}
+{#    const validateAddress = (value) => value.length >= 10 && value.length <= 200 ? '' : 'Address: 10-200 characters.';#}
+{#    const validateFile = (file) => {#}
+{#        if (!file) return 'Please upload a file.';#}
+{#        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];#}
+{#        const maxSize = 5 * 1024 * 1024;#}
+{#        if (!allowedTypes.includes(file.type)) return 'File must be PDF, JPG, PNG, DOC, or DOCX.';#}
+{#        if (file.size > maxSize) return 'File must be <5MB.';#}
+{#        return '';#}
+{#    };#}
+{##}
+{#    // Real-time Validation#}
+{#    const inputs = document.querySelectorAll('#registrationForm input:not([type="file"]), #registrationForm textarea');#}
+{#    const fileInput = document.querySelector('#id_proof');#}
+{#    const form = document.querySelector('#registrationForm');#}
+{#    const passwordInput = document.querySelector('#password');#}
+{#    const passwordStrength = document.querySelector('.password-strength div');#}
+{##}
+{#    inputs.forEach(input => {#}
+{#        input.addEventListener('blur', function () {#}
+{#            const value = this.value.trim();#}
+{#            let error = '';#}
+{#            if (this.id === 'full_name') error = validateFullName(value);#}
+{#            else if (this.id === 'username') error = validateUsername(value);#}
+{#            else if (this.id === 'password') error = validatePassword(value);#}
+{#            else if (this.id === 'email') error = validateEmail(value);#}
+{#            else if (this.id === 'phone') error = validatePhone(value);#}
+{#            else if (this.id === 'address') error = validateAddress(value);#}
+{##}
+{#            this.classList.toggle('is-invalid', !!error);#}
+{#            this.classList.toggle('is-valid', !error && value);#}
+{#            this.nextElementSibling.textContent = error;#}
+{##}
+{#            if (this.id === 'password') {#}
+{#                const strength = getPasswordStrength(value);#}
+{#                passwordStrength.parentElement.className = `password-strength ${strength}`;#}
+{#            }#}
+{#        });#}
+{#    });#}
+{##}
+{#    fileInput.addEventListener('change', function () {#}
+{#        const file = this.files[0];#}
+{#        const error = validateFile(file);#}
+{#        const label = this.parentElement.querySelector('.file-upload-label');#}
+{#        label.classList.toggle('is-invalid', !!error);#}
+{#        label.classList.toggle('is-valid', !error && file);#}
+{#        label.nextElementSibling.textContent = error;#}
+{#        label.querySelector('span').textContent = file ? file.name : 'Choose ID document (PDF, JPG, PNG, DOC, DOCX)';#}
+{#        label.classList.toggle('has-file', !!file);#}
+{#    });#}
+{##}
+{#    // Password Toggle#}
+{#    const togglePassword = document.querySelector('#togglePassword');#}
+{#    togglePassword.addEventListener('click', function () {#}
+{#        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';#}
+{#        passwordInput.setAttribute('type', type);#}
+{#        this.classList.toggle('fa-eye');#}
+{#        this.classList.toggle('fa-eye-slash');#}
+{#    });#}
+{##}
+{#    // Form Submission#}
+{#    form.addEventListener('submit', function (e) {#}
+{#        e.preventDefault();#}
+{#        let isValid = true;#}
+{##}
+{#        inputs.forEach(input => {#}
+{#            const value = input.value.trim();#}
+{#            let error = '';#}
+{#            if (input.id === 'full_name') error = validateFullName(value);#}
+{#            else if (input.id === 'username') error = validateUsername(value);#}
+{#            else if (input.id === 'password') error = validatePassword(value);#}
+{#            else if (input.id === 'email') error = validateEmail(value);#}
+{#            else if (input.id === 'phone') error = validatePhone(value);#}
+{#            else if (input.id === 'address') error = validateAddress(value);#}
+{##}
+{#            input.classList.toggle('is-invalid', !!error);#}
+{#            input.classList.toggle('is-valid', !error && value);#}
+{#            input.nextElementSibling.textContent = error;#}
+{#            if (error) {#}
+{#                input.classList.add('shake');#}
+{#                setTimeout(() => input.classList.remove('shake'), 500);#}
+{#                isValid = false;#}
+{#            }#}
+{#        });#}
+{##}
+{#        const fileError = validateFile(fileInput.files[0]);#}
+{#        const fileLabel = fileInput.parentElement.querySelector('.file-upload-label');#}
+{#        fileLabel.classList.toggle('is-invalid', !!fileError);#}
+{#        fileLabel.classList.toggle('is-valid', !fileError && fileInput.files[0]);#}
+{#        fileLabel.nextElementSibling.textContent = fileError;#}
+{#        if (fileError) {#}
+{#            fileInput.parentElement.classList.add('shake');#}
+{#            setTimeout(() => fileInput.parentElement.classList.remove('shake'), 500);#}
+{#            isValid = false;#}
+{#        }#}
+{##}
+{#        if (!isValid) return;#}
+{##}
+{#        const submitButton = this.querySelector('.btn-register');#}
+{#        submitButton.classList.add('loading');#}
+{#        submitButton.disabled = true;#}
+{##}
+{#        setTimeout(() => {#}
+{#            submitButton.classList.remove('loading');#}
+{#            submitButton.disabled = false;#}
+{#            form.submit();#}
+{#        }, 1500);#}
+{#    });#}
+{##}
+{#    // Parallax Effect#}
+{#    window.addEventListener('scroll', function () {#}
+{#        const heroSection = document.querySelector('.hero');#}
+{#        const scrollPosition = window.scrollY;#}
+{#        heroSection.style.backgroundPositionY = `${scrollPosition * 0.2}px`;#}
+{#    });#}
+{#</script>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F5F3EC;
+            --navy: #2A3B52;
+            --navy-soft: #56667C;
+            --gold: #B8912E;
+            --green: #1F4B3F;
+            --green-soft: #E7EFEA;
+            --blue: #4C93DA;
+            --white: #FFFFFF;
+            --border: #E1DDD1;
+            --danger: #C0392B;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--navy);
+            background: var(--cream);
+        }
+
+        /* ============ NAVBAR ============ */
+        .sg-navbar {
+            background: var(--cream);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .sg-logo {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        .sg-logo sup {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .sg-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sg-nav-links a {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--navy);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .sg-nav-links a:hover {
+            color: var(--green);
+        }
+
+        .sg-nav-links li.active a {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .sg-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sg-dropdown {
+            position: relative;
+        }
+
+        .sg-dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sg-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(42, 59, 82, 0.15);
+            border: 1px solid var(--border);
+            min-width: 200px;
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.2s ease;
+        }
+
+        .sg-dropdown:hover .sg-dropdown-menu,
+        .sg-dropdown:focus-within .sg-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sg-dropdown-menu a {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .sg-dropdown-menu a.current {
+            background: var(--green-soft);
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .sg-dropdown-menu a:hover {
+            background: var(--cream);
+        }
+
+        .btn-get-started {
+            background: var(--blue);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            padding: 11px 24px;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-get-started:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(76, 147, 218, 0.35);
+            color: var(--white);
+        }
+
+        @media (max-width: 992px) {
+            .sg-nav-links { display: none; }
+            .sg-navbar { padding: 14px 20px; }
+        }
+
+        /* ============ HERO / PAGE BACKGROUND ============ */
+        .hero.dark-background {
+            background-color: var(--cream);
+            background-image:
+                linear-gradient(rgba(42, 59, 82, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 59, 82, 0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            min-height: calc(100vh - 76px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 56px 15px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 22px;
+            height: 2px;
+            background: var(--gold);
+            display: inline-block;
+        }
+
+        /* ============ REGISTRATION CARD ============ */
+        .registration-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(42, 59, 82, 0.10);
+            max-width: 820px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid var(--border);
+            color: var(--navy);
+            padding: 32px 30px 20px;
+            text-align: center;
+        }
+
+        .card-header i {
+            font-size: 22px;
+            color: var(--green);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .card-header h4 {
+            margin: 0;
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .card-header small {
+            display: block;
+            margin-top: 6px;
+            color: var(--navy-soft) !important;
+            font-size: 14px;
+            opacity: 1 !important;
+        }
+
+        .card-body {
+            padding: 30px 34px 34px;
+        }
+
+        /* ---- Progress Steps ---- */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 30px;
+            padding: 0;
+        }
+
+        .step {
+            flex: none;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--green-soft);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy-soft);
+            font-size: 12px;
+        }
+
+        .step.active .step-icon {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            color: var(--navy-soft);
+            font-weight: 600;
+        }
+
+        .step.active .step-label {
+            color: var(--gold);
+        }
+
+        /* ---- Form ---- */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .form-control, textarea {
+            width: 100%;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 14px;
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--navy);
+            transition: all 0.2s ease;
+        }
+
+        .form-control::placeholder, textarea::placeholder {
+            color: #A9A398;
+        }
+
+        .form-control:focus, textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(31, 75, 63, 0.12);
+            background: var(--white);
+        }
+
+        .form-control.is-invalid, textarea.is-invalid {
+            border-color: var(--danger);
+            background: rgba(192, 57, 43, 0.05);
+        }
+
+        .form-control.is-valid, textarea.is-valid {
+            border-color: var(--green);
+            background: var(--green-soft);
+        }
+
+        .invalid-feedback, .valid-feedback {
+            font-size: 11px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-control.is-invalid ~ .invalid-feedback,
+        textarea.is-invalid ~ .invalid-feedback {
+            display: block;
+            color: var(--danger);
+        }
+
+        .form-control.is-valid ~ .valid-feedback {
+            display: block;
+            color: var(--green);
+        }
+
+        .input-group { position: relative; }
+
+        .input-icon {
+            position: absolute;
+            right: 14px;
+            top: 38px;
+            color: var(--navy-soft);
+            z-index: 3;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .input-icon:hover { color: var(--green); }
+
+        .password-strength {
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+
+        .password-strength div {
+            height: 100%;
+            width: 0;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .password-strength.weak div { width: 33%; background: var(--danger); }
+        .password-strength.medium div { width: 66%; background: var(--gold); }
+        .password-strength.strong div { width: 100%; background: var(--green); }
+
+        /* ---- File Upload ---- */
+        .file-upload-wrapper { position: relative; width: 100%; }
+
+        .file-upload-input { position: absolute; left: -9999px; }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 14px;
+            background: var(--cream);
+            border: 1.5px dashed var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 13px;
+            color: var(--navy-soft);
+            text-align: center;
+        }
+
+        .file-upload-label:hover, .file-upload-label.has-file {
+            border-color: var(--green);
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .file-upload-label.is-invalid {
+            border-color: var(--danger);
+            background: rgba(192, 57, 43, 0.05);
+            color: var(--danger);
+        }
+
+        .file-upload-label.is-valid {
+            border-color: var(--green);
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        /* ---- Submit Button ---- */
+        .btn-register {
+            background: var(--green);
+            border: none;
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+            transition: all 0.2s ease;
+            margin-top: 6px;
+        }
+
+        .btn-register:hover {
+            background: #163a30;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(31, 75, 63, 0.28);
+            color: var(--white);
+        }
+
+        .btn-register:active { transform: translateY(0); }
+
+        .btn-register.loading::after {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2.5px solid rgba(255, 255, 255, 0.4);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ---- Footer ---- */
+        .card-footer {
+            background: transparent;
+            border-top: 1px solid var(--border);
+            padding: 18px;
+            text-align: center;
+        }
+
+        .login-link {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .login-link:hover { color: var(--gold); }
+
+        /* ---- Shake ---- */
+        .shake { animation: shake 0.4s ease-in-out; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row { flex-direction: column; gap: 0; }
+            .card-body { padding: 22px 18px; }
+            .card-header { padding: 26px 18px 16px; }
+            .card-header h4 { font-size: 22px; }
+            .progress-steps { gap: 30px; }
+            .registration-card { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ NAVBAR (matches Safeguard homepage) ============ -->
+<nav class="sg-navbar">
+    <a href="/" class="sg-logo">SAFEGUARD<sup>°</sup></a>
+
+    <ul class="sg-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li class="active sg-dropdown" tabindex="0">
+            <a href="#">Register <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+            <div class="sg-dropdown-menu">
+                <a href="/company_register/" class="current">Insurance Company</a>
+                <a href="/user_register/">User</a>
+            </div>
+        </li>
+    </ul>
+
+    <div class="sg-nav-right">
+        <a href="/login/" class="btn-get-started">GET STARTED</a>
+    </div>
+</nav>
+
+{% if messages %}
+<div class="container mt-2">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<section id="hero" class="hero section dark-background">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-11 col-sm-12">
+
+                <div class="eyebrow">Registration</div>
+
+                <div class="card registration-card">
+                    <div class="card-header">
+                        <i class="fas fa-user-plus"></i>
+                        <h4>User Registration</h4>
+                        <small>Create your account to get started</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress-steps">
+                            <div class="step active">
+                                <div class="step-icon"><i class="fas fa-user"></i></div>
+                                <div class="step-label">Account Info</div>
+                            </div>
+                            <div class="step active">
+                                <div class="step-icon"><i class="fas fa-info-circle"></i></div>
+                                <div class="step-label">Personal Details</div>
+                            </div>
+                        </div>
+
+                        <form method="post" enctype="multipart/form-data" id="" novalidate action="{% url 'user_register' %}">
+                            {% csrf_token %}
+
+                            <!-- User Account Information -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="full_name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="full_name" name="full_name"
+                                           placeholder="e.g. Priya Nair" required>
+                                    <div class="invalid-feedback">Full Name: 2-100 characters, alphabetic with spaces or hyphens.</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                           placeholder="e.g. priya_n" required>
+                                    <div class="invalid-feedback">Username: 3-20 characters, alphanumeric with _ or -.</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group input-group">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           placeholder="Enter a password" required>
+                                    <i class="fas fa-eye-slash input-icon" id="togglePassword"></i>
+                                    <div class="invalid-feedback">Password: 8+ characters with uppercase, lowercase, number, special.</div>
+                                    <div class="valid-feedback">Strong password!</div>
+                                    <div class="password-strength"><div></div></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                           placeholder="name@email.com" required>
+                                    <div class="invalid-feedback">Enter a valid email address.</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+
+                            <!-- Personal Information -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                           placeholder="+91 98765 43210" required>
+                                    <div class="invalid-feedback">Phone: 10-15 digits, optional + country code.</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="form-label">Address</label>
+                                    <textarea class="form-control" id="address" name="address" rows="2"
+                                              placeholder="Your current address" required></textarea>
+                                    <div class="invalid-feedback">Address: 10-200 characters.</div>
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+
+                            <!-- ID Proof Upload -->
+                            <div class="form-group">
+                                <label for="id_proof" class="form-label">ID Proof Document</label>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" class="file-upload-input" id="id_proof" name="id_proof"
+                                           accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                                    <label for="id_proof" class="file-upload-label" id="fileLabel">
+                                        <i class="fas fa-cloud-upload-alt me-2"></i>
+                                        <span>Choose ID document (PDF, JPG, PNG, DOC, DOCX)</span>
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">File must be PDF, JPG, PNG, DOC, or DOCX, &lt;5MB.</div>
+                                <div class="valid-feedback">File uploaded!</div>
+                                <small class="text-muted d-block mt-1">Upload your government-issued ID document</small>
+                            </div>
+
+                            <button type="submit" class="btn btn-register w-100">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                            </button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            Already have an account?
+                            <a href="{% url 'login' %}" class="login-link">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login here
+                            </a>
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'public_footer.html' %}
+
+<script>
+    // Validation Functions
+    const validateFullName = (value) => /^[a-zA-Z\s-]{2,100}$/.test(value) ? '' : 'Full Name: 2-100 characters, alphabetic with spaces or hyphens.';
+    const validateUsername = (value) => /^[a-zA-Z0-9_-]{3,20}$/.test(value) ? '' : 'Username: 3-20 characters, alphanumeric with _ or -.';
+    const validatePassword = (value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value) ? '' : 'Password: 8+ characters with uppercase, lowercase, number, special.';
+    const getPasswordStrength = (value) => {
+        if (value.length === 0) return '';
+        if (value.length < 8) return 'weak';
+        const hasUpper = /[A-Z]/.test(value);
+        const hasLower = /[a-z]/.test(value);
+        const hasNumber = /\d/.test(value);
+        const hasSpecial = /[@$!%*?&]/.test(value);
+        const strength = (hasUpper + hasLower + hasNumber + hasSpecial);
+        return strength <= 2 ? 'weak' : strength === 3 ? 'medium' : 'strong';
+    };
+    const validateEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Enter a valid email address.';
+    const validatePhone = (value) => /^\+?\d{10,15}$/.test(value) ? '' : 'Phone: 10-15 digits, optional + country code.';
+    const validateAddress = (value) => value.length >= 10 && value.length <= 200 ? '' : 'Address: 10-200 characters.';
+    const validateFile = (file) => {
+        if (!file) return 'Please upload a file.';
+        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        const maxSize = 5 * 1024 * 1024;
+        if (!allowedTypes.includes(file.type)) return 'File must be PDF, JPG, PNG, DOC, or DOCX.';
+        if (file.size > maxSize) return 'File must be <5MB.';
+        return '';
+    };
+
+    // Real-time Validation
+    const inputs = document.querySelectorAll('#registrationForm input:not([type="file"]), #registrationForm textarea');
+    const fileInput = document.querySelector('#id_proof');
+    const form = document.querySelector('#registrationForm');
+    const passwordInput = document.querySelector('#password');
+    const passwordStrength = document.querySelector('.password-strength div');
+
+    inputs.forEach(input => {
+        input.addEventListener('blur', function () {
+            const value = this.value.trim();
+            let error = '';
+            if (this.id === 'full_name') error = validateFullName(value);
+            else if (this.id === 'username') error = validateUsername(value);
+            else if (this.id === 'password') error = validatePassword(value);
+            else if (this.id === 'email') error = validateEmail(value);
+            else if (this.id === 'phone') error = validatePhone(value);
+            else if (this.id === 'address') error = validateAddress(value);
+
+            this.classList.toggle('is-invalid', !!error);
+            this.classList.toggle('is-valid', !error && value);
+            this.nextElementSibling.textContent = error;
+
+            if (this.id === 'password') {
+                const strength = getPasswordStrength(value);
+                passwordStrength.parentElement.className = `password-strength ${strength}`;
+            }
+        });
+    });
+
+    fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+        const error = validateFile(file);
+        const label = this.parentElement.querySelector('.file-upload-label');
+        label.classList.toggle('is-invalid', !!error);
+        label.classList.toggle('is-valid', !error && file);
+        label.nextElementSibling.textContent = error;
+        label.querySelector('span').textContent = file ? file.name : 'Choose ID document (PDF, JPG, PNG, DOC, DOCX)';
+        label.classList.toggle('has-file', !!file);
+    });
+
+    // Password Toggle
+    togglePassword = document.querySelector('#togglePassword');
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    // Form Submission
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let isValid = true;
+
+        inputs.forEach(input => {
+            const value = input.value.trim();
+            let error = '';
+            if (input.id === 'full_name') error = validateFullName(value);
+            else if (input.id === 'username') error = validateUsername(value);
+            else if (input.id === 'password') error = validatePassword(value);
+            else if (input.id === 'email') error = validateEmail(value);
+            else if (input.id === 'phone') error = validatePhone(value);
+            else if (input.id === 'address') error = validateAddress(value);
+
+            input.classList.toggle('is-invalid', !!error);
+            input.classList.toggle('is-valid', !error && value);
+            input.nextElementSibling.textContent = error;
+            if (error) {
+                input.classList.add('shake');
+                setTimeout(() => input.classList.remove('shake'), 500);
+                isValid = false;
+            }
+        });
+
+        const fileError = validateFile(fileInput.files[0]);
+        const fileLabel = fileInput.parentElement.querySelector('.file-upload-label');
+        fileLabel.classList.toggle('is-invalid', !!fileError);
+        fileLabel.classList.toggle('is-valid', !fileError && fileInput.files[0]);
+        fileLabel.nextElementSibling.textContent = fileError;
+        if (fileError) {
+            fileInput.parentElement.classList.add('shake');
+            setTimeout(() => fileInput.parentElement.classList.remove('shake'), 500);
+            isValid = false;
+        }
+
+        if (!isValid) return;
+
+        const submitButton = this.querySelector('.btn-register');
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+            form.submit();
+        }, 1500);
+    });
+</script>
+</body>
+</html>

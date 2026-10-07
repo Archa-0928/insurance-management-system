@@ -1,0 +1,494 @@
+{#{% extends 'user/userhome.html' %}#}
+{#{% block body %}#}
+{##}
+{##}
+{##}
+{#  <section class="status-section">#}
+{#    <div class="floating-icons">#}
+{#      <i class="bi bi-file-text floating-icon"></i>#}
+{#      <i class="bi bi-shield-check floating-icon"></i>#}
+{#      <i class="bi bi-exclamation-circle floating-icon"></i>#}
+{#      <i class="bi bi-person-lines-fill floating-icon"></i>#}
+{#      <i class="bi bi-bar-chart floating-icon"></i>#}
+{#    </div>#}
+{#    <div class="container">#}
+{#      <div class="section-title" data-aos="fade-up">#}
+{#        <h2>Your Claims</h2>#}
+{#      </div>#}
+{#      <div class="row justify-content-center">#}
+{#        <div class="col-lg-8 col-md-10 col-sm-12">#}
+{#          {% for claim in claims %}#}
+{#            <div class="claim-card" data-aos="fade-up" data-aos-delay="{% cycle '100' '200' '300' %}">#}
+{#              <h5>Claim ID: {{ claim.id }}</h5>#}
+{#              <p><strong>User:</strong> {{ claim.USERPROFILE.USER.username }}</p>#}
+{#              <p>#}
+{#                <strong>Status:</strong>#}
+{#                <span class="badge {% if claim.status == 'Pending' %}badge-pending{% elif claim.status == 'Approved' %}badge-approved{% else %}badge-rejected{% endif %}">#}
+{#                  {{ claim.status }}#}
+{#                </span>#}
+{#              </p>#}
+{#            </div>#}
+{#          {% empty %}#}
+{#            <div class="no-claims" data-aos="fade-up">#}
+{#              No claims found#}
+{#            </div>#}
+{#          {% endfor %}#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+{##}
+{##}
+{#  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>#}
+{#  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>#}
+{#  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>#}
+{#  <script>#}
+{#    document.addEventListener('DOMContentLoaded', function () {#}
+{#      // Initialize AOS#}
+{#      if (typeof AOS !== 'undefined') {#}
+{#        AOS.init({#}
+{#          duration: 800,#}
+{#          easing: 'ease-in-out',#}
+{#          once: true#}
+{#        });#}
+{#      } else {#}
+{#        console.warn('AOS library not loaded.');#}
+{#      }#}
+{##}
+{#      // Parallax Effect#}
+{#      window.addEventListener('scroll', function () {#}
+{#        const section = document.querySelector('.status-section');#}
+{#        const scrollPosition = window.scrollY;#}
+{#        section.style.backgroundPositionY = `${scrollPosition * 0.2}px`;#}
+{#      });#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#{% endblock %}#}
+
+{% extends 'user/userhome.html' %}
+{% block body %}
+
+<style>
+    .status-section {
+        background-color: #FFFFFF;
+        padding: 60px 0;
+        position: relative;
+        overflow: hidden;   /* keep this – but modals must be outside */
+    }
+
+    .floating-icons {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .floating-icon {
+        color: #F5E27A;
+        opacity: 0.35;
+        position: absolute;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-title h2 {
+        color: #1A1A1A;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin: 0;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 70px;
+        height: 4px;
+        background-color: #F2D93B;
+        margin: 12px auto 0;
+        border-radius: 2px;
+    }
+
+    .claim-card {
+        background-color: #FFFFFF;
+        border: 1px solid #EDE7C9;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 24px 28px;
+        margin-bottom: 20px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    .claim-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        border-color: #F2D93B;
+    }
+
+    .claim-card h5 {
+        color: #1A1A1A;
+        font-weight: 700;
+        margin-bottom: 14px;
+        border-left: 4px solid #F2D93B;
+        padding-left: 12px;
+    }
+
+    .claim-card p {
+        color: #333333;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+    }
+
+    .claim-card p strong {
+        color: #1A1A1A;
+        font-weight: 600;
+    }
+
+    .badge {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+    .badge-pending {
+        background-color: #FFF9DB;
+        color: #8A7A00;
+        border: 1px solid #F5E9A8;
+    }
+
+    .badge-approved {
+        background-color: #E8F5E9;
+        color: #2E7D32;
+        border: 1px solid #A5D6A7;
+    }
+
+    .badge-rejected {
+        background-color: #FFEBEE;
+        color: #C62828;
+        border: 1px solid #EF9A9A;
+    }
+
+    .no-claims {
+        text-align: center;
+        background-color: #FFFDF3;
+        border: 1px dashed #E5DFAF;
+        border-radius: 16px;
+        padding: 40px 20px;
+        color: #666666;
+        font-size: 1.1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ===== Modal fixes ===== */
+    .modal {
+        z-index: 1060 !important;          /* higher than everything */
+    }
+
+    .modal-backdrop {
+        z-index: 1055 !important;
+    }
+
+    .modal-content {
+        border: 1px solid #EDE7C9;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        overflow: hidden;
+    }
+
+    .modal-header {
+        background-color: #FFFDF3;
+        border-bottom: 1px solid #EDE7C9;
+        padding: 1rem 1.5rem;
+    }
+
+    .modal-title {
+        color: #1A1A1A;
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+
+    .modal-header .btn-close {
+        background-color: transparent;
+        opacity: 0.7;
+        box-shadow: none;
+    }
+
+    .modal-header .btn-close:hover {
+        opacity: 1;
+    }
+
+    .modal-body {
+        padding: 24px 28px;
+        max-height: 70vh;
+        overflow-y: auto;
+        background-color: #FFFFFF;
+    }
+
+    .detail-section {
+        margin-bottom: 28px;
+    }
+
+    .detail-section h6 {
+        color: #1A1A1A;
+        font-weight: 700;
+        border-left: 4px solid #F2D93B;
+        padding-left: 12px;
+        margin-bottom: 16px;
+        font-size: 1.05rem;
+    }
+
+    .detail-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+
+    .detail-label {
+        width: 180px;
+        color: #555;
+        font-weight: 500;
+        flex-shrink: 0;
+    }
+
+    .detail-value {
+        color: #1A1A1A;
+        font-weight: 600;
+        flex: 1;
+    }
+
+    .modal-footer {
+        border-top: 1px solid #EDE7C9;
+        background-color: #FFFDF3;
+        padding: 1rem 1.5rem;
+    }
+
+    .btn-close-modal {
+        background-color: #1A1A1A;
+        color: #F2D93B !important;
+        border: none;
+        border-radius: 24px;
+        padding: 8px 28px;
+        font-weight: 600;
+    }
+
+    .btn-close-modal:hover {
+        background-color: #333;
+        color: #F2D93B !important;
+    }
+</style>
+
+<section class="status-section">
+    <div class="floating-icons">
+        <i class="bi bi-file-text floating-icon" style="font-size: 34px; top: 12%; left: 8%;"></i>
+        <i class="bi bi-shield-check floating-icon" style="font-size: 30px; top: 25%; right: 10%;"></i>
+        <i class="bi bi-exclamation-circle floating-icon" style="font-size: 32px; bottom: 22%; left: 12%;"></i>
+        <i class="bi bi-person-lines-fill floating-icon" style="font-size: 28px; bottom: 15%; right: 15%;"></i>
+        <i class="bi bi-bar-chart floating-icon" style="font-size: 30px; top: 50%; left: 4%;"></i>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 1;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Your Claims</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                {% for claim in claims %}
+                    <div class="claim-card"
+                         data-aos="fade-up"
+                         data-aos-delay="{% cycle '100' '200' '300' %}"
+                         data-bs-toggle="modal"
+                         data-bs-target="#claimModal{{ claim.id }}">
+                        <h5>Claim ID: {{ claim.id }}</h5>
+                        <p><strong>Full Name:</strong> {{ claim.full_name|default:"—" }}</p>
+                        <p><strong>Company Name:</strong> {{ claim.INSURANCE.companyname}}</p>
+                        <p><strong>Policy No:</strong> {{ claim.policy_number|default:"—" }}</p>
+                        <p><strong>Incident Date:</strong> {{ claim.incident_date|default:"—" }}</p>
+                        <p><strong>Total Claim:</strong> ₹ {{ claim.total_claim_amount|default:"0" }}</p>
+                        <p>
+                            <strong>Status:</strong>
+                            <span class="badge
+                                {% if claim.status|lower == 'pending' %}badge-pending
+                                {% elif claim.status|lower == 'approved' %}badge-approved
+                                {% else %}badge-rejected{% endif %}">
+                                {{ claim.status|title }}
+                            </span>
+                        </p>
+                    </div>
+                {% empty %}
+                    <div class="no-claims" data-aos="fade-up">
+                        No claims found
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ========== ALL MODALS PLACED OUTSIDE THE SECTION ========== #}
+{% for claim in claims %}
+<div class="modal fade" id="claimModal{{ claim.id }}" tabindex="-1" aria-labelledby="claimModalLabel{{ claim.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="claimModalLabel{{ claim.id }}">
+                    Claim Details – #{{ claim.id }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- Personal Information -->
+                <div class="detail-section">
+                    <h6>Personal Information</h6>
+                    <div class="detail-row"><span class="detail-label">Full Name</span><span class="detail-value">{{ claim.full_name|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Date of Birth</span><span class="detail-value">{{ claim.date_of_birth|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Gender</span><span class="detail-value">{{ claim.gender|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Nationality</span><span class="detail-value">{{ claim.nationality|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">PAN Number</span><span class="detail-value">{{ claim.pan_number|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Marital Status</span><span class="detail-value">{{ claim.marital_status|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Address</span><span class="detail-value">{{ claim.address|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Phone Number</span><span class="detail-value">{{ claim.phone_number|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Email Address</span><span class="detail-value">{{ claim.email_address|default:"—" }}</span></div>
+                </div>
+
+                <!-- Bank Details -->
+                <div class="detail-section">
+                    <h6>Company Details</h6>
+                    <div class="detail-row"><span class="detail-label">Company Name</span><span class="detail-value">{{ claim.INSURANCE.companyname}}</span></div>
+                    <div class="detail-row"><span class="detail-label">Company Email</span><span class="detail-value">{{ claim.INSURANCE.email}}</span></div>
+                    <div class="detail-row"><span class="detail-label">Company Phone</span><span class="detail-value">{{ claim.INSURANCE.phone}}</span></div>
+                    <div class="detail-row"><span class="detail-label">Company Address</span><span class="detail-value">{{ claim.INSURANCE.address}}</span></div>
+                    <div class="detail-row"><span class="detail-label">Company Place</span><span class="detail-value">{{ claim.INSURANCE.place}}</span></div>
+                </div>
+<!-- Bank Details -->
+                <div class="detail-section">
+                    <h6>Bank Details</h6>
+                    <div class="detail-row"><span class="detail-label">Account Number</span><span class="detail-value">{{ claim.account_number|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Branch Name</span><span class="detail-value">{{ claim.branch_name|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">IFSC Code</span><span class="detail-value">{{ claim.ifsc_code|default:"—" }}</span></div>
+                </div>
+
+                <!-- Policy Information -->
+                <div class="detail-section">
+                    <h6>Policy Information</h6>
+                    <div class="detail-row"><span class="detail-label">Months as Customer</span><span class="detail-value">{{ claim.months_as_customer|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Age</span><span class="detail-value">{{ claim.age|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Policy Number</span><span class="detail-value">{{ claim.policy_number|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Bind Date</span><span class="detail-value">{{ claim.policy_bind_date|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Policy State</span><span class="detail-value">{{ claim.policy_state|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Policy CSL</span><span class="detail-value">{{ claim.policy_csl|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Policy Deductible</span><span class="detail-value">{{ claim.policy_deductable|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Annual Premium</span><span class="detail-value">{{ claim.policy_annual_premium|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Umbrella Limit</span><span class="detail-value">{{ claim.umbrella_limit|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Zip</span><span class="detail-value">{{ claim.insured_zip|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Sex</span><span class="detail-value">{{ claim.insured_sex|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Education Level</span><span class="detail-value">{{ claim.insured_education_level|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Occupation</span><span class="detail-value">{{ claim.insured_occupation|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Hobbies</span><span class="detail-value">{{ claim.insured_hobbies|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Relationship</span><span class="detail-value">{{ claim.insured_relationship|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Capital Gains</span><span class="detail-value">{{ claim.capital_gains|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Capital Loss</span><span class="detail-value">{{ claim.capital_loss|default:"—" }}</span></div>
+                </div>
+
+                <!-- Incident Information -->
+                <div class="detail-section">
+                    <h6>Incident Information</h6>
+                    <div class="detail-row"><span class="detail-label">Incident Date</span><span class="detail-value">{{ claim.incident_date|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Incident Type</span><span class="detail-value">{{ claim.incident_type|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Collision Type</span><span class="detail-value">{{ claim.collision_type|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Severity</span><span class="detail-value">{{ claim.incident_severity|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Authorities Contacted</span><span class="detail-value">{{ claim.authorities_contacted|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Incident State</span><span class="detail-value">{{ claim.incident_state|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Incident City</span><span class="detail-value">{{ claim.incident_city|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Location</span><span class="detail-value">{{ claim.incident_location|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Hour of Day</span><span class="detail-value">{{ claim.incident_hour_of_the_day|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Vehicles Involved</span><span class="detail-value">{{ claim.number_of_vehicles_involved|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Property Damage</span><span class="detail-value">{{ claim.property_damage|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Bodily Injuries</span><span class="detail-value">{{ claim.bodily_injuries|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Witnesses</span><span class="detail-value">{{ claim.witnesses|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Police Report</span><span class="detail-value">{{ claim.police_report_available|default:"—" }}</span></div>
+                </div>
+
+                <!-- Claim Amount -->
+                <div class="detail-section">
+                    <h6>Claim Amount</h6>
+                    <div class="detail-row"><span class="detail-label">Total Claim</span><span class="detail-value">₹ {{ claim.total_claim_amount|default:"0" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Injury Claim</span><span class="detail-value">₹ {{ claim.injury_claim|default:"0" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Property Claim</span><span class="detail-value">₹ {{ claim.property_claim|default:"0" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Vehicle Claim</span><span class="detail-value">₹ {{ claim.vehicle_claim|default:"0" }}</span></div>
+                </div>
+
+                <!-- Vehicle Information -->
+                <div class="detail-section">
+                    <h6>Vehicle Information</h6>
+                    <div class="detail-row"><span class="detail-label">Make</span><span class="detail-value">{{ claim.auto_make|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Model</span><span class="detail-value">{{ claim.auto_model|default:"—" }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Year</span><span class="detail-value">{{ claim.auto_year|default:"—" }}</span></div>
+                </div>
+
+                <!-- Status -->
+                <div class="detail-section">
+                    <h6>Status</h6>
+                    <div class="detail-row">
+                        <span class="detail-label">Current Status</span>
+                        <span class="detail-value">
+                            <span class="badge
+                                {% if claim.status|lower == 'pending' %}badge-pending
+                                {% elif claim.status|lower == 'approved' %}badge-approved
+                                {% else %}badge-rejected{% endif %}">
+                                {{ claim.status|title }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-close-modal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            const section = document.querySelector('.status-section');
+            if (section) {
+                section.style.backgroundPositionY = `${window.scrollY * 0.2}px`;
+            }
+        });
+    });
+</script>
+
+{% endblock %}

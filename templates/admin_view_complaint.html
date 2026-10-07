@@ -1,0 +1,134 @@
+{% extends 'admin_sidebar.html' %}
+
+
+{% block body %}
+
+{% if messages %}
+<div class="container mt-2" style="margin-top: 20px;">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+             role="alert"
+             style="background-color: #FFF9DB; border: 1px solid #F5E9A8; color: #333333; border-radius: 10px; padding: 14px 18px;">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="filter: none;"></button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+    <!-- Top Bar -->
+
+    <!-- Complaints Table Section -->
+    <div class="table-card mt-4 px-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0" style="color: var(--primary-color);">
+                <i class="fas fa-exclamation-circle me-2"></i>Complaints
+            </h4>
+
+            <!-- Optional search -->
+            <div class="input-group" style="max-width: 280px;">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="fas fa-search text-muted"></i>
+                </span>
+                <input type="text" id="tableSearch" class="form-control border-start-0"
+                       placeholder="Search complaints...">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tableData" id="complaintsTable">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" style="width: 50px;">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">From</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Submitted On</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col">Reply</th>
+                        <th scope="col" class="text-center" style="width: 140px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                    <tr>
+                        <td class="text-muted">{{ forloop.counter }}</td>
+
+                        <td>
+                            <strong>{{ complaint.title|default:"No Title" }}</strong>
+                        </td>
+
+                        <td>
+                            {% if complaint.SENDER.first_name or complaint.SENDER.last_name %}
+                                {{ complaint.SENDER.first_name }} {{ complaint.SENDER.last_name }}
+                            {% else %}
+                                {{ complaint.SENDER.username }}
+                            {% endif %}
+                        </td>
+
+                        <td class="text-wrap" style="max-width: 280px;">
+                            {{ complaint.description|truncatewords:25 }}
+                        </td>
+
+                        <td>
+                            {% if complaint.date %}
+                                {{ complaint.date|date:"d M Y" }}
+                            {% else %}
+                                <span class="text-muted">Not Provided</span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-center">
+                            {% if complaint.reply %}
+                                <span class="badge bg-success">Resolved</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-wrap" style="max-width: 220px;">
+                            {% if complaint.reply %}
+                                {{ complaint.reply|truncatewords:20 }}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+
+                        <td class="text-center">
+                            {% if not complaint.reply %}
+                                <a href="{% url 'admin_send_reply' complaint.id %}"
+                                   class="btn btn-success btn-sm">
+                                    <i class="fas fa-reply me-1"></i> Reply
+                                </a>
+                            {% else %}
+                                <span class="badge bg-secondary">Replied</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-5">
+                            <i class="fas fa-exclamation-circle fa-2x mb-3 d-block opacity-50"></i>
+                            No complaints found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- Simple client-side search -->
+<script>
+document.getElementById('tableSearch')?.addEventListener('keyup', function () {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#complaintsTable tbody tr');
+
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+    });
+});
+</script>
+
+{% endblock %}

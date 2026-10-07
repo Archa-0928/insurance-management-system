@@ -1,0 +1,35 @@
+{% extends 'company/companyhome.html' %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h2>Damage Requests</h2>
+
+    {% for i in data %}
+        <div class="card mb-3">
+            <div class="card-body">
+
+                <h5>
+                    {{ i.USER.USER.first_name }}
+                    {{ i.USER.USER.last_name }}
+                </h5>
+
+                <p>Email: {{ i.USER.email }}</p>
+                <p>Phone: {{ i.USER.phone }}</p>
+                <p>Status: {{ i.status }}</p>
+                <p>Date: {{ i.date }}</p>
+
+                <a href="/insurance_damage_details/{{ i.id }}"
+                   class="btn btn-primary">
+                    View Damage Details
+                </a>
+
+            </div>
+        </div>
+    {% empty %}
+        <p>No damage requests found.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

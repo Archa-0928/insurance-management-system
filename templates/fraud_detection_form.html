@@ -1,0 +1,321 @@
+{#{% extends 'company/companyhome.html' %}#}
+{#{% block body %}#}
+{##}
+{#    {% if messages %}#}
+{#    <div class="container mt-2">#}
+{#        {% for message in messages %}#}
+{#            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">#}
+{#                {{ message }}#}
+{#                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#    {% endif %}#}
+{##}
+{#    <section class="fraud-section">#}
+{#        <div class="floating-icons">#}
+{#            <i class="bi bi-shield-check floating-icon"></i>#}
+{#            <i class="bi bi-exclamation-circle floating-icon"></i>#}
+{#            <i class="bi bi-file-text floating-icon"></i>#}
+{#            <i class="bi bi-bar-chart floating-icon"></i>#}
+{#            <i class="bi bi-search floating-icon"></i>#}
+{#        </div>#}
+{#        <div class="container">#}
+{#            <div class="section-title" data-aos="fade-up">#}
+{#                <h2>Insurance Fraud Detection</h2>#}
+{#            </div>#}
+{#            <div class="row justify-content-center gy-4">#}
+{#                <div class="col-lg-10 col-md-11 col-sm-12">#}
+{#                    <!-- Fraud Detection Form -->#}
+{#                    <div class="form-card" data-aos="fade-up" data-aos-delay="100">#}
+{#                        <h3><i class="fas fa-shield-alt me-2"></i>Predict Fraud</h3>#}
+{#                        <form method="post">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="row">#}
+{#                                {% for feature in features %}#}
+{#                                    <div class="mb-3 col-md-4">#}
+{#                                        <label class="form-label" style="color: #fff;">{{ feature }}</label>#}
+{#                                        {% if feature in "policy_bind_date,incident_date" %}#}
+{#                                            <input type="date" name="{{ feature }}" class="form-control">#}
+{#                                        {% else %}#}
+{#                                            <input type="text" name="{{ feature }}" class="form-control" placeholder="Enter {{ feature }}">#}
+{#                                        {% endif %}#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+{#                            <button type="submit" class="btn btn-submit">#}
+{#                                <i class="fas fa-search me-1"></i> Predict#}
+{#                            </button>#}
+{#                        </form>#}
+{#                    </div>#}
+{##}
+{#                    <!-- Prediction Result -->#}
+{#                    {% if result %}#}
+{#                        <div class="prediction-card" data-aos="fade-up" data-aos-delay="200">#}
+{#                            <h4>Prediction Result</h4>#}
+{#                            <p><strong>Status:</strong> {{ result.prediction }}</p>#}
+{#                            <p><strong>Fraud Probability:</strong> {{ result.probability }}</p>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{##}
+{##}
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>#}
+{#    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>#}
+{#    <script>#}
+{#        document.addEventListener('DOMContentLoaded', function () {#}
+{#            // Initialize AOS#}
+{#            if (typeof AOS !== 'undefined') {#}
+{#                AOS.init({#}
+{#                    duration: 800,#}
+{#                    easing: 'ease-in-out',#}
+{#                    once: true#}
+{#                });#}
+{#            } else {#}
+{#                console.warn('AOS library not loaded.');#}
+{#            }#}
+{##}
+{#            // Parallax Effect#}
+{#            window.addEventListener('scroll', function () {#}
+{#                const section = document.querySelector('.fraud-section');#}
+{#                const scrollPosition = window.scrollY;#}
+{#                section.style.backgroundPositionY = `${scrollPosition * 0.2}px`;#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#{% endblock %}#}
+
+
+
+
+
+
+{% extends 'company/companyhome.html' %}
+{% block body %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .claimfile{
+    --paper:#EFEAD9;
+    --panel:#FBF8F0;
+    --ink:#1B2430;
+    --ink-soft:#6b6255;
+    --ink-faint:#948c7d;
+    --navy:#1F3A4D;
+    --navy-deep:#162A38;
+    --brass:#9C7A3C;
+    --brass-light:#C8A96A;
+    --brick:#8C3B2E;
+    --green:#3f6b4f;
+    --line:#DCD4BE;
+    --line-strong:#C7BC9F;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    padding:56px 24px 100px;
+    line-height:1.5;
+    position:relative;
+    overflow:hidden;
+  }
+  .claimfile *{box-sizing:border-box;}
+  .claimfile .wrap{max-width:920px;margin:0 auto;position:relative;z-index:1;}
+
+  /* watermark */
+  .claimfile .watermark{
+    position:absolute;top:-60px;right:-60px;
+    width:340px;height:340px;
+    opacity:.05;color:var(--navy);
+    pointer-events:none;
+    animation:drift 14s ease-in-out infinite;
+  }
+  .claimfile .watermark svg{width:100%;height:100%;}
+  @keyframes drift{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(14px) rotate(3deg);}}
+  @media (prefers-reduced-motion:reduce){.claimfile .watermark{animation:none;}}
+
+  /* alerts */
+  .claimfile .alert-wrap{max-width:920px;margin:0 auto 24px;position:relative;z-index:1;}
+  .claimfile .alert{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.02em;
+    background:var(--panel);border:1px solid var(--line-strong);border-left:4px solid var(--navy);
+    border-radius:0;color:var(--ink);
+  }
+  .claimfile .alert-success{border-left-color:var(--green);}
+  .claimfile .alert-danger,.claimfile .alert-error{border-left-color:var(--brick);}
+  .claimfile .alert-warning{border-left-color:var(--brass);}
+  .claimfile .btn-close{filter:none;opacity:.55;}
+
+  .claimfile .header{position:relative;padding-bottom:28px;margin-bottom:8px;border-bottom:2px solid var(--navy);}
+  .claimfile .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--brick);margin:0 0 10px;display:flex;align-items:center;gap:8px;
+  }
+  .claimfile .eyebrow::before{content:'';width:16px;height:1px;background:var(--brick);display:inline-block;}
+  .claimfile h2.filetitle{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,5vw,44px);
+    margin:0 0 10px;color:var(--navy-deep);letter-spacing:-0.01em;
+  }
+  .claimfile .subline{font-size:14.5px;color:var(--ink-soft);max-width:520px;}
+
+  .claimfile .section{margin-top:44px;}
+  .claimfile .tab{
+    display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--paper);
+    padding:9px 18px 9px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;clip-path:polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+  .claimfile .tab i{font-size:13px;color:var(--brass-light);}
+
+  .claimfile .panel{background:var(--panel);border:1px solid var(--line-strong);border-top:none;padding:30px 30px 8px;}
+
+  .claimfile .field-group{margin-bottom:26px;}
+  .claimfile .form-label{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:6px;display:block;
+  }
+  .claimfile .form-control{
+    background:transparent;border:none;border-bottom:1px solid var(--line-strong);border-radius:0;
+    padding:6px 2px 8px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--ink);
+    width:100%;
+  }
+  .claimfile .form-control::placeholder{color:var(--ink-faint);opacity:.8;}
+  .claimfile .form-control:focus{
+    outline:none;box-shadow:none;border-bottom:1.5px solid var(--brass);
+    background:rgba(156,122,60,0.04);
+  }
+
+  .claimfile .btn-submit{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--paper);background:var(--brick);border:1px solid var(--brick);
+    padding:13px 28px;margin:14px 0 26px;border-radius:0;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s ease,color .15s ease;
+  }
+  .claimfile .btn-submit:hover{background:transparent;color:var(--brick);}
+  .claimfile .btn-submit:focus-visible{outline:2px solid var(--navy);outline-offset:3px;}
+
+  /* result */
+  .claimfile .result{
+    margin-top:44px;background:var(--navy-deep);color:var(--paper);padding:36px 34px;
+    display:flex;flex-wrap:wrap;gap:32px;align-items:center;
+    position:relative;overflow:hidden;
+    opacity:0;transform:translateY(10px);animation:claimrise .5s ease forwards;
+  }
+  @keyframes claimrise{to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){.claimfile .result{animation:none;opacity:1;transform:none;}}
+  .claimfile .result::after{
+    content:'';position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;
+    border:1px solid rgba(239,234,217,0.08);border-radius:50%;
+  }
+  .claimfile .verdict-stamp{
+    flex:0 0 auto;
+    font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:14px;letter-spacing:.06em;
+    border:2.5px solid var(--brick);border-radius:50%;width:120px;height:120px;
+    display:flex;align-items:center;justify-content:center;text-align:center;text-transform:uppercase;
+    transform:rotate(-9deg);color:var(--brick);background:rgba(140,59,46,0.06);
+    position:relative;
+  }
+  .claimfile .verdict-stamp.clear{border-color:var(--green);color:var(--green);background:rgba(63,107,79,0.08);}
+  .claimfile .verdict-stamp::before{content:'';position:absolute;inset:6px;border:1px solid currentColor;border-radius:50%;}
+
+  .claimfile .result-detail{flex:1 1 260px;position:relative;z-index:1;}
+  .claimfile .summary-head{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass-light);margin-bottom:14px;
+  }
+  .claimfile .prob-num{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(30px,4.4vw,42px);
+    color:#fff;line-height:1;
+  }
+  .claimfile .prob-label{font-size:12px;color:rgba(239,234,217,0.65);margin-top:4px;margin-bottom:14px;}
+  .claimfile .gauge{
+    width:100%;max-width:340px;height:8px;background:rgba(239,234,217,0.14);position:relative;
+  }
+  .claimfile .gauge-fill{
+    height:100%;background:linear-gradient(90deg,var(--brass-light),var(--brick));
+  }
+</style>
+
+<div class="claimfile">
+  <div class="watermark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15.5" y2="15.5"/></svg>
+  </div>
+
+  {% if messages %}
+  <div class="alert-wrap">
+      {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="wrap">
+  <div>
+      <a href="/fraud_detection_ocr_view/">UPLOAD OCR </a>
+  </div>
+
+    <div class="header" data-aos="fade-up">
+      <p class="eyebrow">Fraud detection</p>
+      <h2 class="filetitle">Run a claim assessment</h2>
+      <p class="subline">Enter the claim details below to score this case for fraud risk before it moves further down the queue.</p>
+    </div>
+
+    <div class="section" data-aos="fade-up" data-aos-delay="80">
+      <div class="tab"><i class="bi bi-search"></i> Claim intake</div>
+      <div class="panel">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% for feature in features %}
+                    <div class="col-md-4 field-group">
+                        <label class="form-label">{{ feature }}</label>
+                        {% if feature in "policy_bind_date,incident_date" %}
+                            <input type="date" name="{{ feature }}" class="form-control">
+                        {% else %}
+                            <input type="text" name="{{ feature }}" class="form-control" placeholder="Enter {{ feature }}">
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn-submit">
+                <i class="bi bi-search"></i> Run assessment
+            </button>
+        </form>
+      </div>
+    </div>
+
+    {% if result %}
+    <div class="result" data-aos="fade-up">
+        <div class="verdict-stamp{% if result.prediction == 'N' or result.prediction == 'No' or result.prediction == 'Not Fraud' %} clear{% endif %}">
+          {{ result.prediction }}
+        </div>
+        <div class="result-detail">
+          <div class="summary-head">Assessment result</div>
+          <div class="prob-num">{{ result.probability }}</div>
+          <div class="prob-label">Fraud probability</div>
+          <div class="gauge"><div class="gauge-fill" style="width: {{ result.probability }};"></div></div>
+        </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-G2YV0v5Z1qoM1N78x+Sp0iLKBHOG4kJ0+Ums4fAR4jo=" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+        } else {
+            console.warn('AOS library not loaded.');
+        }
+    });
+</script>
+{% endblock %}

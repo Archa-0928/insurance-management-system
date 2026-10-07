@@ -1,0 +1,220 @@
+{% extends 'user/userhome.html' %}
+
+{% block body %}
+
+<div class="container mt-4 mb-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">
+                Upload Vehicle Damage Details
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <!-- Insurance Company Details -->
+
+            <div class="alert alert-info">
+
+                <h5 class="mb-2">
+                    Selected Insurance Company
+                </h5>
+
+                <p class="mb-1">
+                    <strong>Company:</strong>
+                    {{ insurance.companyname }}
+                </p>
+
+                <p class="mb-1">
+                    <strong>Email:</strong>
+                    {{ insurance.email }}
+                </p>
+
+                <p class="mb-1">
+                    <strong>Phone:</strong>
+                    {{ insurance.phone }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>Place:</strong>
+                    {{ insurance.place }}
+                </p>
+
+            </div>
+
+
+            <!-- Upload Form -->
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+
+                <div class="row">
+
+
+                    <!-- FRONT IMAGE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Front Image
+                        </label>
+
+                        <input type="file"
+                               name="frontimage"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image of the front of the vehicle.
+                        </small>
+
+                    </div>
+
+
+                    <!-- BACK IMAGE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Back Image
+                        </label>
+
+                        <input type="file"
+                               name="backimage"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image of the back of the vehicle.
+                        </small>
+
+                    </div>
+
+
+                    <!-- LEFT SIDE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Left Side Image
+                        </label>
+
+                        <input type="file"
+                               name="leftside"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image of the left side.
+                        </small>
+
+                    </div>
+
+
+                    <!-- RIGHT SIDE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Right Side Image
+                        </label>
+
+                        <input type="file"
+                               name="rightsideimage"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image of the right side.
+                        </small>
+
+                    </div>
+
+
+                    <!-- TOP IMAGE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Top Image
+                        </label>
+
+                        <input type="file"
+                               name="topimage"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image from the top of the vehicle.
+                        </small>
+
+                    </div>
+
+
+                    <!-- BOTTOM IMAGE -->
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-bold">
+                            Bottom Image
+                        </label>
+
+                        <input type="file"
+                               name="bottumimage"
+                               class="form-control"
+                               accept="image/*"
+                               required>
+
+                        <small class="text-muted">
+                            Upload a clear image of the bottom of the vehicle.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <hr class="my-4">
+
+
+                <!-- BUTTONS -->
+
+                <div class="text-center">
+
+                    <button type="submit"
+                            class="btn btn-primary px-4">
+
+                        <i class="bi bi-cloud-upload"></i>
+                        Upload Damage Details
+
+                    </button>
+
+                    <a href="{% url 'user_view_insurance_company' %}"
+                       class="btn btn-secondary px-4 ms-2">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

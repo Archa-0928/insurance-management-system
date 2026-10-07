@@ -1,0 +1,952 @@
+{% extends 'company/companyhome.html' %}
+
+{% block body %}
+
+<div style="
+    background:#f4f7fb;
+    min-height:100vh;
+    padding:30px 15px;
+    font-family:Arial, Helvetica, sans-serif;
+">
+
+    <div style="
+        max-width:1200px;
+        margin:0 auto;
+    ">
+
+        <!-- PAGE HEADER -->
+        <div style="
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            margin-bottom:25px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+        ">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                flex-wrap:wrap;
+                gap:15px;
+            ">
+
+                <div>
+                    <h2 style="
+                        margin:0;
+                        color:#172033;
+                        font-size:28px;
+                        font-weight:700;
+                    ">
+                        Insurance Claim Documents
+                    </h2>
+
+                    <p style="
+                        margin:8px 0 0 0;
+                        color:#64748b;
+                        font-size:14px;
+                    ">
+                        Review uploaded documents, AI fraud analysis and verify claims.
+                    </p>
+                </div>
+
+                <div style="
+                    background:#eff6ff;
+                    color:#1d4ed8;
+                    padding:10px 16px;
+                    border-radius:30px;
+                    font-size:14px;
+                    font-weight:600;
+                ">
+                    Total Claims: {{ data|length }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CLAIM LIST -->
+        {% for item in data %}
+
+        <div style="
+            background:white;
+            border-radius:16px;
+            margin-bottom:25px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.08);
+            overflow:hidden;
+            border:1px solid #e5e7eb;
+        ">
+
+            <!-- CARD HEADER -->
+            <div style="
+                padding:20px 25px;
+                background:#f8fafc;
+                border-bottom:1px solid #e5e7eb;
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    flex-wrap:wrap;
+                    gap:15px;
+                ">
+
+                    <div>
+
+                        <div style="
+                            font-size:18px;
+                            font-weight:700;
+                            color:#172033;
+                            margin-bottom:6px;
+                        ">
+                            {{ item.original_filename }}
+                        </div>
+
+                        <div style="
+                            color:#64748b;
+                            font-size:13px;
+                        ">
+                            Uploaded:
+                            {{ item.created_at|date:"d-m-Y H:i" }}
+                        </div>
+
+                    </div>
+
+
+                    <!-- VERIFICATION BADGE -->
+                    {% if item.verification_status == 'Verified' %}
+
+                        <div style="
+                            background:#dcfce7;
+                            color:#166534;
+                            padding:8px 15px;
+                            border-radius:25px;
+                            font-size:13px;
+                            font-weight:700;
+                        ">
+                            ✓ VERIFIED
+                        </div>
+
+                    {% elif item.verification_status == 'Rejected' %}
+
+                        <div style="
+                            background:#fee2e2;
+                            color:#991b1b;
+                            padding:8px 15px;
+                            border-radius:25px;
+                            font-size:13px;
+                            font-weight:700;
+                        ">
+                            ✕ REJECTED
+                        </div>
+
+                    {% else %}
+
+                        <div style="
+                            background:#fef3c7;
+                            color:#92400e;
+                            padding:8px 15px;
+                            border-radius:25px;
+                            font-size:13px;
+                            font-weight:700;
+                        ">
+                            ⏳ PENDING VERIFICATION
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC INFORMATION -->
+            <div style="padding:25px;">
+
+                <div style="
+                    display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+                    gap:15px;
+                    margin-bottom:25px;
+                ">
+
+                    <!-- USER -->
+                    <div style="
+                        background:#f8fafc;
+                        padding:15px;
+                        border-radius:10px;
+                        border:1px solid #e5e7eb;
+                    ">
+                        <div style="
+                            color:#64748b;
+                            font-size:12px;
+                            margin-bottom:5px;
+                        ">
+                            CLAIM USER
+                        </div>
+
+                        <div style="
+                            color:#172033;
+                            font-size:15px;
+                            font-weight:600;
+                        ">
+                            {{ item.USER }}
+                        </div>
+                    </div>
+
+
+                    <!-- FILE TYPE -->
+                    <div style="
+                        background:#f8fafc;
+                        padding:15px;
+                        border-radius:10px;
+                        border:1px solid #e5e7eb;
+                    ">
+                        <div style="
+                            color:#64748b;
+                            font-size:12px;
+                            margin-bottom:5px;
+                        ">
+                            FILE TYPE
+                        </div>
+
+                        <div style="
+                            color:#172033;
+                            font-size:15px;
+                            font-weight:600;
+                        ">
+                            {{ item.file_type|default:"N/A" }}
+                        </div>
+                    </div>
+
+
+                    <!-- PROCESSING STATUS -->
+                    <div style="
+                        background:#f8fafc;
+                        padding:15px;
+                        border-radius:10px;
+                        border:1px solid #e5e7eb;
+                    ">
+                        <div style="
+                            color:#64748b;
+                            font-size:12px;
+                            margin-bottom:5px;
+                        ">
+                            PROCESSING STATUS
+                        </div>
+
+                        {% if item.status == 'Completed' %}
+
+                            <div style="
+                                color:#15803d;
+                                font-weight:700;
+                            ">
+                                ✓ Completed
+                            </div>
+
+                        {% elif item.status == 'Failed' %}
+
+                            <div style="
+                                color:#dc2626;
+                                font-weight:700;
+                            ">
+                                ✕ Failed
+                            </div>
+
+                        {% else %}
+
+                            <div style="
+                                color:#d97706;
+                                font-weight:700;
+                            ">
+                                {{ item.status }}
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- VERIFICATION -->
+                    <div style="
+                        background:#f8fafc;
+                        padding:15px;
+                        border-radius:10px;
+                        border:1px solid #e5e7eb;
+                    ">
+                        <div style="
+                            color:#64748b;
+                            font-size:12px;
+                            margin-bottom:5px;
+                        ">
+                            VERIFICATION
+                        </div>
+
+                        <div style="
+                            color:#172033;
+                            font-size:15px;
+                            font-weight:700;
+                        ">
+                            {{ item.verification_status }}
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+                <div style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:10px;
+                    margin-bottom:25px;
+                ">
+
+                    {% if item.document %}
+
+                    <a href="{{ item.document.url }}"
+                       target="_blank"
+                       style="
+                           display:inline-block;
+                           padding:11px 17px;
+                           background:#2563eb;
+                           color:white;
+                           text-decoration:none;
+                           border-radius:8px;
+                           font-size:14px;
+                           font-weight:600;
+                       ">
+                        📄 View Document
+                    </a>
+
+                    <a href="{% url 'download_fraud_document' item.id %}"
+                       style="
+                           display:inline-block;
+                           padding:11px 17px;
+                           background:#475569;
+                           color:white;
+                           text-decoration:none;
+                           border-radius:8px;
+                           font-size:14px;
+                           font-weight:600;
+                       ">
+                        ⬇ Download Document
+                    </a>
+
+                    {% endif %}
+
+
+                    <a href="{% url 'download_fraud_result' item.id %}"
+                       style="
+                           display:inline-block;
+                           padding:11px 17px;
+                           background:#7c3aed;
+                           color:white;
+                           text-decoration:none;
+                           border-radius:8px;
+                           font-size:14px;
+                           font-weight:600;
+                       ">
+                        ⬇ Download Analysis
+                    </a>
+
+                </div>
+
+
+                <!-- AI ANALYSIS -->
+                <div style="
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    overflow:hidden;
+                    margin-bottom:25px;
+                ">
+
+                    <div style="
+                        padding:15px 18px;
+                        background:#f8fafc;
+                        border-bottom:1px solid #e5e7eb;
+                        font-size:17px;
+                        font-weight:700;
+                        color:#172033;
+                    ">
+                        🤖 AI Fraud Analysis
+                    </div>
+
+
+                    <div style="
+                        padding:20px;
+                        display:grid;
+                        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+                        gap:15px;
+                    ">
+
+                        <!-- PREDICTION -->
+                        <div style="
+                            padding:18px;
+                            border-radius:10px;
+                            {% if item.prediction_value == 1 %}
+                                background:#fee2e2;
+                                border:1px solid #fecaca;
+                            {% else %}
+                                background:#dcfce7;
+                                border:1px solid #bbf7d0;
+                            {% endif %}
+                        ">
+
+                            <div style="
+                                font-size:12px;
+                                color:#64748b;
+                                margin-bottom:7px;
+                            ">
+                                PREDICTION
+                            </div>
+
+                            {% if item.prediction_value == 1 %}
+
+                                <div style="
+                                    color:#b91c1c;
+                                    font-size:20px;
+                                    font-weight:800;
+                                ">
+                                    ⚠ Fraud Detected
+                                </div>
+
+                            {% else %}
+
+                                <div style="
+                                    color:#15803d;
+                                    font-size:20px;
+                                    font-weight:800;
+                                ">
+                                    ✓ No Fraud
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- PROBABILITY -->
+                        <div style="
+                            padding:18px;
+                            background:#f8fafc;
+                            border:1px solid #e5e7eb;
+                            border-radius:10px;
+                        ">
+
+                            <div style="
+                                font-size:12px;
+                                color:#64748b;
+                                margin-bottom:7px;
+                            ">
+                                AI PROBABILITY
+                            </div>
+
+                            {% if item.probability != None %}
+
+                                <div style="
+                                    font-size:22px;
+                                    color:#172033;
+                                    font-weight:800;
+                                ">
+                                    {{ item.probability }}%
+                                </div>
+
+                            {% else %}
+
+                                <div style="
+                                    font-size:18px;
+                                    color:#64748b;
+                                    font-weight:600;
+                                ">
+                                    N/A
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- PREDICTION VALUE -->
+                        <div style="
+                            padding:18px;
+                            background:#f8fafc;
+                            border:1px solid #e5e7eb;
+                            border-radius:10px;
+                        ">
+
+                            <div style="
+                                font-size:12px;
+                                color:#64748b;
+                                margin-bottom:7px;
+                            ">
+                                PREDICTION VALUE
+                            </div>
+
+                            <div style="
+                                font-size:22px;
+                                color:#172033;
+                                font-weight:800;
+                            ">
+                                {{ item.prediction_value|default:"N/A" }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPANY VERIFICATION -->
+                <div style="
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    overflow:hidden;
+                    margin-bottom:25px;
+                ">
+
+                    <div style="
+                        padding:15px 18px;
+                        background:#f8fafc;
+                        border-bottom:1px solid #e5e7eb;
+                        font-size:17px;
+                        font-weight:700;
+                        color:#172033;
+                    ">
+                        🛡 Company Verification
+                    </div>
+
+
+                    <div style="padding:20px;">
+
+                        {% if item.verification_status == 'Pending' %}
+
+                            <!-- VERIFY FORM -->
+                            <form method="POST"
+                                  action="{% url 'company_verify_fraud_document' item.id %}"
+                                  style="margin-bottom:15px;">
+
+                                {% csrf_token %}
+
+                                <label style="
+                                    display:block;
+                                    color:#374151;
+                                    font-size:14px;
+                                    font-weight:600;
+                                    margin-bottom:7px;
+                                ">
+                                    Verification Note
+                                </label>
+
+                                <textarea
+                                    name="verification_note"
+                                    placeholder="Enter verification note..."
+                                    style="
+                                        width:100%;
+                                        min-height:90px;
+                                        padding:12px;
+                                        border:1px solid #cbd5e1;
+                                        border-radius:8px;
+                                        box-sizing:border-box;
+                                        resize:vertical;
+                                        font-family:Arial,Helvetica,sans-serif;
+                                        margin-bottom:12px;
+                                        outline:none;
+                                    "
+                                ></textarea>
+
+
+                                <button
+                                    type="submit"
+                                    onclick="return confirm('Are you sure you want to verify this claim?');"
+                                    style="
+                                        width:100%;
+                                        padding:13px;
+                                        border:none;
+                                        border-radius:8px;
+                                        background:#16a34a;
+                                        color:white;
+                                        font-size:15px;
+                                        font-weight:700;
+                                        cursor:pointer;
+                                    "
+                                >
+                                    ✓ Verify Claim
+                                </button>
+
+                            </form>
+
+
+                            <!-- REJECT FORM -->
+                            <form method="POST"
+                                  action="{% url 'company_reject_fraud_document' item.id %}">
+
+                                {% csrf_token %}
+
+                                <label style="
+                                    display:block;
+                                    color:#374151;
+                                    font-size:14px;
+                                    font-weight:600;
+                                    margin-bottom:7px;
+                                ">
+                                    Rejection Reason
+                                </label>
+
+                                <textarea
+                                    name="verification_note"
+                                    placeholder="Enter reason for rejection..."
+                                    style="
+                                        width:100%;
+                                        min-height:90px;
+                                        padding:12px;
+                                        border:1px solid #cbd5e1;
+                                        border-radius:8px;
+                                        box-sizing:border-box;
+                                        resize:vertical;
+                                        font-family:Arial,Helvetica,sans-serif;
+                                        margin-bottom:12px;
+                                        outline:none;
+                                    "
+                                ></textarea>
+
+
+                                <button
+                                    type="submit"
+                                    onclick="return confirm('Are you sure you want to reject this claim?');"
+                                    style="
+                                        width:100%;
+                                        padding:13px;
+                                        border:none;
+                                        border-radius:8px;
+                                        background:#dc2626;
+                                        color:white;
+                                        font-size:15px;
+                                        font-weight:700;
+                                        cursor:pointer;
+                                    "
+                                >
+                                    ✕ Reject Claim
+                                </button>
+
+                            </form>
+
+
+                        {% elif item.verification_status == 'Verified' %}
+
+                            <div style="
+                                padding:18px;
+                                background:#f0fdf4;
+                                border:1px solid #86efac;
+                                border-radius:10px;
+                                color:#166534;
+                            ">
+
+                                <div style="
+                                    font-size:20px;
+                                    font-weight:800;
+                                    margin-bottom:12px;
+                                ">
+                                    ✓ Claim Verified
+                                </div>
+
+
+                                {% if item.verified_by %}
+
+                                <div style="
+                                    margin-bottom:6px;
+                                    font-size:14px;
+                                ">
+                                    <strong>Verified By:</strong>
+                                    {{ item.verified_by.username }}
+                                </div>
+
+                                {% endif %}
+
+
+                                {% if item.verified_at %}
+
+                                <div style="
+                                    margin-bottom:6px;
+                                    font-size:14px;
+                                ">
+                                    <strong>Verified At:</strong>
+                                    {{ item.verified_at|date:"d-m-Y H:i" }}
+                                </div>
+
+                                {% endif %}
+
+
+                                {% if item.verification_note %}
+
+                                <div style="
+                                    margin-top:12px;
+                                    padding:12px;
+                                    background:white;
+                                    border-radius:8px;
+                                    color:#374151;
+                                ">
+                                    <strong>Verification Note:</strong><br>
+                                    {{ item.verification_note }}
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                        {% elif item.verification_status == 'Rejected' %}
+
+                            <div style="
+                                padding:18px;
+                                background:#fef2f2;
+                                border:1px solid #fca5a5;
+                                border-radius:10px;
+                                color:#991b1b;
+                            ">
+
+                                <div style="
+                                    font-size:20px;
+                                    font-weight:800;
+                                    margin-bottom:12px;
+                                ">
+                                    ✕ Claim Rejected
+                                </div>
+
+
+                                {% if item.verified_by %}
+
+                                <div style="
+                                    margin-bottom:6px;
+                                    font-size:14px;
+                                ">
+                                    <strong>Rejected By:</strong>
+                                    {{ item.verified_by.username }}
+                                </div>
+
+                                {% endif %}
+
+
+                                {% if item.verified_at %}
+
+                                <div style="
+                                    margin-bottom:6px;
+                                    font-size:14px;
+                                ">
+                                    <strong>Rejected At:</strong>
+                                    {{ item.verified_at|date:"d-m-Y H:i" }}
+                                </div>
+
+                                {% endif %}
+
+
+                                {% if item.verification_note %}
+
+                                <div style="
+                                    margin-top:12px;
+                                    padding:12px;
+                                    background:white;
+                                    border-radius:8px;
+                                    color:#374151;
+                                ">
+                                    <strong>Rejection Reason:</strong><br>
+                                    {{ item.verification_note }}
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXTRACTED DATA -->
+                <div style="
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    overflow:hidden;
+                    margin-bottom:25px;
+                ">
+
+                    <div style="
+                        padding:15px 18px;
+                        background:#f8fafc;
+                        border-bottom:1px solid #e5e7eb;
+                        font-size:17px;
+                        font-weight:700;
+                        color:#172033;
+                    ">
+                        📋 Extracted Claim Information
+                    </div>
+
+
+                    <div style="padding:20px;">
+
+                        {% if item.extracted_data %}
+
+                            <div style="
+                                display:grid;
+                                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                                gap:12px;
+                            ">
+
+                                {% for key, value in item.extracted_data.items %}
+
+                                <div style="
+                                    padding:12px;
+                                    background:#f8fafc;
+                                    border:1px solid #e5e7eb;
+                                    border-radius:8px;
+                                ">
+
+                                    <div style="
+                                        color:#64748b;
+                                        font-size:12px;
+                                        font-weight:600;
+                                        margin-bottom:5px;
+                                        word-break:break-word;
+                                    ">
+                                        {{ key|title }}
+                                    </div>
+
+                                    <div style="
+                                        color:#172033;
+                                        font-size:14px;
+                                        word-break:break-word;
+                                    ">
+                                        {{ value|default:"N/A" }}
+                                    </div>
+
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        {% else %}
+
+                            <div style="
+                                padding:20px;
+                                text-align:center;
+                                color:#64748b;
+                                background:#f8fafc;
+                                border-radius:8px;
+                            ">
+                                No extracted information available.
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- OCR TEXT -->
+                <div style="
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        padding:15px 18px;
+                        background:#f8fafc;
+                        border-bottom:1px solid #e5e7eb;
+                        font-size:17px;
+                        font-weight:700;
+                        color:#172033;
+                    ">
+                        📝 OCR Extracted Text
+                    </div>
+
+
+                    <div style="padding:20px;">
+
+                        {% if item.ocr_text %}
+
+                        <div style="
+                            background:#111827;
+                            color:#e5e7eb;
+                            padding:18px;
+                            border-radius:10px;
+                            max-height:350px;
+                            overflow-y:auto;
+                            white-space:pre-wrap;
+                            word-break:break-word;
+                            font-family:Consolas,monospace;
+                            font-size:13px;
+                            line-height:1.7;
+                        ">{{ item.ocr_text }}</div>
+
+                        {% else %}
+
+                        <div style="
+                            padding:20px;
+                            text-align:center;
+                            color:#64748b;
+                            background:#f8fafc;
+                            border-radius:8px;
+                        ">
+                            No OCR text available.
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <!-- EMPTY STATE -->
+        <div style="
+            background:white;
+            border-radius:15px;
+            padding:60px 25px;
+            text-align:center;
+            box-shadow:0 5px 20px rgba(0,0,0,0.07);
+        ">
+
+            <div style="
+                font-size:55px;
+                margin-bottom:15px;
+            ">
+                📂
+            </div>
+
+            <h3 style="
+                margin:0 0 8px 0;
+                color:#172033;
+            ">
+                No Claim Documents
+            </h3>
+
+            <p style="
+                margin:0;
+                color:#64748b;
+                font-size:14px;
+            ">
+                No user-uploaded insurance documents are available for verification.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

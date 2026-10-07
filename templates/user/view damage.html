@@ -1,0 +1,353 @@
+{% extends 'user/userhome.html' %}
+
+{% block body %}
+
+<div class="container mt-4 mb-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>
+            My Vehicle Damage Details
+        </h2>
+
+        <a href="{% url 'user_view_insurance_company' %}"
+           class="btn btn-primary">
+            View Insurance Companies
+        </a>
+
+    </div>
+
+
+    <!-- Insurance Company -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h5 class="mb-3">
+                Insurance Company
+            </h5>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <strong>Company:</strong>
+                    {{ insurance.companyname }}
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Email:</strong>
+                    {{ insurance.email }}
+                </div>
+
+                <div class="col-md-4">
+                    <strong>Phone:</strong>
+                    {{ insurance.phone }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {% for i in data %}
+
+    <!-- Damage Submission -->
+
+    <div class="card shadow mb-4">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between align-items-center">
+
+                <h5 class="mb-0">
+                    Damage Submission #{{ i.id }}
+                </h5>
+
+
+                {% if i.status == "Analysis Completed" %}
+
+                    <span class="badge bg-success">
+                        {{ i.status }}
+                    </span>
+
+                {% elif i.status == "Analysis Failed" %}
+
+                    <span class="badge bg-danger">
+                        {{ i.status }}
+                    </span>
+
+                {% elif i.status == "Analyzing..." %}
+
+                    <span class="badge bg-info">
+                        {{ i.status }}
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-warning text-dark">
+                        {{ i.status }}
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <p>
+                <strong>Submitted Date:</strong>
+                {{ i.date|date:"d-m-Y h:i A" }}
+            </p>
+
+
+            <hr>
+
+
+            <h5 class="mb-4">
+                Uploaded Vehicle Images
+            </h5>
+
+
+            <div class="row">
+
+
+                <!-- FRONT -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.frontimage.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Front Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Front
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BACK -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.backimage.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Back Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Back
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LEFT -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.leftside.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Left Side Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Left Side
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.rightsideimage.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Right Side Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Right Side
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOP -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.topimage.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Top Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Top
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTTOM -->
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <img src="{{ i.bottumimage.url }}"
+                             class="card-img-top vehicle-image"
+                             alt="Bottom Vehicle Image">
+
+                        <div class="card-body text-center">
+
+                            <h6 class="mb-0">
+                                Bottom
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI DAMAGE DESCRIPTION -->
+
+            <hr class="my-4">
+
+
+            <h5 class="mb-3">
+                Vehicle Damage Analysis
+            </h5>
+
+
+            {% if i.image_overall_damage_description %}
+
+                <div class="alert alert-light border">
+
+                    <div style="white-space: pre-line;">
+                        {{ i.image_overall_damage_description }}
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-warning">
+
+                    <strong>Analysis Pending</strong>
+
+                    <br>
+
+                    Your vehicle images have been submitted successfully.
+
+                    The insurance company has not completed the damage
+                    analysis yet.
+
+                </div>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+    {% empty %}
+
+    <!-- No Damage Submission -->
+
+    <div class="card shadow">
+
+        <div class="card-body text-center py-5">
+
+            <h4>
+                No Damage Details Found
+            </h4>
+
+            <p class="text-muted">
+                You have not uploaded vehicle damage images
+                for this insurance company yet.
+            </p>
+
+            <a href="{% url 'user_view_insurance_company' %}"
+               class="btn btn-primary">
+
+                Select Insurance Company
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<style>
+
+.vehicle-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.vehicle-image:hover {
+    transform: scale(1.02);
+}
+
+</style>
+
+
+{% endblock %}

@@ -1,0 +1,431 @@
+{##}
+{#{% extends 'company/companyhome.html' %}#}
+{#{% block body %}#}
+{##}
+{#  <div class="main-content">#}
+{#    <div class="container">#}
+{#      <h2 data-aos="fade-up">Claim Details - {{ claim.id }}</h2>#}
+{#      <div class="table-container" data-aos="fade-up" data-aos-delay="100">#}
+{#        <table class="table table-striped">#}
+{#          <thead>#}
+{#            <tr>#}
+{#              <th scope="col">Field</th>#}
+{#              <th scope="col">Details</th>#}
+{#            </tr>#}
+{#          </thead>#}
+{#          <tbody>#}
+{#            <tr><th scope="row">Full Name</th><td>{{ claim.full_name }}</td></tr>#}
+{#            <tr><th scope="row">Date of Birth</th><td>{{ claim.date_of_birth }}</td></tr>#}
+{#            <tr><th scope="row">Gender</th><td>{{ claim.gender }}</td></tr>#}
+{#            <tr><th scope="row">Nationality</th><td>{{ claim.nationality }}</td></tr>#}
+{#            <tr><th scope="row">PAN Number</th><td>{{ claim.pan_number }}</td></tr>#}
+{#            <tr><th scope="row">Marital Status</th><td>{{ claim.marital_status }}</td></tr>#}
+{#            <tr><th scope="row">Address</th><td>{{ claim.address }}</td></tr>#}
+{#            <tr><th scope="row">Phone Number</th><td>{{ claim.phone_number }}</td></tr>#}
+{#            <tr><th scope="row">Email Address</th><td>{{ claim.email_address }}</td></tr>#}
+{#            <tr><th scope="row">Account Number</th><td>{{ claim.account_number }}</td></tr>#}
+{#            <tr><th scope="row">Branch Name</th><td>{{ claim.branch_name }}</td></tr>#}
+{#            <tr><th scope="row">IFSC Code</th><td>{{ claim.ifsc_code }}</td></tr>#}
+{#            <tr><th scope="row">Months as Customer</th><td>{{ claim.months_as_customer }}</td></tr>#}
+{#            <tr><th scope="row">Age</th><td>{{ claim.age }}</td></tr>#}
+{#            <tr><th scope="row">Policy Number</th><td>{{ claim.policy_number }}</td></tr>#}
+{#            <tr><th scope="row">Policy Bind Date</th><td>{{ claim.policy_bind_date }}</td></tr>#}
+{#            <tr><th scope="row">Policy State</th><td>{{ claim.policy_state }}</td></tr>#}
+{#            <tr><th scope="row">Policy CSL</th><td>{{ claim.policy_csl }}</td></tr>#}
+{#            <tr><th scope="row">Policy Deductible</th><td>{{ claim.policy_deductable }}</td></tr>#}
+{#            <tr><th scope="row">Policy Annual Premium</th><td>{{ claim.policy_annual_premium }}</td></tr>#}
+{#            <tr><th scope="row">Umbrella Limit</th><td>{{ claim.umbrella_limit }}</td></tr>#}
+{#            <tr><th scope="row">Insured ZIP</th><td>{{ claim.insured_zip }}</td></tr>#}
+{#            <tr><th scope="row">Insured Sex</th><td>{{ claim.insured_sex }}</td></tr>#}
+{#            <tr><th scope="row">Education Level</th><td>{{ claim.insured_education_level }}</td></tr>#}
+{#            <tr><th scope="row">Occupation</th><td>{{ claim.insured_occupation }}</td></tr>#}
+{#            <tr><th scope="row">Hobbies</th><td>{{ claim.insured_hobbies }}</td></tr>#}
+{#            <tr><th scope="row">Relationship</th><td>{{ claim.insured_relationship }}</td></tr>#}
+{#            <tr><th scope="row">Capital Gains</th><td>{{ claim.capital_gains }}</td></tr>#}
+{#            <tr><th scope="row">Capital Loss</th><td>{{ claim.capital_loss }}</td></tr>#}
+{#            <tr><th scope="row">Incident Date</th><td>{{ claim.incident_date }}</td></tr>#}
+{#            <tr><th scope="row">Incident Type</th><td>{{ claim.incident_type }}</td></tr>#}
+{#            <tr><th scope="row">Collision Type</th><td>{{ claim.collision_type }}</td></tr>#}
+{#            <tr><th scope="row">Incident Severity</th><td>{{ claim.incident_severity }}</td></tr>#}
+{#            <tr><th scope="row">Authorities Contacted</th><td>{{ claim.authorities_contacted }}</td></tr>#}
+{#            <tr><th scope="row">Incident State</th><td>{{ claim.incident_state }}</td></tr>#}
+{#            <tr><th scope="row">Incident City</th><td>{{ claim.incident_city }}</td></tr>#}
+{#            <tr><th scope="row">Incident Location</th><td>{{ claim.incident_location }}</td></tr>#}
+{#            <tr><th scope="row">Incident Hour</th><td>{{ claim.incident_hour_of_the_day }}</td></tr>#}
+{#            <tr><th scope="row">Vehicles Involved</th><td>{{ claim.number_of_vehicles_involved }}</td></tr>#}
+{#            <tr><th scope="row">Property Damage</th><td>{{ claim.property_damage }}</td></tr>#}
+{#            <tr><th scope="row">Bodily Injuries</th><td>{{ claim.bodily_injuries }}</td></tr>#}
+{#            <tr><th scope="row">Witnesses</th><td>{{ claim.witnesses }}</td></tr>#}
+{#            <tr><th scope="row">Police Report Available</th><td>{{ claim.police_report_available }}</td></tr>#}
+{#            <tr><th scope="row">Total Claim Amount</th><td>{{ claim.total_claim_amount }}</td></tr>#}
+{#            <tr><th scope="row">Injury Claim</th><td>{{ claim.injury_claim }}</td></tr>#}
+{#            <tr><th scope="row">Property Claim</th><td>{{ claim.property_claim }}</td></tr>#}
+{#            <tr><th scope="row">Vehicle Claim</th><td>{{ claim.vehicle_claim }}</td></tr>#}
+{#            <tr><th scope="row">Auto Make</th><td>{{ claim.auto_make }}</td></tr>#}
+{#            <tr><th scope="row">Auto Model</th><td>{{ claim.auto_model }}</td></tr>#}
+{#            <tr><th scope="row">Auto Year</th><td>{{ claim.auto_year }}</td></tr>#}
+{#          </tbody>#}
+{#        </table>#}
+{#      </div>#}
+{##}
+{#      <div class="btn-container" data-aos="fade-up" data-aos-delay="200">#}
+{#        <a href="{% url 'company_view_claim' %}" class="btn btn-back">Back</a>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{##}
+{#  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>#}
+{#  <script>#}
+{#    document.addEventListener('DOMContentLoaded', function () {#}
+{#      // Initialize AOS#}
+{#      if (typeof AOS !== 'undefined') {#}
+{#        AOS.init({#}
+{#          duration: 800,#}
+{#          easing: 'ease-in-out',#}
+{#          once: true#}
+{#        });#}
+{#      } else {#}
+{#        console.warn('AOS library not loaded.');#}
+{#      }#}
+{##}
+{#      // Parallax Effect#}
+{#      window.addEventListener('scroll', function () {#}
+{#        const scrollPosition = window.scrollY;#}
+{#        document.body.style.backgroundPositionY = `${scrollPosition * 0.2}px`;#}
+{#      });#}
+{#    });#}
+{#  </script>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'company/companyhome.html' %}
+{% block body %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .claimfile{
+    --paper:#EFEAD9;
+    --panel:#FBF8F0;
+    --ink:#1B2430;
+    --ink-soft:#6b6255;
+    --ink-faint:#948c7d;
+    --navy:#1F3A4D;
+    --navy-deep:#162A38;
+    --brass:#9C7A3C;
+    --brass-light:#C8A96A;
+    --brick:#8C3B2E;
+    --line:#DCD4BE;
+    --line-strong:#C7BC9F;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    padding:48px 24px 96px;
+    line-height:1.5;
+  }
+  .claimfile *{box-sizing:border-box;}
+  .claimfile .wrap{max-width:960px;margin:0 auto;}
+
+  .claimfile .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:36px;}
+  .claimfile .back-link{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+    border-bottom:1px solid transparent;transition:border-color .15s ease, color .15s ease;
+  }
+  .claimfile .back-link:hover{color:var(--navy);border-color:var(--navy);}
+  .claimfile .back-link:focus-visible{outline:2px solid var(--navy);outline-offset:3px;}
+  .claimfile .back-link svg{width:12px;height:12px;}
+  .claimfile .file-index{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.08em;}
+
+  .claimfile .header{position:relative;padding-bottom:28px;margin-bottom:8px;border-bottom:2px solid var(--navy);}
+  .claimfile .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--brick);margin:0 0 10px;display:flex;align-items:center;gap:8px;
+  }
+  .claimfile .eyebrow::before{content:'';width:16px;height:1px;background:var(--brick);display:inline-block;}
+  .claimfile h2.filetitle{
+    font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,5vw,44px);
+    margin:0 0 10px;color:var(--navy-deep);letter-spacing:-0.01em;
+  }
+  .claimfile .subline{font-size:14.5px;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;}
+  .claimfile .subline b{color:var(--ink);font-weight:600;}
+  .claimfile .dot{color:var(--line-strong);}
+
+  .claimfile .stamp{
+    position:absolute;top:-6px;right:0;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:13px;
+    letter-spacing:.06em;color:var(--brick);border:2.5px solid var(--brick);border-radius:50%;
+    width:118px;height:118px;display:flex;align-items:center;justify-content:center;text-align:center;
+    text-transform:uppercase;transform:rotate(-11deg);mix-blend-mode:multiply;opacity:.88;padding:10px;
+  }
+  .claimfile .stamp::before{content:'';position:absolute;inset:6px;border:1px solid var(--brick);border-radius:50%;}
+  .claimfile .stamp span{display:block;line-height:1.25;}
+  .claimfile .stamp .small{font-size:9px;font-weight:500;letter-spacing:.14em;margin-top:2px;opacity:.85;}
+  @media (max-width:640px){.claimfile .stamp{position:static;transform:rotate(-4deg);margin-top:18px;}}
+
+  .claimfile .section{margin-top:44px;opacity:0;transform:translateY(10px);animation:claimrise .5s ease forwards;}
+  .claimfile .section:nth-of-type(1){animation-delay:.02s;}
+  .claimfile .section:nth-of-type(2){animation-delay:.08s;}
+  .claimfile .section:nth-of-type(3){animation-delay:.14s;}
+  .claimfile .section:nth-of-type(4){animation-delay:.2s;}
+  .claimfile .section:nth-of-type(5){animation-delay:.26s;}
+  @keyframes claimrise{to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){.claimfile .section{animation:none;opacity:1;transform:none;}}
+
+  .claimfile .tab{
+    display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--paper);
+    padding:9px 18px 9px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;clip-path:polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+  .claimfile .tab .letter{
+    background:var(--brass-light);color:var(--navy-deep);font-weight:600;width:18px;height:18px;
+    border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;
+  }
+
+  /* Bootstrap table restyle */
+  .claimfile .panel{background:var(--panel);border:1px solid var(--line-strong);border-top:none;padding:6px 6px 0;}
+  .claimfile .table{margin-bottom:0;}
+  .claimfile .table > :not(caption) > * > *{
+    background:transparent;
+    padding:14px 20px;
+    border-bottom-color:var(--line);
+  }
+  .claimfile .table tr:last-child td,
+  .claimfile .table tr:last-child th{border-bottom:none;}
+  .claimfile .table th{
+    width:38%;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:500;
+    vertical-align:middle;
+    border-right:1px solid var(--line);
+  }
+  .claimfile .table td{
+    font-size:14.5px;color:var(--ink);font-weight:500;vertical-align:middle;
+  }
+  .claimfile .table td.mono{font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:13.5px;}
+  .claimfile .table td.muted{color:var(--ink-soft);font-weight:400;}
+  .claimfile .table-striped > tbody > tr:nth-of-type(odd) > *{
+    background-color:rgba(31,58,77,0.03);
+  }
+
+  .claimfile .tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;
+    padding:2px 8px;border:1px solid var(--brick);color:var(--brick);border-radius:20px;
+  }
+  .claimfile .tag.ok{border-color:#3f6b4f;color:#3f6b4f;}
+
+  .claimfile .summary{
+    margin-top:44px;background:var(--navy-deep);color:var(--paper);padding:32px 30px;
+    position:relative;overflow:hidden;
+  }
+  .claimfile .summary::after{
+    content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;
+    border:1px solid rgba(239,234,217,0.08);border-radius:50%;
+  }
+  .claimfile .summary-head{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass-light);margin-bottom:22px;
+  }
+  .claimfile .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;}
+  .claimfile .summary-item .n{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:clamp(22px,3.4vw,30px);color:#fff;
+  }
+  .claimfile .summary-item .l{font-size:12px;color:rgba(239,234,217,0.65);margin-top:4px;}
+  .claimfile .summary-item.total .n{color:var(--brass-light);}
+
+  .claimfile .footer-actions{margin-top:48px;display:flex;justify-content:flex-end;}
+  .claimfile .btn-back{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--paper);background:var(--navy);padding:12px 22px;text-decoration:none;
+    border:1px solid var(--navy);transition:background .15s ease, color .15s ease;
+  }
+  .claimfile .btn-back:hover{background:transparent;color:var(--navy);}
+  .claimfile .btn-back:focus-visible{outline:2px solid var(--brick);outline-offset:2px;}
+</style>
+
+<div class="claimfile">
+  <div class="wrap">
+
+    <div class="topbar" data-aos="fade-up">
+      <a class="back-link" href="{% url 'company_view_claim' %}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        All claims
+      </a>
+      <div class="file-index">FILE {{ claim.id }}</div>
+    </div>
+
+    <div class="header" data-aos="fade-up" data-aos-delay="60">
+      <p class="eyebrow">Case file</p>
+      <h2 class="filetitle">Claim {{ claim.id }}</h2>
+      <div class="subline">
+        <b>{{ claim.full_name }}</b><span class="dot">&middot;</span>
+        <span>Policy {{ claim.policy_number }}</span><span class="dot">&middot;</span>
+        <span>Incident {{ claim.incident_date }}</span>
+      </div>
+      <div class="stamp"><span>{{ claim.incident_severity }}<span class="small">Severity</span></span></div>
+    </div>
+
+    <!-- A. Claimant -->
+    <div class="section" data-aos="fade-up">
+      <div class="tab"><span class="letter">A</span> Claimant</div>
+      <div class="panel table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr><th scope="row">Full name</th><td>{{ claim.full_name }}</td></tr>
+            <tr><th scope="row">Date of birth</th><td class="mono">{{ claim.date_of_birth }}</td></tr>
+            <tr><th scope="row">Age</th><td>{{ claim.age }}</td></tr>
+            <tr><th scope="row">Gender</th><td>{{ claim.gender }}</td></tr>
+            <tr><th scope="row">Nationality</th><td>{{ claim.nationality }}</td></tr>
+            <tr><th scope="row">PAN number</th><td class="mono">{{ claim.pan_number }}</td></tr>
+            <tr><th scope="row">Marital status</th><td>{{ claim.marital_status }}</td></tr>
+            <tr><th scope="row">Phone number</th><td class="mono">{{ claim.phone_number }}</td></tr>
+            <tr><th scope="row">Email address</th><td class="mono">{{ claim.email_address }}</td></tr>
+            <tr><th scope="row">Address</th><td class="muted">{{ claim.address }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- B. Account & Banking -->
+    <div class="section" data-aos="fade-up">
+      <div class="tab"><span class="letter">B</span> Account &amp; banking</div>
+      <div class="panel table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr><th scope="row">Account number</th><td class="mono">{{ claim.account_number }}</td></tr>
+            <tr><th scope="row">Branch name</th><td>{{ claim.branch_name }}</td></tr>
+            <tr><th scope="row">IFSC code</th><td class="mono">{{ claim.ifsc_code }}</td></tr>
+            <tr><th scope="row">Months as customer</th><td>{{ claim.months_as_customer }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- C. Policy -->
+    <div class="section" data-aos="fade-up">
+      <div class="tab"><span class="letter">C</span> Policy</div>
+      <div class="panel table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr><th scope="row">Policy number</th><td class="mono">{{ claim.policy_number }}</td></tr>
+            <tr><th scope="row">Bind date</th><td class="mono">{{ claim.policy_bind_date }}</td></tr>
+            <tr><th scope="row">Policy state</th><td>{{ claim.policy_state }}</td></tr>
+            <tr><th scope="row">Policy CSL</th><td class="mono">{{ claim.policy_csl }}</td></tr>
+            <tr><th scope="row">Deductible</th><td class="mono">{{ claim.policy_deductable }}</td></tr>
+            <tr><th scope="row">Annual premium</th><td class="mono">{{ claim.policy_annual_premium }}</td></tr>
+            <tr><th scope="row">Umbrella limit</th><td class="mono">{{ claim.umbrella_limit }}</td></tr>
+            <tr><th scope="row">Insured ZIP</th><td class="mono">{{ claim.insured_zip }}</td></tr>
+            <tr><th scope="row">Insured sex</th><td>{{ claim.insured_sex }}</td></tr>
+            <tr><th scope="row">Education level</th><td>{{ claim.insured_education_level }}</td></tr>
+            <tr><th scope="row">Occupation</th><td>{{ claim.insured_occupation }}</td></tr>
+            <tr><th scope="row">Hobbies</th><td>{{ claim.insured_hobbies }}</td></tr>
+            <tr><th scope="row">Relationship</th><td>{{ claim.insured_relationship }}</td></tr>
+            <tr><th scope="row">Capital gains</th><td class="mono">{{ claim.capital_gains }}</td></tr>
+            <tr><th scope="row">Capital loss</th><td class="mono">{{ claim.capital_loss }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- D. Incident -->
+    <div class="section" data-aos="fade-up">
+      <div class="tab"><span class="letter">D</span> Incident</div>
+      <div class="panel table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr><th scope="row">Incident date</th><td class="mono">{{ claim.incident_date }}</td></tr>
+            <tr><th scope="row">Incident type</th><td>{{ claim.incident_type }}</td></tr>
+            <tr><th scope="row">Collision type</th><td>{{ claim.collision_type }}</td></tr>
+            <tr><th scope="row">Incident severity</th><td><span class="tag">{{ claim.incident_severity }}</span></td></tr>
+            <tr><th scope="row">Authorities contacted</th><td>{{ claim.authorities_contacted }}</td></tr>
+            <tr><th scope="row">Incident state</th><td>{{ claim.incident_state }}</td></tr>
+            <tr><th scope="row">Incident city</th><td>{{ claim.incident_city }}</td></tr>
+            <tr><th scope="row">Incident location</th><td class="muted">{{ claim.incident_location }}</td></tr>
+            <tr><th scope="row">Incident hour</th><td class="mono">{{ claim.incident_hour_of_the_day }}</td></tr>
+            <tr><th scope="row">Vehicles involved</th><td>{{ claim.number_of_vehicles_involved }}</td></tr>
+            <tr>
+              <th scope="row">Property damage</th>
+              <td>
+                {% if claim.property_damage == 'YES' or claim.property_damage == 'Yes' %}
+                  <span class="tag ok">{{ claim.property_damage }}</span>
+                {% else %}
+                  <span class="tag">{{ claim.property_damage }}</span>
+                {% endif %}
+              </td>
+            </tr>
+            <tr><th scope="row">Bodily injuries</th><td>{{ claim.bodily_injuries }}</td></tr>
+            <tr><th scope="row">Witnesses</th><td>{{ claim.witnesses }}</td></tr>
+            <tr>
+              <th scope="row">Police report</th>
+              <td>
+                {% if claim.police_report_available == 'YES' or claim.police_report_available == 'Yes' %}
+                  <span class="tag ok">{{ claim.police_report_available }}</span>
+                {% else %}
+                  <span class="tag">{{ claim.police_report_available }}</span>
+                {% endif %}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- E. Vehicle -->
+    <div class="section" data-aos="fade-up">
+      <div class="tab"><span class="letter">E</span> Vehicle</div>
+      <div class="panel table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr><th scope="row">Make</th><td>{{ claim.auto_make }}</td></tr>
+            <tr><th scope="row">Model</th><td>{{ claim.auto_model }}</td></tr>
+            <tr><th scope="row">Year</th><td class="mono">{{ claim.auto_year }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Financial summary -->
+    <div class="summary" data-aos="fade-up">
+      <div class="summary-head">Claim amount breakdown</div>
+      <div class="summary-grid">
+        <div class="summary-item total">
+          <div class="n">{{ claim.total_claim_amount }}</div>
+          <div class="l">Total claim amount</div>
+        </div>
+        <div class="summary-item">
+          <div class="n">{{ claim.injury_claim }}</div>
+          <div class="l">Injury claim</div>
+        </div>
+        <div class="summary-item">
+          <div class="n">{{ claim.property_claim }}</div>
+          <div class="l">Property claim</div>
+        </div>
+        <div class="summary-item">
+          <div class="n">{{ claim.vehicle_claim }}</div>
+          <div class="l">Vehicle claim</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a href="{% url 'company_view_claim' %}" class="btn-back">Back to claims</a>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    } else {
+      console.warn('AOS library not loaded.');
+    }
+  });
+</script>
+{% endblock %}

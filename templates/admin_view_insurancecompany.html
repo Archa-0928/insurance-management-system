@@ -1,0 +1,92 @@
+{% extends 'admin_sidebar.html' %}
+{% block body %}
+
+<!-- Main Content -->
+
+    <!-- Table Section -->
+    <div class="table-card mt-4 px-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0" style="color: var(--primary-color);">
+                <i class="fas fa-building me-2"></i>Registered Insurance Companies
+            </h4>
+            <!-- Optional: quick search / filter placeholder -->
+            <div class="input-group" style="max-width: 280px;">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="fas fa-search text-muted"></i>
+                </span>
+                <input type="text" id="tableSearch" class="form-control border-start-0"
+                       placeholder="Search companies...">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tableData" id="companyTable">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" style="width: 50px;">#</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Place</th>
+                        <th scope="col" class="text-center" style="width: 130px;">License Proof</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in company %}
+                    <tr>
+                        <td class="text-muted">{{ forloop.counter }}</td>
+                        <td>
+                            <strong>{{ company.companyname }}</strong>
+                        </td>
+                        <td>
+                            <a href="mailto:{{ company.email }}" class="text-decoration-none">
+                                {{ company.email }}
+                            </a>
+                        </td>
+                        <td>{{ company.phone }}</td>
+                        <td class="text-wrap" style="max-width: 220px;">
+                            {{ company.address }}
+                        </td>
+                        <td>{{ company.place }}</td>
+                        <td class="text-center">
+                            {% if company.license_proof %}
+                            <a href="{{ company.license_proof.url }}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-primary"
+                               title="View License">
+                                <i class="fas fa-eye me-1"></i> View
+                            </a>
+                            {% else %}
+                            <span class="badge bg-secondary">N/A</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-5">
+                            <i class="fas fa-building fa-2x mb-3 d-block opacity-50"></i>
+                            No companies found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- Optional lightweight client-side search -->
+<script>
+document.getElementById('tableSearch')?.addEventListener('keyup', function () {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#companyTable tbody tr');
+
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+    });
+});
+</script>
+
+{% endblock %}
